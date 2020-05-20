@@ -5,13 +5,37 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:QuanLySinhVienTotNghiep"
         mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         WindowStartupLocation="CenterScreen" AllowsTransparency="True" ResizeMode="NoResize" WindowStyle="None"
-        Title="QUẢN LÝ SINH VIÊN TỐT NGHIỆP" Height="600" Width="1000">
+        Title="QUẢN LÝ SINH VIÊN TỐT NGHIỆP" Height="600" Width="1200">
     <Grid>
-        <StackPanel VerticalAlignment="Top" Height="50" HorizontalAlignment="Right">
-            <Button Width="30" Height="30" Padding="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <materialDesign:ColorZone Mode="PrimaryMid" Grid.ColumnSpan="2" HorizontalAlignment="Stretch">
+            <Grid>
+                <materialDesign:PopupBox PlacementMode="BottomAndAlignRightEdges" HorizontalAlignment="Right" Margin="10" />
+                <Ellipse Width="70" Height="70" Fill="Gray" Canvas.Left="135" Canvas.Top="25" HorizontalAlignment="Left" Margin="10" />
+                <Image Source="Images/iconAdmin.png" Width="40" Height="50" HorizontalAlignment="Left" Margin="25,0,0,0" />
+                <Label Content="BÙI TRƯỜNG NHẬT" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="100,-30,0,0" Foreground="White" FontSize="15" FontWeight="Bold"/>
+                <TextBlock TextDecorations="underline" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="100,20,0,0" FontSize="15" FontWeight="Bold">
+                    <Label Foreground="White" Content="Quản Trị Viên"/>
+                </TextBlock>
                 
-            </Button>
-        </StackPanel>
+            </Grid>
+        </materialDesign:ColorZone>
+
+        <Grid HorizontalAlignment="Stretch" Grid.Row="1" Background="{StaticResource PrimaryHueMidBrush}">
+            <ScrollViewer HorizontalAlignment="Stretch" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" Grid.Row="1">
+                <StackPanel x:Name="Menu" Margin="10"/>
+            </ScrollViewer>
+        </Grid>
+        <StackPanel x:Name="StackPanelMain" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch"/>
     </Grid>
 </Window>
