@@ -24,5 +24,12 @@ namespace QuanLySinhVienTotNghiep
         {
             InitializeComponent();
         }
+
+        private void BtnDangNhap_Click(object sender, RoutedEventArgs e)
+        {
+            TrangChinh _page = new TrangChinh();
+            _page.Show();
+            this.Close();
+        }
     }
 }

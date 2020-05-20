@@ -9,7 +9,11 @@
         WindowStartupLocation="CenterScreen" AllowsTransparency="True"
         Title="Đăng Nhập" Height="500" Width="350" ResizeMode="NoResize" WindowStyle="None" >
     <Grid>
-        <Rectangle Height="300" VerticalAlignment="Top">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="487*"/>
+            <RowDefinition Height="13*"/>
+        </Grid.RowDefinitions>
+        <Rectangle Height="300" VerticalAlignment="Top" Margin="0,0,0.4,0">
             <Rectangle.Fill>
                 <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1" >
                     <GradientStop Color="HotPink" />
@@ -18,13 +22,13 @@
                 </LinearGradientBrush>
             </Rectangle.Fill>
         </Rectangle>
-        <Image Source="Images/logo.png" Width="90" Height="90" VerticalAlignment="Top" Margin="10"/>
-        <Rectangle Height="300" Width="300" Fill="White" RadiusX="10" RadiusY="10" Margin="0,40,0,0">
+        <Image Source="Images/logo.png" Width="90" Height="90" VerticalAlignment="Top" Margin="130,10,130.4,0"/>
+        <Rectangle Height="300" Width="300" Fill="White" RadiusX="10" RadiusY="10" Margin="25,120,25.4,66.962">
             <Rectangle.Effect>
                 <DropShadowEffect Color="#FFBBBBBB" Direction="0" BlurRadius="20" RenderingBias="Quality" ShadowDepth="5"/>
             </Rectangle.Effect>
         </Rectangle>
-        <Grid Height="300" Width="300" VerticalAlignment="Bottom" Margin="0,75">
+        <Grid Height="300" Width="300" VerticalAlignment="Bottom" Margin="25,0,25.4,61.962">
             <TextBlock Text="ĐĂNG NHẬP" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,20,0,0" Foreground="DarkRed" FontSize="15" FontWeight="Bold"></TextBlock>
             <StackPanel VerticalAlignment="Center" Margin="5,-50,5,0">
                 <TextBox FontSize="13" materialDesign:HintAssist.Hint="TÀI KHOẢN" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="0,5" />
@@ -32,15 +36,15 @@
                 <TextBox FontSize="13" materialDesign:HintAssist.Hint="MÃ XÁC NHẬN" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
             </StackPanel>
             <Image Height="30" Width="200" Margin="-100,220,0,0" Source="Images/capcha.jpg"/>
-            <Button Width="50" Height="50" VerticalAlignment="Bottom" Margin="100,0,0,10">
+            <Button x:Name="btnRefesh" Width="50" Height="50" VerticalAlignment="Bottom" Margin="100,0,0,10">
                 <Button.Background>
                     <ImageBrush ImageSource="pack://application:,,,/QuanLySinhVienTotNghiep;component/Images/refesh.png" />
                 </Button.Background>
             </Button>
         </Grid>
 
-        <Button Content="Đăng Nhập" Width="150" Height="30" VerticalAlignment="Bottom" Margin="10,40"></Button>
-        <Label Foreground="Blue" FontStretch="UltraCondensed" FontSize="15" Width="150" Height="30" VerticalAlignment="Bottom" Margin="45,10,0,0">
+        <Button x:Name="btnDangNhap" Click="BtnDangNhap_Click" Content="Đăng Nhập" Width="150" Height="30" VerticalAlignment="Bottom" Margin="100,0,100.4,26.962"></Button>
+        <Label x:Name="lbQuenMatKhau" Foreground="Blue" FontStretch="UltraCondensed" FontSize="15" Width="150" Height="30" VerticalAlignment="Bottom" Margin="123,0,77.4,0" Grid.RowSpan="2">
             <TextBlock TextDecorations="Underline">Quên mật khẩu</TextBlock>
         </Label>
     </Grid>
