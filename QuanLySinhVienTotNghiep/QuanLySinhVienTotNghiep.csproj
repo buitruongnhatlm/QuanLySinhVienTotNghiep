@@ -63,9 +63,20 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="TrangChinh.xaml.cs">
-      <DependentUpon>TrangChinh.xaml</DependentUpon>
+    <Compile Include="HomePage.xaml.cs">
+      <DependentUpon>HomePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\UserControlInfoStudents.xaml.cs">
+      <DependentUpon>UserControlInfoStudents.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\UserControlMenuItems.xaml.cs">
+      <DependentUpon>UserControlMenuItems.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\UserControlUpdatesStudent.xaml.cs">
+      <DependentUpon>UserControlUpdatesStudent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModelHomePage\ItemMenu.cs" />
+    <Compile Include="ViewModelHomePage\SubItem.cs" />
     <Page Include="Login.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -78,7 +89,19 @@
       <DependentUpon>Login.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="TrangChinh.xaml">
+    <Page Include="HomePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\UserControlInfoStudents.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\UserControlMenuItems.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\UserControlUpdatesStudent.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -111,9 +134,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="logo.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Images\logo.png" />
   </ItemGroup>
   <ItemGroup>
@@ -129,6 +149,7 @@
     <Resource Include="Images\iconQuanTri.png" />
     <Resource Include="Images\iconStudent.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.3.1.2\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.3.1.2\build\MaterialDesignThemes.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
