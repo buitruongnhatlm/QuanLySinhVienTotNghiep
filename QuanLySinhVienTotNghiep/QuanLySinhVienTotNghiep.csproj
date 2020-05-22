@@ -66,14 +66,14 @@
     <Compile Include="HomePage.xaml.cs">
       <DependentUpon>HomePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\UserControlInfoStudents.xaml.cs">
-      <DependentUpon>UserControlInfoStudents.xaml</DependentUpon>
+    <Compile Include="UserControlInfoStudent.xaml.cs">
+      <DependentUpon>UserControlInfoStudent.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\UserControlMenuItems.xaml.cs">
-      <DependentUpon>UserControlMenuItems.xaml</DependentUpon>
+    <Compile Include="UserControlMenuItem.xaml.cs">
+      <DependentUpon>UserControlMenuItem.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\UserControlUpdatesStudent.xaml.cs">
-      <DependentUpon>UserControlUpdatesStudent.xaml</DependentUpon>
+    <Compile Include="UserControlUpdateStudent.xaml.cs">
+      <DependentUpon>UserControlUpdateStudent.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModelHomePage\ItemMenu.cs" />
     <Compile Include="ViewModelHomePage\SubItem.cs" />
@@ -93,15 +93,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UserControls\UserControlInfoStudents.xaml">
+    <Page Include="UserControlInfoStudent.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UserControls\UserControlMenuItems.xaml">
+    <Page Include="UserControlMenuItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UserControls\UserControlUpdatesStudent.xaml">
+    <Page Include="UserControlUpdateStudent.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

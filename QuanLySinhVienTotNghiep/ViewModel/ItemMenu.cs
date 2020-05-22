@@ -1,14 +1,14 @@
-﻿using System;
+﻿using MaterialDesignThemes.Wpf;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
-using MaterialDesignThemes.Wpf;
 
-namespace QuanLySinhVienTotNghiep.ViewModelHomePage
+namespace BeautySolutions.View.ViewModel
 {
-  public  class ItemMenu
+    public class ItemMenu
     {
         public ItemMenu(string header, List<SubItem> subItems, PackIconKind icon)
         {

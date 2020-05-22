@@ -12,23 +12,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using QuanLySinhVienTotNghiep.ViewModelHomePage;
 
-namespace QuanLySinhVienTotNghiep.UserControls
+namespace QuanLySinhVienTotNghiep
 {
     /// <summary>
-    /// Interaction logic for UserControlMenuItems.xaml
+    /// Interaction logic for UserControlInfoStudent.xaml
     /// </summary>
-    public partial class UserControlMenuItems : UserControl
+    public partial class UserControlInfoStudent : UserControl
     {
-        MainWindow _context;
-        public UserControlMenuItems(ItemMenu itemMenu, MainWindow context)
+        public UserControlInfoStudent()
         {
             InitializeComponent();
-
-            _context = context;
-            ExpanderMenu.Visibility = itemMenu.SubItems == null ? Visibility.Collapsed : Visibility.Visible;
-
         }
     }
 }

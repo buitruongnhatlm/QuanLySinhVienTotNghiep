@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace QuanLySinhVienTotNghiep.UserControls
+namespace DropDownMenu
 {
     /// <summary>
-    /// Interaction logic for UserControlUpdatesStudent.xaml
+    /// Interaction logic for UserControlDashboard.xaml
     /// </summary>
-    public partial class UserControlUpdatesStudent : UserControl
+    public partial class UserControlCustomers : UserControl
     {
-        public UserControlUpdatesStudent()
+        public UserControlCustomers()
         {
             InitializeComponent();
         }

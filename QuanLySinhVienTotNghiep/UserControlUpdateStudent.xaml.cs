@@ -12,24 +12,18 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using QuanLySinhVienTotNghiep.ViewModelHomePage;
 
 namespace QuanLySinhVienTotNghiep
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for UserControlUpdateStudent.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class UserControlUpdateStudent : UserControl
     {
-        public MainWindow()
+        public UserControlUpdateStudent()
         {
             InitializeComponent();
-        }
-
-        private void BtnDangNhap_Click(object sender, RoutedEventArgs e)
-        {
-            HomePage _page = new HomePage();
-            _page.Show();
-            this.Close();
         }
     }
 }

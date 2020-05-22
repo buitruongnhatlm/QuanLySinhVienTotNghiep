@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Controls;
+﻿using System.Windows.Controls;
 
-namespace QuanLySinhVienTotNghiep.ViewModelHomePage
+namespace BeautySolutions.View.ViewModel
 {
-   public class SubItem
+    public class SubItem
     {
         public SubItem(string name, UserControl screen = null)
         {
