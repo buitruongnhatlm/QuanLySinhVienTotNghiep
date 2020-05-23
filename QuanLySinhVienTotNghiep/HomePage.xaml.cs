@@ -97,5 +97,14 @@ namespace QuanLySinhVienTotNghiep
                 StackPanelMain.Children.Add(screen);
             }
         }
+
+        private void ButtonPopupLogout_Click(object sender, RoutedEventArgs e)
+        {
+            if (MessageBox.Show("Are you sure to exit?", "Remind", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            {
+                Application.Current.Shutdown();
+            }
+            
+        }
     }
 }

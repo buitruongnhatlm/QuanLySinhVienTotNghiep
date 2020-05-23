@@ -20,9 +20,17 @@
 
         <materialDesign:ColorZone Mode="PrimaryMid" Grid.ColumnSpan="2" HorizontalAlignment="Stretch">
             <Grid>
-                <materialDesign:PopupBox PlacementMode="BottomAndAlignRightEdges" HorizontalAlignment="Right" Margin="10" />
-                <Ellipse Width="70" Height="70" Fill="Gray" Canvas.Left="135" Canvas.Top="25" HorizontalAlignment="Left" Margin="10" />
-                <Image Source="Images/iconQuantri.png" Width="40" Height="50" HorizontalAlignment="Left" Margin="25,0,0,0" />
+                <materialDesign:PopupBox PlacementMode="BottomAndAlignRightEdges" HorizontalAlignment="Right" Margin="10" StaysOpen="False" >
+                    <StackPanel Background="{StaticResource PrimaryHueMidBrush}" Width="150">
+                        <Button Content="Cài Đặt" FontWeight="Bold" Foreground="White" />
+                        <Button Content="Báo Lỗi" FontWeight="Bold" Foreground="White" />
+                        <Button Content="Thông Tin Phần Mềm" FontWeight="Bold" Foreground="White" />
+                        <Separator />
+                        <Button Content="Đăng Xuất" x:Name="ButtonPopupLogout" Click="ButtonPopupLogout_Click" FontWeight="Bold" Foreground="White" />
+                    </StackPanel>
+                </materialDesign:PopupBox>
+                <Ellipse Width="50" Height="50" Fill="Gray" Canvas.Left="135" Canvas.Top="25" HorizontalAlignment="Left" Margin="10" />
+                <Image Source="Images/iconQuantri.png" Width="40" Height="50" HorizontalAlignment="Left" Margin="15,0,0,0" />
                 <Label Content="BÙI TRƯỜNG NHẬT" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="100,-30,0,0" Foreground="White" FontSize="15" FontWeight="Bold"/>
                 <TextBlock TextDecorations="underline" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="100,20,0,0" FontSize="15" FontWeight="Bold">
                     <Label Foreground="White" Content="Quản Trị Viên"/>
