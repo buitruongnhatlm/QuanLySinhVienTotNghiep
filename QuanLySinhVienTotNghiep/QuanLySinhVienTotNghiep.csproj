@@ -63,21 +63,20 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="HomePage.xaml.cs">
-      <DependentUpon>HomePage.xaml</DependentUpon>
+    <Compile Include="View\AccountPage.xaml.cs">
+      <DependentUpon>AccountPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControlInfoStudent.xaml.cs">
-      <DependentUpon>UserControlInfoStudent.xaml</DependentUpon>
+    <Compile Include="View\Home.xaml.cs">
+      <DependentUpon>Home.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControlMenuItem.xaml.cs">
-      <DependentUpon>UserControlMenuItem.xaml</DependentUpon>
+    <Compile Include="View\StudentPage.xaml.cs">
+      <DependentUpon>StudentPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControlUpdateStudent.xaml.cs">
-      <DependentUpon>UserControlUpdateStudent.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="ViewModelHomePage\ItemMenu.cs" />
-    <Compile Include="ViewModelHomePage\SubItem.cs" />
-    <Page Include="Login.xaml">
+    <Page Include="View\AccountPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Login.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -85,23 +84,15 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Login.xaml.cs">
+    <Compile Include="View\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="HomePage.xaml">
+    <Page Include="View\Home.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UserControlInfoStudent.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UserControlMenuItem.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UserControlUpdateStudent.xaml">
+    <Page Include="View\StudentPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -134,20 +125,12 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\logo.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Images\capcha.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\refesh.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Images\iconAdmin.png" />
     <Resource Include="Images\iconQuanTri.png" />
     <Resource Include="Images\iconStudent.png" />
+    <Resource Include="Images\logo.png" />
+    <Resource Include="Images\refesh.png" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

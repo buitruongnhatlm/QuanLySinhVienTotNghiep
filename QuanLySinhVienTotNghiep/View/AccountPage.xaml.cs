@@ -13,23 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace QuanLySinhVienTotNghiep
+namespace QuanLySinhVienTotNghiep.View
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for AccountPage.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class AccountPage : Page
     {
-        public MainWindow()
+        public AccountPage()
         {
             InitializeComponent();
-        }
-
-        private void BtnDangNhap_Click(object sender, RoutedEventArgs e)
-        {
-            HomePage _page = new HomePage();
-            _page.Show();
-            this.Close();
         }
     }
 }

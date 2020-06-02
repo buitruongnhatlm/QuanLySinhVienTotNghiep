@@ -13,17 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace QuanLySinhVienTotNghiep
+namespace QuanLySinhVienTotNghiep.View
 {
     /// <summary>
-    /// Interaction logic for UserControlInfoStudent.xaml
+    /// Interaction logic for StudentPage.xaml
     /// </summary>
-    public partial class UserControlInfoStudent : UserControl
+    public partial class StudentPage : Page
     {
-        public UserControlInfoStudent()
+        public StudentPage()
         {
             InitializeComponent();
         }
-
     }
 }
