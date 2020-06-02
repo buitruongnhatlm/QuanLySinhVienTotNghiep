@@ -5,12 +5,59 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:QuanLySinhVienTotNghiep.View"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      d:DesignHeight="850" d:DesignWidth="800"
       Title="AccountPage">
 
-    <Grid>
-        <Grid>
-            <TextBlock Width="200" Height="100" FontSize="50" Text="tab2" Background="White" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+    <Grid Height="160" Width="190" Background="White" VerticalAlignment="Top" HorizontalAlignment="Center">
+            <materialDesign:Flipper>
+                <materialDesign:Flipper.FrontContent>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="250" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+            <materialDesign:ColorZone Mode="PrimaryLight" VerticalAlignment="Stretch">
+            <materialDesign:PackIcon  Kind="AccountCircle" Height="100" Width="100" VerticalAlignment="Top" HorizontalAlignment="Center" />
+            </materialDesign:ColorZone>
+                        <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <TextBlock Margin="0 -150 0 0"> James Willock </TextBlock>
+                            <Button Style="{StaticResource MaterialDesignFlatButton}" Command="{x:Static materialDesign:Flipper.FlipCommand}" Background="White" Margin="0 -230 0 0">
+                                EDIT
+                            </Button>
+                        </StackPanel>
+                    </Grid>
+                </materialDesign:Flipper.FrontContent>
+                
+                <materialDesign:Flipper.BackContent>
+                    
+                    <Grid Height="500" Width="200">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+
+                    <materialDesign:ColorZone Mode="Accent" Padding="5">
+                        <Grid >
+                            <StackPanel Grid.Row="0" Orientation="Horizontal">
+                                <Button Style="{StaticResource MaterialDesignToolForegroundButton}" Command="{x:Static materialDesign:Flipper.FlipCommand}" HorizontalAlignment="Center" VerticalAlignment="Top">
+                                    <materialDesign:PackIcon Kind="ArrowLeft" />
+                                </Button>
+
+                                <TextBlock Margin="10 8 0 0"  VerticalAlignment="Top" HorizontalAlignment="Center">
+                                    EDIT USER
+                                </TextBlock>
+
+                            </StackPanel>
+
+                            <Button HorizontalAlignment="Center" Grid.Row="1" Width="120" Height="25" Margin="0 40 0 10">DANG XUAT</Button>
+
+                        </Grid>
+                        
+                    </materialDesign:ColorZone>
+
+                </Grid>
+                </materialDesign:Flipper.BackContent>
+            </materialDesign:Flipper>
         </Grid>
-    </Grid>
 </Page>

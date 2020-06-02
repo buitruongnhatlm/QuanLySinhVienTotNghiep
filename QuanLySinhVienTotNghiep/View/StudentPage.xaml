@@ -4,11 +4,166 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:QuanLySinhVienTotNghiep.View"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="500" d:DesignWidth="950"
       Title="StudentPage">
 
-    <Grid>
-        <TextBlock Width="200" Height="100" FontSize="50" Text="tab1" Background="White" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+        <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70" />
+            <RowDefinition Height="250" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+        <materialDesign:ColorZone Grid.Row="0" Background="White" Padding="15" Height="500">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
+                <materialDesign:ColorZone Mode="Standard" Padding="8 4 8 4" CornerRadius="8" Margin="10 0 0 0" materialDesign:ShadowAssist.ShadowDepth="Depth1">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="300" />
+                        </Grid.ColumnDefinitions>
+                        <Button Style="{DynamicResource MaterialDesignToolButton}">
+                            <materialDesign:PackIcon Kind="Search" Opacity="50" />
+                        </Button>
+                        <TextBox Grid.Column="1" Margin="8 0 0 0" materialDesign:HintAssist.Hint="Nhập thông tin cần tìm kiếm" materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                             BorderThickness="0" VerticalAlignment="Center" />
+                    </Grid>
+                </materialDesign:ColorZone>
+                <Button Margin="8 0 0 430">
+                    <materialDesign:PackIcon Kind="Send" />
+                </Button>
+            </StackPanel>
+        </materialDesign:ColorZone>
+
+        <Grid Grid.Row="1" Height="250" Width="900" Margin="10 0 0 0">
+            <DataGrid Background="Pink"></DataGrid>
+        </Grid>
+
+
+        <Grid Grid.Row="2" Height="200" Width="500">
+            <materialDesign:Flipper>
+                <materialDesign:Flipper.FrontContent>
+                    <Grid
+      Height="100"
+      Width="200">
+                        <Grid.RowDefinitions>
+                            <RowDefinition
+          Height="160" />
+                            <RowDefinition
+          Height="*" />
+                        </Grid.RowDefinitions>
+                        <materialDesign:ColorZone
+        Mode="PrimaryLight"
+        VerticalAlignment="Stretch">
+                            <materialDesign:PackIcon
+          Kind="AccountCircle"
+          Height="128"
+          Width="128"
+          VerticalAlignment="Center"
+          HorizontalAlignment="Center" />
+                        </materialDesign:ColorZone>
+                        <StackPanel
+        Grid.Row="1"
+        HorizontalAlignment="Center"
+        VerticalAlignment="Center">
+                            <TextBlock>
+        James Willock
+                            </TextBlock>
+                            <Button
+          Style="{StaticResource MaterialDesignFlatButton}"
+          Command="{x:Static materialDesign:Flipper.FlipCommand}"
+          Margin="0 4 0 0">
+                                EDIT
+                            </Button>
+                        </StackPanel>
+                    </Grid>
+                </materialDesign:Flipper.FrontContent>
+                <materialDesign:Flipper.BackContent>
+                    <Grid
+      Height="100"
+      Width="200">
+                        <Grid.RowDefinitions>
+                            <RowDefinition
+          Height="Auto" />
+                            <RowDefinition
+          Height="*" />
+                        </Grid.RowDefinitions>
+                        <materialDesign:ColorZone
+        Mode="Accent"
+        Padding="6">
+                            <StackPanel
+          Orientation="Horizontal">
+                                <Button
+            Style="{StaticResource MaterialDesignToolForegroundButton}"
+            Command="{x:Static materialDesign:Flipper.FlipCommand}"
+            HorizontalAlignment="Left">
+                                    <materialDesign:PackIcon
+              Kind="ArrowLeft"
+              HorizontalAlignment="Right" />
+                                </Button>
+                                <TextBlock
+            Margin="8 0 0 0"
+            VerticalAlignment="Center">
+          EDIT USER
+                                </TextBlock>
+                            </StackPanel>
+                        </materialDesign:ColorZone>
+                        <Grid
+        Grid.Row="1"
+        Margin="0 6 0 0"
+        HorizontalAlignment="Center"
+        VerticalAlignment="Top"
+        Width="172">
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                                <RowDefinition />
+                                <RowDefinition />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+                            <TextBox
+          materialDesign:HintAssist.Hint="First name"
+          materialDesign:HintAssist.IsFloating="True"
+          Margin="0 12 0 0">
+                                James
+                            </TextBox>
+                            <TextBox
+          Grid.Row="1"
+          materialDesign:HintAssist.Hint="Last name"
+          materialDesign:HintAssist.IsFloating="True"
+          Margin="0 12 0 0">
+                                Willock
+                            </TextBox>
+                            <StackPanel
+          Grid.Row="2"
+          Orientation="Horizontal"
+          Margin="0 12 0 0"
+          HorizontalAlignment="Right">
+                                <TextBlock
+            VerticalAlignment="Center">
+          Email Contact
+                                </TextBlock>
+                                <ToggleButton
+            Margin="8 0 0 0"></ToggleButton>
+                            </StackPanel>
+                            <StackPanel
+          Grid.Row="3"
+          Orientation="Horizontal"
+          Margin="0 12 0 0"
+          HorizontalAlignment="Right">
+                                <TextBlock
+            VerticalAlignment="Center">
+          Telephone Contact
+                                </TextBlock>
+                                <ToggleButton
+            Margin="8 0 0 0"></ToggleButton>
+                            </StackPanel>
+                        </Grid>
+                    </Grid>
+                </materialDesign:Flipper.BackContent>
+            </materialDesign:Flipper>
+        </Grid>
+
+
     </Grid>
 </Page>
