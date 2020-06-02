@@ -9,19 +9,15 @@
         WindowStartupLocation="CenterScreen" WindowStyle="None" ResizeMode="NoResize" 
         Title="QUẢN LÝ SINH VIÊN TỐT NGHIỆP" Height="600" Width="1200">
     <Grid>
-        
+
         <!--Chia Dòng-->
         <Grid.RowDefinitions>
-            <RowDefinition Height="auto" />
+            <RowDefinition Height="110" />
             <RowDefinition Height="auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        
+
         <!--Chia Cột-->
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="200" />
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
 
         <materialDesign:ColorZone Mode="PrimaryMid" Grid.ColumnSpan="2" HorizontalAlignment="Stretch">
             <Grid>
@@ -62,7 +58,7 @@
                     </materialDesign:ColorZone>
                 </Grid>
 
-                <!--Popup Góc Trái Trên-->
+                <!--Popup Góc phải Trên-->
                 <materialDesign:PopupBox Height="60" PlacementMode="BottomAndAlignRightEdges" HorizontalAlignment="Right" Margin="0,25,10,0" StaysOpen="False" >
                     <StackPanel Background="{StaticResource PrimaryHueMidBrush}" Width="200">
                         <Button Content="Cài Đặt" FontWeight="Bold" Foreground="White" />
@@ -73,68 +69,32 @@
                     </StackPanel>
                 </materialDesign:PopupBox>
 
-                <!--Thông Tin Đăng Nhập Góc Phải Trên-->
-                    <!--<Ellipse Width="50" Height="50" Fill="Gray" Canvas.Left="135" Canvas.Top="35" HorizontalAlignment="Left" Margin="10,35,0,0" />
-                    <Image Source="/Images/iconQuanTri.png" Width="40" Height="50" HorizontalAlignment="Left" Margin="15,30,0,0" />
-                    <Label Content="BÙI TRƯỜNG NHẬT" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="70,10,0,0" Foreground="White" FontSize="13" FontWeight="Bold"/>
-                    <TextBlock TextDecorations="underline" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="80,50,0,0" FontSize="15" FontWeight="Bold">
-                    <Label Foreground="White" Content="Quản Trị Viên"/>
-                    </TextBlock>-->
+                <!--Đăng nhập góc trái trên-->
+                <Grid Height="100" Width="100" Margin="5 35 0 5" Background="White" VerticalAlignment="Top" HorizontalAlignment="Left">
+                    <materialDesign:Flipper>
+                        <materialDesign:Flipper.FrontContent>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="100" />
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+                                <materialDesign:ColorZone Mode="PrimaryLight" VerticalAlignment="Stretch">
+                                    <materialDesign:PackIcon  Margin="10 0 10 0" Kind="AccountCircle" Height="50" Width="50" VerticalAlignment="Top" HorizontalAlignment="Center" />
+                                </materialDesign:ColorZone>
+                                <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <TextBlock Margin="5 -50 0 25"> James Willock</TextBlock>
+                                    <Button VerticalAlignment="Bottom" Width="60" Height="25" Style="{StaticResource MaterialDesignFlatButton}" Background="White" Margin="0 -40 0 5">
+                                        EDIT
+                                    </Button>
+                                </StackPanel>
+                            </Grid>
+                        </materialDesign:Flipper.FrontContent>
 
-                    <Grid Height="110" Width="150" Margin="10 40 0 10" Background="White" VerticalAlignment="Top" HorizontalAlignment="Left">
-                        <materialDesign:Flipper>
-                            <materialDesign:Flipper.FrontContent>
-                                <Grid>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="250" />
-                                        <RowDefinition Height="*" />
-                                    </Grid.RowDefinitions>
-                                    <materialDesign:ColorZone Mode="PrimaryLight" VerticalAlignment="Stretch">
-                                        <materialDesign:PackIcon  Margin="10 0 10 0" Kind="AccountCircle" Height="70" Width="70" VerticalAlignment="Top" HorizontalAlignment="Center" />
-                                    </materialDesign:ColorZone>
-                                    <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                        <TextBlock Margin="5 -180 0 25"> James Willock</TextBlock>
-                                        <Button Style="{StaticResource MaterialDesignFlatButton}" Command="{x:Static materialDesign:Flipper.FlipCommand}" Background="White" Margin="15 -300 0 0">
-                                            EDIT
-                                        </Button>
-                                    </StackPanel>
-                                </Grid>
-                            </materialDesign:Flipper.FrontContent>
+                    </materialDesign:Flipper>
+                </Grid>
 
-                            <materialDesign:Flipper.BackContent>
-
-                                <Grid Height="500" Width="200">
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="Auto" />
-                                        <RowDefinition Height="*" />
-                                    </Grid.RowDefinitions>
-
-                                    <materialDesign:ColorZone Mode="Accent" Padding="5">
-                                        <Grid >
-                                            <StackPanel Grid.Row="0" Orientation="Horizontal">
-                                                <Button Style="{StaticResource MaterialDesignToolForegroundButton}" Command="{x:Static materialDesign:Flipper.FlipCommand}" HorizontalAlignment="Center" VerticalAlignment="Top">
-                                                    <materialDesign:PackIcon Kind="ArrowLeft" />
-                                                </Button>
-
-                                                <TextBlock Margin="10 8 0 0"  VerticalAlignment="Top" HorizontalAlignment="Center">
-                                    EDIT USER
-                                                </TextBlock>
-
-                                            </StackPanel>
-
-                                            <Button HorizontalAlignment="Center" Grid.Row="1" Width="120" Height="25" Margin="0 40 0 10">DANG XUAT</Button>
-
-                                        </Grid>
-
-                                    </materialDesign:ColorZone>
-
-                                </Grid>
-                            </materialDesign:Flipper.BackContent>
-                        </materialDesign:Flipper>
-                    </Grid>
-
-                    <!--Thanh Menu-->
-                <materialDesign:ColorZone Mode="PrimaryMid" Grid.Row="1" Grid.Column="0" Margin="150 30 0 0" Height="50" Width="950">
+                <!--Thanh Menu-->
+                <materialDesign:ColorZone Mode="PrimaryMid" Grid.Column="0" Margin="200,45,0,0" Height="50" Width="950" HorizontalAlignment="Left">
                     <Grid Height="100">
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="10 0">
                             <Button Uid="0" Width="150" Content="SINH VIÊN" Height="50" Background="Transparent" BorderBrush="{x:Null}" Foreground="White" Click="Button_Click" />
@@ -151,15 +111,10 @@
             </Grid>
         </materialDesign:ColorZone>
 
-        <!--Khung Trái-->
-        <StackPanel x:Name="StackPanelLeft" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Stretch" Margin="10">
-            <Button Background="Red"></Button>
-        </StackPanel>
-
-        <!--Khung Phải-->
+        <!--Khung Dưới-->
         <StackPanel x:Name="StackPanelRight" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Stretch" Margin="10">
             <Frame x:Name="FrameTabMain" NavigationUIVisibility="Hidden" />
         </StackPanel>
-        
+
     </Grid>
 </Window>
