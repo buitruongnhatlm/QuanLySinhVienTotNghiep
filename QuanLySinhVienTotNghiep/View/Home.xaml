@@ -112,7 +112,7 @@
         </materialDesign:ColorZone>
 
         <!--Khung Dưới-->
-        <StackPanel x:Name="StackPanelRight" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Stretch" Margin="10">
+        <StackPanel x:Name="StackPanelRight" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Stretch">
             <Frame x:Name="FrameTabMain" NavigationUIVisibility="Hidden" />
         </StackPanel>
 

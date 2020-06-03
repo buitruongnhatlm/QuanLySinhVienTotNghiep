@@ -42,6 +42,7 @@ namespace QuanLySinhVienTotNghiep.View
                     FrameTabMain.Content = new AccountPage();
                     break;
                 case 2:
+                    FrameTabMain.Content = new ManagerPage();
                     break;
                 case 3:
                     break;
