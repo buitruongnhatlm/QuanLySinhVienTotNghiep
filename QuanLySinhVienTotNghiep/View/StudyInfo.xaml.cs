@@ -24,5 +24,29 @@ namespace QuanLySinhVienTotNghiep.View
         {
             InitializeComponent();
         }
+
+        /// <summary>
+        /// Sự kiện chuyển tab
+        /// </summary>
+        /// <param name="index"> tab chuyển tới</param>
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            int index = int.Parse(((Button)e.Source).Uid);
+
+            switch (index)
+            {
+                case 0:
+                    break;
+                case 1:
+                    FrameTabMain.Content = new ClassPage();
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+
+            }
+        }
+
     }
 }

@@ -7,7 +7,7 @@
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d" 
       ShowsNavigationUI="False"
-      d:DesignHeight="480" d:DesignWidth="1180"
+      d:DesignHeight="430" d:DesignWidth="1180"
       Title="StudentPage">
 
         <Grid>
@@ -15,7 +15,7 @@
         <!--#region CHIA DÒNG -->
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
-            <RowDefinition Height="240" />
+            <RowDefinition Height="190" />
             <RowDefinition Height="190" />
         </Grid.RowDefinitions>
         <!--#endregion-->       

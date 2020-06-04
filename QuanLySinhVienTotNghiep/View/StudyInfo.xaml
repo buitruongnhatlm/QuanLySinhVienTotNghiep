@@ -7,7 +7,7 @@
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d" 
       ShowsNavigationUI="False"
-      d:DesignHeight="480" d:DesignWidth="1180"
+      d:DesignHeight="480" d:DesignWidth="1200"
       Title="StudyInfo">
 
     <Grid>
@@ -18,14 +18,13 @@
         <!--#endregion-->
 
 
-            <materialDesign:ColorZone Grid.Row="0" Mode="PrimaryMid" Margin="0,0,0,0" Height="50" Width="1180" HorizontalAlignment="Left">
+            <materialDesign:ColorZone Grid.Row="0" Mode="PrimaryMid" Margin="0,0,0,0" Height="50" Width="1200" HorizontalAlignment="Left">
                 <Grid>
-
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Top" >
                     <Button Width="295" Uid="0" Content="THÔNG TIN TỐT NGHIỆP" Height="50" Background="Transparent" BorderBrush="{x:Null}" Foreground="White" Click="Button_Click" />
                     <Button Width="295" Uid="1" Content="LỚP HỌC" Height="50" Background="Transparent" BorderBrush="{x:Null}" Foreground="White" Click="Button_Click" />
                     <Button Width="295" Uid="3" Content="LOẠI TỐT NGHIỆP / HỆ ĐÀO TẠO" Height="50" Background="Transparent" BorderBrush="{x:Null}" Foreground="White" Click="Button_Click" />
-                    <Button Width="295" Uid="2" Content="KHÓA HỌC / NGÀNH HỌC" Margin="0 0 10 0" Height="50" Background="Transparent" BorderBrush="{x:Null}" Foreground="White" Click="Button_Click" />
+                    <Button Width="315" Uid="2" Content="KHÓA HỌC / NGÀNH HỌC" Margin="0 0 10 0" Height="50" Background="Transparent" BorderBrush="{x:Null}" Foreground="White" Click="Button_Click" />
                     </StackPanel>
                 </Grid>
             </materialDesign:ColorZone>

@@ -7,7 +7,7 @@
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d" 
       ShowsNavigationUI="False"
-      d:DesignHeight="480" d:DesignWidth="1180"
+      d:DesignHeight="480" d:DesignWidth="1200"
       Title="StudentInfo">
 
     <Grid>
@@ -18,11 +18,11 @@
         <!--#endregion-->
 
         <Grid Height="50">
-            <materialDesign:ColorZone Grid.Row="0" Mode="PrimaryMid" Margin="0,0,0,0" Height="50" Width="1180" HorizontalAlignment="Left">
+            <materialDesign:ColorZone Grid.Row="0" Mode="PrimaryMid" Margin="0,0,0,0" Height="50" Width="1200" HorizontalAlignment="Left">
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="590"/>
-                        <ColumnDefinition Width="590"/>
+                        <ColumnDefinition Width="600"/>
+                        <ColumnDefinition Width="600"/>
                         <ColumnDefinition />
                     </Grid.ColumnDefinitions>
                     <!--<StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="10 0">-->

@@ -39,7 +39,7 @@ namespace QuanLySinhVienTotNghiep.View
                     FrameTabMain.Content = new StudentInfo();
                     break;
                 case 1:
-                    FrameTabMain.Content = new ClassPage();
+                    FrameTabMain.Content = new StudyInfo();
                     break;
                 case 2:
                     FrameTabMain.Content = new ManagerPage();
