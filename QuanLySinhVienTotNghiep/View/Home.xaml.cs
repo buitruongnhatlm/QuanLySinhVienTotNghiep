@@ -36,10 +36,10 @@ namespace QuanLySinhVienTotNghiep.View
             switch (index)
             {
                 case 0:
-                    FrameTabMain.Content = new StudentPage();
+                    FrameTabMain.Content = new StudentInfo();
                     break;
                 case 1:
-                    FrameTabMain.Content = new AccountPage();
+                    FrameTabMain.Content = new ClassPage();
                     break;
                 case 2:
                     FrameTabMain.Content = new ManagerPage();
@@ -47,6 +47,9 @@ namespace QuanLySinhVienTotNghiep.View
                 case 3:
                     break;
                 case 4:
+                    break;
+                case 5:
+                    FrameTabMain.Content = new AccountPage();
                     break;
 
             }

@@ -65,7 +65,7 @@
                     <RowDefinition Height="50" />
                 </Grid.RowDefinitions>
 
-                <!--TÊN SINH VIÊN-->
+                <!--TÊN QUẢN LÝ-->
                 <TextBox Grid.Column="0" Height="30" Grid.Row="0" Width="165" HorizontalAlignment="Left" Margin="40 0 5 0" materialDesign:HintAssist.Hint="Họ Tên Quản Lý Viên" materialDesign:TextFieldAssist.DecorationVisibility="Hidden" ></TextBox>
                 <materialDesign:PackIcon Margin="10 10 0 0" HorizontalAlignment="Left" VerticalAlignment="Center" Height="30" Width="30" Kind="Account" Grid.Column="0" Grid.Row="0" />
 
@@ -112,19 +112,19 @@
                 <TextBox Grid.Column="3" Grid.Row="1" Height="30"  Width="165" HorizontalAlignment="Left" Margin="40 0 5 0" materialDesign:HintAssist.Hint="Ghi Chú" materialDesign:TextFieldAssist.DecorationVisibility="Hidden" ></TextBox>
                 <materialDesign:PackIcon Grid.Column="3" Grid.Row="1" Margin="10 10 0 0" HorizontalAlignment="Left" VerticalAlignment="Center" Height="30" Width="30" Kind="Note" />
 
-                <!--#region Button THÊM TÀI KHOẢN -->
+                <!--#region Button THÊM QUẢN LÝ -->
                 <Button Grid.Column="4" Grid.Row="0" Margin="45 10 0 0" Padding="0" FontSize="18" Width="150" Height="25" VerticalAlignment="Center" HorizontalAlignment="Left" materialDesign:ButtonProgressAssist.IsIndicatorVisible="True" materialDesign:ButtonProgressAssist.IsIndeterminate="True"
-                    Content="Thêm Tài Khoản" />
+                    Content="Thêm Quản Lý" />
                 <!--#endregion-->
 
-                <!--#region CẬP NHẬT TÀI KHOẢN -->
+                <!--#region CẬP NHẬT QUẢN LÝ -->
                 <Button Grid.Column="4" Grid.Row="1" Margin="45 10 0 0" Padding="0" FontSize="18" Width="150" Height="25" VerticalAlignment="Center" HorizontalAlignment="Left" materialDesign:ButtonProgressAssist.IsIndicatorVisible="True" materialDesign:ButtonProgressAssist.IsIndeterminate="True"
                     Content="Cập Nhật" />
                 <!--#endregion -->
 
-                <!--#region XÓA TÀI KHOẢN -->
+                <!--#region XÓA QUẢN LÝ -->
                 <Button Grid.Column="4" Grid.Row="2" Margin="45 10 0 0" Padding="0" FontSize="18" Width="150" Height="25" VerticalAlignment="Center" HorizontalAlignment="Left" materialDesign:ButtonProgressAssist.IsIndicatorVisible="True" materialDesign:ButtonProgressAssist.IsIndeterminate="True"
-                    Content="Xóa Tài Khoản" />
+                    Content="Xóa Quản Lý" />
                 <!--#endregion-->
 
 

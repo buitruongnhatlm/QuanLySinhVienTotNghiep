@@ -16,18 +16,15 @@ using System.Windows.Shapes;
 namespace QuanLySinhVienTotNghiep.View
 {
     /// <summary>
-    /// Interaction logic for StudentPage.xaml
+    /// Interaction logic for FamilyPage.xaml
     /// </summary>
-    public partial class StudentPage : Page
+    public partial class FamilyPage : Page
     {
-        public StudentPage()
+        public FamilyPage()
         {
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
 
-        }
     }
 }

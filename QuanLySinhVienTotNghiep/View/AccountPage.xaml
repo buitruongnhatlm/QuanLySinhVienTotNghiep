@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:QuanLySinhVienTotNghiep.View"
       mc:Ignorable="d" 
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-       d:DesignHeight="480" d:DesignWidth="1180"
+      d:DesignHeight="480" d:DesignWidth="1180"
       ShowsNavigationUI="False"
       Title="AccountPage">
 

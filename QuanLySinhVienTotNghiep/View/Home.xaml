@@ -17,8 +17,6 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <!--Chia Cột-->
-
         <materialDesign:ColorZone Mode="PrimaryMid" Grid.ColumnSpan="2" HorizontalAlignment="Stretch">
             <Grid>
 
@@ -98,13 +96,13 @@
                     <Grid Height="100">
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="10 0">
                             <Button Uid="0" Width="150" Content="SINH VIÊN" Height="50" Background="Transparent" BorderBrush="{x:Null}" Foreground="White" Click="Button_Click" />
-                            <Button Uid="1" Width="150" Content="TÀI KHOẢN" Height="50" Background="Transparent" BorderBrush="{x:Null}" Foreground="White" Click="Button_Click" />
+                            <Button Uid="1" Width="150" Content="HỌC VỤ" Height="50" Background="Transparent" BorderBrush="{x:Null}" Foreground="White" Click="Button_Click" />
                             <Button Uid="2" Width="150" Content="QUẢN LÝ VIÊN" Height="50" Background="Transparent" BorderBrush="{x:Null}" Foreground="White" Click="Button_Click" />
                             <Button Uid="3" Width="150" Content="THỐNG KÊ" Height="50" Background="Transparent" BorderBrush="{x:Null}" Foreground="White" Click="Button_Click" />
                             <Button Uid="4" Width="150" Content="BÁO CÁO" Height="50" Background="Transparent" BorderBrush="{x:Null}" Foreground="White" Click="Button_Click" />
-                            <Button Uid="5" Width="150" Content="HỆ THỐNG" Height="50" Background="Transparent" BorderBrush="{x:Null}" Foreground="White" Click="Button_Click" />
+                            <Button Uid="5" Width="150" Content="TÀI KHOẢN" Height="50" Background="Transparent" BorderBrush="{x:Null}" Foreground="White" Click="Button_Click" />
                         </StackPanel>
-                        <Grid x:Name="GridCursor" Width="150" Height="10" Background="White" HorizontalAlignment="Left" Margin="10 0"/>
+                        <Grid x:Name="GridCursor" Width="150" Height="10" Margin="10 0" Background="White" HorizontalAlignment="Left" />
                     </Grid>
                 </materialDesign:ColorZone>
 
