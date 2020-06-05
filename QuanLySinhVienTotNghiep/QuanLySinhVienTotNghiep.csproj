@@ -69,8 +69,17 @@
     <Compile Include="View\ClassPage.xaml.cs">
       <DependentUpon>ClassPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\CoursePage.xaml.cs">
+      <DependentUpon>CoursePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\FamilyPage.xaml.cs">
       <DependentUpon>FamilyPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\GraduatePage.xaml.cs">
+      <DependentUpon>GraduatePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\GraduateTypePage.xaml.cs">
+      <DependentUpon>GraduateTypePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Home.xaml.cs">
       <DependentUpon>Home.xaml</DependentUpon>
@@ -95,7 +104,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\CoursePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\FamilyPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\GraduatePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\GraduateTypePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

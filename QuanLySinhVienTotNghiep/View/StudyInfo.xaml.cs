@@ -36,13 +36,16 @@ namespace QuanLySinhVienTotNghiep.View
             switch (index)
             {
                 case 0:
+                    FrameTabMain.Content = new GraduatePage();
                     break;
                 case 1:
                     FrameTabMain.Content = new ClassPage();
                     break;
                 case 2:
+                    FrameTabMain.Content = new GraduateTypePage();
                     break;
                 case 3:
+                    FrameTabMain.Content = new CoursePage();
                     break;
 
             }

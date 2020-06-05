@@ -108,6 +108,11 @@
                 <TextBox Grid.Column="3" Grid.Row="0" Height="30"  Width="165" HorizontalAlignment="Left" Margin="40 0 5 0" materialDesign:HintAssist.Hint="Đơn Vị Công Tác" materialDesign:TextFieldAssist.DecorationVisibility="Hidden" ></TextBox>
                 <materialDesign:PackIcon Grid.Column="3" Grid.Row="0" Margin="10 10 0 0" HorizontalAlignment="Left" VerticalAlignment="Center" Height="30" Width="30" Kind="CityVariant" />
 
+                <!--TÀI KHOẢN-->
+                <ComboBox IsEditable="False" Grid.Column="3" Height="30" Grid.Row="2" Width="165" HorizontalAlignment="Left" Margin="40 0 5 0" materialDesign:HintAssist.Hint="Tài Khoản" materialDesign:HintAssist.HintOpacity=".25">
+                </ComboBox>
+                <materialDesign:PackIcon Margin="10 10 0 0" HorizontalAlignment="Left" VerticalAlignment="Center" Height="30" Width="30" Kind="AccountArrowRight" Grid.Column="3" Grid.Row="2" />
+
                 <!--Ghi Chú-->
                 <TextBox Grid.Column="3" Grid.Row="1" Height="30"  Width="165" HorizontalAlignment="Left" Margin="40 0 5 0" materialDesign:HintAssist.Hint="Ghi Chú" materialDesign:TextFieldAssist.DecorationVisibility="Hidden" ></TextBox>
                 <materialDesign:PackIcon Grid.Column="3" Grid.Row="1" Margin="10 10 0 0" HorizontalAlignment="Left" VerticalAlignment="Center" Height="30" Width="30" Kind="Note" />
