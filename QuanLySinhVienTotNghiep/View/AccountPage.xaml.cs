@@ -1,5 +1,8 @@
-﻿using System;
+﻿using DAL;
+using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,5 +27,24 @@ namespace QuanLySinhVienTotNghiep.View
         {
             InitializeComponent();
         }
+
+        private void BtnThemTaiKhoan_Click(object sender, RoutedEventArgs e)
+        {
+            FillDataGrid();
+        }
+
+        private void FillDataGrid()
+
+        {
+            string _query = "SELECT IDTaikhoan, TenTaiKhoan, MatKhau, Email, SoDienThoai, GhiChu, IDLoaiTaiKhoan FROM dbo.TaiKhoan";
+
+            DataProvider _provider = new DataProvider();
+
+            dtgAccount.ItemsSource = _provider.ExcuteQuery(_query).DefaultView;
+
+        }
+
     }
 }
+
+

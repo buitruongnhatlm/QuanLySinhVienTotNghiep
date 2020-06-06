@@ -23,6 +23,7 @@ namespace QuanLySinhVienTotNghiep.View
         public StudyInfo()
         {
             InitializeComponent();
+
         }
 
         /// <summary>

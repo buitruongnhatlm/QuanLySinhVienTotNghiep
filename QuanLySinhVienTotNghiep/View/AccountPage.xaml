@@ -44,7 +44,17 @@
 
         <!--#region KHUNG DƯỚI-->
         <Grid Grid.Row="1" Height="320" Width="1180">
-            <DataGrid Background="Pink"></DataGrid>
+            <DataGrid x:Name="dtgAccount" Background="Pink" AutoGenerateColumns="False" >
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Số Thứ Tự" Width="100" Binding="{Binding IDTaikhoan}" />
+                    <DataGridTextColumn Header="Tên Tài Khoản" Width="200" Binding="{Binding TenTaiKhoan}" />
+                    <DataGridTextColumn Header="Mật Khẩu" Width="100" Binding="{Binding MatKhau}" />
+                    <DataGridTextColumn Header="Email" Width="300" Binding="{Binding Email}" />
+                    <DataGridTextColumn Header="Số Điện Thoại" Width="200" Binding="{Binding SoDienThoai}" />
+                    <DataGridTextColumn Header="Ghi Chú" Width="100" Binding="{Binding GhiChu}" />
+                    <DataGridTextColumn Header="Loại Tài Khoản" Width="150" Binding="{Binding IDLoaiTaiKhoan}" />
+                </DataGrid.Columns>
+            </DataGrid>
         </Grid>
 
         <StackPanel Grid.Row="2">
@@ -88,7 +98,7 @@
 
                 <!--THÊM TÀI KHOẢN-->
                 <Button Grid.Column="2" Grid.Row="2" Margin="45 15 0 0" FontSize="18" Width="150" Padding="0" Height="30" VerticalAlignment="Center" HorizontalAlignment="Left" materialDesign:ButtonProgressAssist.IsIndicatorVisible="True" materialDesign:ButtonProgressAssist.IsIndeterminate="True"
-                    Content="Thêm Tài Khoản" />
+                    Content="Thêm Tài Khoản" x:Name="btnThemTaiKhoan" Click="BtnThemTaiKhoan_Click" />
 
                 <!--SỬA TÀI KHOẢN-->
                 <Button Grid.Column="3" Grid.Row="2" Margin="45 15 0 0" FontSize="18" Width="150" Padding="0" Height="30" VerticalAlignment="Center" HorizontalAlignment="Left" materialDesign:ButtonProgressAssist.IsIndicatorVisible="True" materialDesign:ButtonProgressAssist.IsIndeterminate="True"
