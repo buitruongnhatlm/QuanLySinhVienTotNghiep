@@ -68,8 +68,8 @@
         <Grid Height="300" Width="300" VerticalAlignment="Bottom" Margin="25,0,25.4,62">
             <TextBlock Text="ĐĂNG NHẬP" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,0,0,0" Foreground="DarkRed" FontSize="15" FontWeight="Bold"></TextBlock>
             <StackPanel VerticalAlignment="Center" Margin="5,-100,5,0">
-                <TextBox FontSize="13" materialDesign:HintAssist.Hint="TÀI KHOẢN" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="0,5" />
-                <PasswordBox FontSize="13" materialDesign:HintAssist.Hint="MẬT KHẨU" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" Margin="0,5" />
+                <TextBox x:Name="txtTaiKhoan" FontSize="13" materialDesign:HintAssist.Hint="TÀI KHOẢN" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="0,5" />
+                <PasswordBox x:Name="txtMatKhau" FontSize="13" materialDesign:HintAssist.Hint="MẬT KHẨU" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" Margin="0,5" />
                 <TextBox FontSize="13" materialDesign:HintAssist.Hint="MÃ XÁC NHẬN" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
             </StackPanel>
             <Image Height="30" Width="200" Margin="-100,140,0,0" Source="/Images/capcha.jpg"/>
@@ -80,7 +80,7 @@
             </Button>
         </Grid>
 
-        <Button x:Name="btnDangNhap" Click="BtnDangNhap_Click" Content="Đăng Nhập" Width="150" Height="30" VerticalAlignment="Bottom" Margin="100,0,100,60"></Button>
+        <Button x:Name="btnDangNhap" Click="btnDangNhap_Click" Content="Đăng Nhập" Width="150" Height="30" VerticalAlignment="Bottom" Margin="100,0,100,60"></Button>
         <Label x:Name="lbQuenMatKhau" Foreground="Blue" FontStretch="UltraCondensed" FontSize="15" Width="150" Height="30" VerticalAlignment="Bottom" Margin="120,0,80,20" Grid.RowSpan="2">
             <TextBlock TextDecorations="Underline">Quên mật khẩu</TextBlock>
         </Label>

@@ -12,6 +12,25 @@ namespace DAL
     {
         private string _connectionString = @"Data Source=(local);Initial Catalog=QuanLySinhVienTotNghiep;Integrated Security=True";
 
+        private static DataProvider _instance;
+
+        public static DataProvider Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    _instance = new DataProvider();
+                }
+                return DataProvider._instance;
+            }
+            private set => _instance = value;
+
+        }
+
+        private DataProvider() { }
+
+
         #region ExcuteQuery (hàm thực thi truy vấn trả về kết quả dạng table)
 
         // truyền vào câu truy vấn và mảng parameter để đáp ứng cho việc nhập, truy vấn nhiều tên

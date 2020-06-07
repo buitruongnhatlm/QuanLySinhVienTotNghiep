@@ -26,24 +26,49 @@ namespace QuanLySinhVienTotNghiep.View
         public AccountPage()
         {
             InitializeComponent();
+            LoadData();
+            
         }
 
         private void BtnThemTaiKhoan_Click(object sender, RoutedEventArgs e)
         {
-            FillDataGrid();
+          
         }
 
-        private void FillDataGrid()
-
+        public void LoadData()
         {
-            string _query = "SELECT IDTaikhoan, TenTaiKhoan, MatKhau, Email, SoDienThoai, GhiChu, IDLoaiTaiKhoan FROM dbo.TaiKhoan";
-
-            DataProvider _provider = new DataProvider();
-
-            dtgAccount.ItemsSource = _provider.ExcuteQuery(_query).DefaultView;
-
+            dtgAccount.ItemsSource = AccountDAL.Instance.GetListAccount().DefaultView;
         }
 
+        private void DtgAccount_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            DataGrid _dataGrid = sender as DataGrid;
+            DataRowView _dataRow = _dataGrid.SelectedItem as DataRowView;
+
+            if (_dataGrid != null)
+            {
+                txtTenTaiKhoan.Text = _dataRow["TenTaiKhoan"].ToString();
+                pwbMatKhau.Password = _dataRow["MatKhau"].ToString();
+                txtEmail.Text = _dataRow["Email"].ToString();
+                txtDienThoai.Text = _dataRow["SoDienThoai"].ToString();
+                txtGhiChu.Text = _dataRow["GhiChu"].ToString();
+                switch (Convert.ToInt32(_dataRow["IDLoaiTaiKhoan"]))
+                {
+                    case 1:
+                        cbbLoaiTaiKhoan.SelectedIndex = 0;
+                        break;
+                    case 2:
+                        cbbLoaiTaiKhoan.SelectedIndex = 1;
+                        break;
+                    case 3:
+                        cbbLoaiTaiKhoan.SelectedIndex = 2;
+                        break;
+
+                }
+
+            }
+
+        }
     }
 }
 

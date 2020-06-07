@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using DTO;
+using DAL;
 
 namespace QuanLySinhVienTotNghiep.View
 {
@@ -25,11 +27,26 @@ namespace QuanLySinhVienTotNghiep.View
             InitializeComponent();
         }
 
-        private void BtnDangNhap_Click(object sender, RoutedEventArgs e)
+        private void btnDangNhap_Click(object sender, RoutedEventArgs e)
         {
-            Home _page = new Home();
-           _page.Show();
-            this.Close();
+            string _taiKhoan = txtTaiKhoan.Text;
+            string _matKhau = txtMatKhau.Password;
+            if (CheckLogin(_taiKhoan,_matKhau))
+            {
+                Home _page = new Home();
+                _page.Show();
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Sai tên tài khoản hoặc mật khẩu", "THÔNG BÁO", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
+        }
+
+        private bool CheckLogin(string taiKhoan, string matKhau)
+        {
+            return AccountDAL.Instance.Login(taiKhoan,matKhau);
         }
     }
 }
