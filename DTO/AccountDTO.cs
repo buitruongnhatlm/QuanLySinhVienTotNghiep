@@ -38,9 +38,9 @@ namespace DTO
             this.TenTaiKhoan = row["TenTaiKhoan"].ToString();
             this.MatKhau = row["MatKhau"].ToString();
             this.Email = row["Email"].ToString();
-            this.SoDienThoai = Convert.ToInt32(row["TenTaiKhoan"]);
-            this.GhiChu = row["TenTaiKhoan"].ToString();
-            this.IDLoaiTaiKhoan = Convert.ToInt32(row["TenTaiKhoan"]);
+            this.SoDienThoai = Convert.ToInt32(row["SoDienThoai"]);
+            this.GhiChu = row["GhiChu"].ToString();
+            this.IDLoaiTaiKhoan = Convert.ToInt32(row["IDLoaiTaiKhoan"]);
         }
 
     }

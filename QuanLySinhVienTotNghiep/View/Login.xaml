@@ -70,10 +70,10 @@
             <StackPanel VerticalAlignment="Center" Margin="5,-100,5,0">
                 <TextBox x:Name="txtTaiKhoan" FontSize="13" materialDesign:HintAssist.Hint="TÀI KHOẢN" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="0,5" />
                 <PasswordBox x:Name="txtMatKhau" FontSize="13" materialDesign:HintAssist.Hint="MẬT KHẨU" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" Margin="0,5" />
-                <TextBox FontSize="13" materialDesign:HintAssist.Hint="MÃ XÁC NHẬN" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                <TextBox x:Name="txtRecaptcha" FontSize="13" materialDesign:HintAssist.Hint="MÃ XÁC NHẬN" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
             </StackPanel>
-            <Image Height="30" Width="200" Margin="-100,140,0,0" Source="/Images/capcha.jpg"/>
-            <Button x:Name="btnRefesh" Width="40" Height="40" VerticalAlignment="Bottom" Margin="100,0,0,60">
+            <Label x:Name="lblCaptcha" Height="50" Width="230" Margin="-60,140,0,0" />
+            <Button x:Name="btnRefesh" Click="BtnRefesh_Click" Width="40" Height="40" VerticalAlignment="Bottom" Margin="230,0,0,60">
                 <Button.Background>
                     <ImageBrush ImageSource="pack://application:,,,/QuanLySinhVienTotNghiep;component/Images/refesh.png" />
                 </Button.Background>

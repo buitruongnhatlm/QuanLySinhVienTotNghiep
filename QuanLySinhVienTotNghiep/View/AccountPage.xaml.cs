@@ -1,6 +1,8 @@
 ﻿using DAL;
+using DTO;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
@@ -59,7 +61,7 @@ namespace QuanLySinhVienTotNghiep.View
 
             if (CheckDataInput(_email,_tenTenKhoan,_matKhau,_soDienThoai))
             {
-               AddAccount(_tenTenKhoan, _matKhau, _email, sodienthoai, _ghiChu,_idLoaiTaiKhoan);
+               AddAccount(_tenTenKhoan, _matKhau, _email, sodienthoai,_idLoaiTaiKhoan, _ghiChu);
             }
 
         }
@@ -112,7 +114,7 @@ namespace QuanLySinhVienTotNghiep.View
             }
             else
             {
-                EditAccount(_tenTenKhoan, _email, sodienthoai, _ghiChu, _idLoaiTaiKhoan);
+                EditAccount(_tenTenKhoan, _email, sodienthoai, _idLoaiTaiKhoan, _ghiChu);
             }
             
         }
@@ -188,9 +190,9 @@ namespace QuanLySinhVienTotNghiep.View
             
         }
 
-        public void AddAccount(string tentaikhoan, string matkhau, string email, int sodienthoai, string ghichu, int idloaitaikhoan)
+        public void AddAccount(string tentaikhoan, string matkhau, string email, int sodienthoai, int idloaitaikhoan, string ghichu=null)
         {
-            if (AccountDAL.Instance.InsertAccount(tentaikhoan, matkhau, email, sodienthoai, ghichu, idloaitaikhoan))
+            if (AccountDAL.Instance.InsertAccount(tentaikhoan, matkhau, email, sodienthoai, idloaitaikhoan, ghichu))
             {
                 MessageBox.Show("Thêm Tài Khoản Thành Công", "Thông Báo");
             }
@@ -204,9 +206,9 @@ namespace QuanLySinhVienTotNghiep.View
 
         }
 
-        public void EditAccount(string tentaikhoan, string email, int sodienthoai, string ghichu, int idloaitaikhoan)
+        public void EditAccount(string tentaikhoan, string email, int sodienthoai, int idloaitaikhoan, string ghichu=null)
         {
-            if (AccountDAL.Instance.UpdateAccount(tentaikhoan, email, sodienthoai, ghichu, idloaitaikhoan))
+            if (AccountDAL.Instance.UpdateAccount(tentaikhoan, email, sodienthoai, idloaitaikhoan, ghichu))
             {
                 MessageBox.Show("Cập nhật thông tin tài khoản thành Công", "Thông Báo");
             }
@@ -232,6 +234,12 @@ namespace QuanLySinhVienTotNghiep.View
 
             LoadData();
 
+        }
+
+        public List<AccountDTO> SearchAccount(string account)
+        {
+            List<AccountDTO> _listAccount = AccountDAL.Instance.SearchAccount(account);
+            return _listAccount;
         }
 
          #region KIỂM TRA MẬT KHẨU
@@ -274,9 +282,13 @@ namespace QuanLySinhVienTotNghiep.View
             }
         }
 
+
         #endregion
 
-
+        private void BtnSearch_Click(object sender, RoutedEventArgs e)
+        {
+           dtgAccount.ItemsSource = SearchAccount(txtSearchAccount.Text);
+        }
     }
 }
 
