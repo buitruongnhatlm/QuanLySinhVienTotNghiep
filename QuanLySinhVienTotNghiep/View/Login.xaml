@@ -72,7 +72,7 @@
                 <PasswordBox x:Name="txtMatKhau" FontSize="13" materialDesign:HintAssist.Hint="MẬT KHẨU" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" Margin="0,5" />
                 <TextBox x:Name="txtRecaptcha" FontSize="13" materialDesign:HintAssist.Hint="MÃ XÁC NHẬN" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
             </StackPanel>
-            <Label x:Name="lblCaptcha" Height="50" Width="230" Margin="-60,140,0,0" />
+            <TextBlock x:Name="txtbCaptcha" Padding="50 10 0 0" Foreground="Violet" FontStyle="Italic" FontSize="20" Height="50" Width="230" Margin="-60,140,0,0" TextDecorations="Strikethrough" /> 
             <Button x:Name="btnRefesh" Click="BtnRefesh_Click" Width="40" Height="40" VerticalAlignment="Bottom" Margin="230,0,0,60">
                 <Button.Background>
                     <ImageBrush ImageSource="pack://application:,,,/QuanLySinhVienTotNghiep;component/Images/refesh.png" />
