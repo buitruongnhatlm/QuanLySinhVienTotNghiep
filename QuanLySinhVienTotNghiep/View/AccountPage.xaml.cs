@@ -30,7 +30,6 @@ namespace QuanLySinhVienTotNghiep.View
         {
             InitializeComponent();
             LoadData();
-
         }
 
         private void BtnThemTaiKhoan_Click(object sender, RoutedEventArgs e)

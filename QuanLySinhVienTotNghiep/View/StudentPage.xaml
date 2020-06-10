@@ -44,8 +44,30 @@
         <!--#endregion-->
         
         <!--#region DATA GRID -->
-        <Grid Grid.Row="1" Height="240" Width="1180">
-            <DataGrid Background="Pink"></DataGrid>
+        <Grid Grid.Row="1" Height="190" Width="1180">
+            <DataGrid x:Name="dtgStudent" SelectionChanged="DtgStudent_SelectionChanged" Background="LightSkyBlue" AutoGenerateColumns="False" >
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Số Thứ Tự" Width="100" Binding="{Binding IDSinhVien}" />
+                    <DataGridTextColumn Header="Họ Tên" Width="150" Binding="{Binding HoTen}" />
+                    <DataGridTextColumn Header="Mã Số Sinh Viên" Width="125" Binding="{Binding MaSoSinhVien}" />
+                    <DataGridTextColumn Header="Giới Tính" Width="100" Binding="{Binding GioiTinh}" />
+                    <DataGridTextColumn Header="Ngày Sinh" Width="90" Binding="{Binding NgaySinh}" />
+                    <DataGridTextColumn Header="Nơi Sinh" Width="100" Binding="{Binding NoiSinh}" />
+                    <DataGridTextColumn Header="Địa Chỉ" Width="100" Binding="{Binding DiaChiThuongTru}" />
+                    <DataGridTextColumn Header="Dân Tộc" Width="100" Binding="{Binding DanToc}" />
+                    <DataGridTextColumn Header="Tôn Giáo" Width="100" Binding="{Binding TonGiao}" />
+                    <DataGridTextColumn Header="CMND" Width="100" Binding="{Binding ChungMinhNhanDan}" />
+                    <DataGridTextColumn Header="Ngày Cấp" Width="90" Binding="{Binding NgayCap}" />
+                    <DataGridTextColumn Header="Đoàn Viên" Width="90" Binding="{Binding NgayVaoDoan}" />
+                    <DataGridTextColumn Header="Đảng Viên" Width="90" Binding="{Binding NgayVaoDang}" />
+                    <DataGridTextColumn Header="Điện Thoại" Width="100" Binding="{Binding DienThoai}" />
+                    <DataGridTextColumn Header="Email" Width="300" Binding="{Binding Email}" />
+                    <DataGridTextColumn Header="Ghi Chú" Width="200" Binding="{Binding GhiChu}" />
+                    <DataGridTextColumn Header="Gia Đình" Width="100" Binding="{Binding IDGiaDinh}" />
+                    <DataGridTextColumn Header="Tài Khoản" Width="100" Binding="{Binding IDTaiKhoan}" />
+                    <DataGridTextColumn Header="Tốt Nghiệp" Width="100" Binding="{Binding IDThongTinTotNghiep}" />
+                </DataGrid.Columns>
+            </DataGrid>
         </Grid>
         <!--#endregion-->
             
@@ -67,100 +89,99 @@
                 </Grid.RowDefinitions>
 
                 <!--TÊN SINH VIÊN-->
-                <TextBox Grid.Column="0" Height="30" Grid.Row="0" Width="165" HorizontalAlignment="Left" Margin="40 0 5 0" materialDesign:HintAssist.Hint="Tên Sinh Viên" materialDesign:TextFieldAssist.DecorationVisibility="Hidden" ></TextBox>
+                <TextBox x:Name="txtHoTen" Grid.Column="0" Height="30" Grid.Row="0" Width="165" HorizontalAlignment="Left" Margin="40 0 5 0" materialDesign:HintAssist.Hint="Tên Sinh Viên" materialDesign:TextFieldAssist.DecorationVisibility="Hidden" ></TextBox>
                 <materialDesign:PackIcon Margin="10 10 0 0" HorizontalAlignment="Left" VerticalAlignment="Center" Height="30" Width="30" Kind="Account" Grid.Column="0" Grid.Row="0" />
 
                 <!--MSSV-->
-                <TextBox Grid.Column="0" Height="30" Grid.Row="1" Width="165" HorizontalAlignment="Left" Margin="40 0 5 0" materialDesign:HintAssist.Hint="Mã Số Sinh Viên" materialDesign:TextFieldAssist.DecorationVisibility="Hidden" ></TextBox>
+                <TextBox x:Name="txtMSSV" Grid.Column="0" Height="30" Grid.Row="1" Width="165" HorizontalAlignment="Left" Margin="40 0 5 0" materialDesign:HintAssist.Hint="Mã Số Sinh Viên" materialDesign:TextFieldAssist.DecorationVisibility="Hidden" ></TextBox>
                 <materialDesign:PackIcon Margin="10 10 0 0" HorizontalAlignment="Left" VerticalAlignment="Center" Height="30" Width="30" Kind="Tab" Grid.Column="0" Grid.Row="1" />
 
                 <!--GIỚI TÍNH-->
-                <ComboBox IsEditable="False" Grid.Column="0" Height="30" Grid.Row="2" Width="165" HorizontalAlignment="Left" Margin="40 0 5 0" materialDesign:HintAssist.Hint="Giới Tính" materialDesign:HintAssist.HintOpacity=".25">
-                    <ComboBoxItem>Nam</ComboBoxItem>
+                <ComboBox x:Name="cbbGioiTinh" IsEditable="False" Grid.Column="0" Height="30" Grid.Row="2" Width="165" HorizontalAlignment="Left" Margin="40 0 5 0" materialDesign:HintAssist.Hint="Giới Tính" materialDesign:HintAssist.HintOpacity=".25">
+                    <ComboBoxItem IsSelected="True">Nam</ComboBoxItem>
                     <ComboBoxItem>Nữ</ComboBoxItem>
                 </ComboBox>
                 <materialDesign:PackIcon Margin="10 10 0 0" HorizontalAlignment="Left" VerticalAlignment="Center" Height="30" Width="30" Kind="GenderMaleFemale" Grid.Column="0" Grid.Row="2" />
 
                 <!--NGÀY SINH-->
-                <DatePicker Margin="10 0 0 0" Grid.Column="0" Grid.Row="3" Width="165" materialDesign:HintAssist.Hint="Ngày Sinh" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+                <DatePicker x:Name="dateNgaySinh" Margin="10 0 0 0" Grid.Column="0" Grid.Row="3" Width="165" materialDesign:HintAssist.Hint="Ngày Sinh" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
                 <materialDesign:PackIcon Grid.Column="0" Grid.Row="4"  Margin="10 10 0 0" HorizontalAlignment="Left" VerticalAlignment="Center" Height="30" Width="30" Kind="CalendarMultiselect" />
 
                 <!--NƠI SINH-->
-                <TextBox Grid.Column="1" Grid.Row="0" Height="30"  Width="165" HorizontalAlignment="Left" Margin="40 0 5 0" materialDesign:HintAssist.Hint="Nơi Sinh" materialDesign:TextFieldAssist.DecorationVisibility="Hidden" ></TextBox>
+                <TextBox x:Name="txtNoiSinh" Grid.Column="1" Grid.Row="0" Height="30"  Width="165" HorizontalAlignment="Left" Margin="40 0 5 0" materialDesign:HintAssist.Hint="Nơi Sinh" materialDesign:TextFieldAssist.DecorationVisibility="Hidden" ></TextBox>
                 <materialDesign:PackIcon Grid.Column="1" Grid.Row="0" Margin="10 10 0 0" HorizontalAlignment="Left" VerticalAlignment="Center" Height="30" Width="30" Kind="Home" />
 
                 <!--ĐỊA CHỈ-->
-                <TextBox Grid.Column="1" Grid.Row="1" Height="30"  Width="165" HorizontalAlignment="Left" Margin="40 0 5 0" materialDesign:HintAssist.Hint="Địa Chỉ Hiện Tại" materialDesign:TextFieldAssist.DecorationVisibility="Hidden" ></TextBox>
+                <TextBox x:Name="txtDiaChi" Grid.Column="1" Grid.Row="1" Height="30"  Width="165" HorizontalAlignment="Left" Margin="40 0 5 0" materialDesign:HintAssist.Hint="Địa Chỉ Hiện Tại" materialDesign:TextFieldAssist.DecorationVisibility="Hidden" ></TextBox>
                 <materialDesign:PackIcon Grid.Column="1" Grid.Row="1" Margin="10 10 0 0" HorizontalAlignment="Left" VerticalAlignment="Center" Height="30" Width="30" Kind="AddressMarker" />
 
                 <!--DÂN TỘC-->
-                <TextBox Grid.Column="1" Grid.Row="2" Height="30"  Width="165" HorizontalAlignment="Left" Margin="40 0 5 0" materialDesign:HintAssist.Hint="Dân Tộc" materialDesign:TextFieldAssist.DecorationVisibility="Hidden" ></TextBox>
+                <TextBox x:Name="txtDanToc"  Grid.Column="1" Grid.Row="2" Height="30"  Width="165" HorizontalAlignment="Left" Margin="40 0 5 0" materialDesign:HintAssist.Hint="Dân Tộc" materialDesign:TextFieldAssist.DecorationVisibility="Hidden" ></TextBox>
                 <materialDesign:PackIcon Grid.Column="1" Grid.Row="2" Margin="10 10 0 0" HorizontalAlignment="Left" VerticalAlignment="Center" Height="30" Width="30" Kind="People" />
 
                 <!--TÔN GIÁO-->
-                <TextBox Grid.Column="1" Grid.Row="3" Height="30"  Width="165" HorizontalAlignment="Left" Margin="40 0 5 0" materialDesign:HintAssist.Hint="Tôn Giáo" materialDesign:TextFieldAssist.DecorationVisibility="Hidden" ></TextBox>
+                <TextBox x:Name="txtTonGiao" Grid.Column="1" Grid.Row="3" Height="30"  Width="165" HorizontalAlignment="Left" Margin="40 0 5 0" materialDesign:HintAssist.Hint="Tôn Giáo" materialDesign:TextFieldAssist.DecorationVisibility="Hidden" ></TextBox>
                 <materialDesign:PackIcon Grid.Column="1" Grid.Row="3" Margin="10 10 0 0" HorizontalAlignment="Left" VerticalAlignment="Center" Height="30" Width="30" Kind="ReligionChristianOutline" />
 
                 <!--CMND-->
-                <TextBox Grid.Column="2" Grid.Row="0" Height="30"  Width="165" HorizontalAlignment="Left" Margin="40 0 5 0" materialDesign:HintAssist.Hint="Chứng Minh Nhân Dân" materialDesign:TextFieldAssist.DecorationVisibility="Hidden" ></TextBox>
+                <TextBox x:Name="txtCMND" Grid.Column="2" Grid.Row="0" Height="30"  Width="165" HorizontalAlignment="Left" Margin="40 0 5 0" materialDesign:HintAssist.Hint="Chứng Minh Nhân Dân" materialDesign:TextFieldAssist.DecorationVisibility="Hidden" ></TextBox>
                 <materialDesign:PackIcon Grid.Column="2" Grid.Row="0" Margin="10 10 0 0" HorizontalAlignment="Left" VerticalAlignment="Center" Height="30" Width="30" Kind="CardAccountDetails" />
 
                 <!--NGÀY CẤP-->
-                <DatePicker Margin="10 0 0 0" Grid.Column="2" Grid.Row="1" Width="165" materialDesign:HintAssist.Hint="Ngày Cấp" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+                <DatePicker x:Name="dateNgayCap" Margin="10 0 0 0" Grid.Column="2" Grid.Row="1" Width="165" materialDesign:HintAssist.Hint="Ngày Cấp" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
                 <materialDesign:PackIcon Grid.Column="2" Grid.Row="1"  Margin="10 10 0 0" HorizontalAlignment="Left" VerticalAlignment="Center" Height="30" Width="30" Kind="CalendarMultiselect" />
 
                 <!--NGÀY VÀO ĐOÀN-->
-                <DatePicker Margin="10 0 0 0" Grid.Column="2" Grid.Row="2" Width="165" materialDesign:HintAssist.Hint="Ngày Vào Đoàn" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+                <DatePicker x:Name="dateNgayVaoDoan" Margin="10 0 0 0" Grid.Column="2" Grid.Row="2" Width="165" materialDesign:HintAssist.Hint="Ngày Vào Đoàn" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
                 <materialDesign:PackIcon Grid.Column="2" Grid.Row="2"  Margin="10 10 0 0" HorizontalAlignment="Left" VerticalAlignment="Center" Height="30" Width="30" Kind="CalendarMultiselect" />
 
                 <!--NGÀY VÀO ĐẢNG-->
-                <DatePicker Margin="10 0 0 0" Grid.Column="2" Grid.Row="3" Width="165" materialDesign:HintAssist.Hint="Ngày Vào Đảng" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+                <DatePicker x:Name="dateNgayVaoDang" Margin="10 0 0 0" Grid.Column="2" Grid.Row="3" Width="165" materialDesign:HintAssist.Hint="Ngày Vào Đảng" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
                 <materialDesign:PackIcon Grid.Column="2" Grid.Row="3"  Margin="10 10 0 0" HorizontalAlignment="Left" VerticalAlignment="Center" Height="30" Width="30" Kind="CalendarMultiselect" />
 
                 <!--ĐIỆN THOẠI-->
-                <TextBox Grid.Column="3" Grid.Row="0" Height="30"  Width="165" HorizontalAlignment="Left" Margin="40 0 5 0" materialDesign:HintAssist.Hint="Số Điện Thoại" materialDesign:TextFieldAssist.DecorationVisibility="Hidden" ></TextBox>
+                <TextBox x:Name="txtDienThoai" Grid.Column="3" Grid.Row="0" Height="30"  Width="165" HorizontalAlignment="Left" Margin="40 0 5 0" materialDesign:HintAssist.Hint="Số Điện Thoại" materialDesign:TextFieldAssist.DecorationVisibility="Hidden" ></TextBox>
                 <materialDesign:PackIcon Grid.Column="3" Grid.Row="0" Margin="10 10 0 0" HorizontalAlignment="Left" VerticalAlignment="Center" Height="30" Width="30" Kind="Cellphone" />
 
                 <!--EMAIL-->
-                <TextBox Grid.Column="3" Grid.Row="1" Height="30"  Width="165" HorizontalAlignment="Left" Margin="40 0 5 0" materialDesign:HintAssist.Hint="Địa Chỉ Email" materialDesign:TextFieldAssist.DecorationVisibility="Hidden" ></TextBox>
+                <TextBox x:Name="txtEmail" Grid.Column="3" Grid.Row="1" Height="30"  Width="165" HorizontalAlignment="Left" Margin="40 0 5 0" materialDesign:HintAssist.Hint="Địa Chỉ Email" materialDesign:TextFieldAssist.DecorationVisibility="Hidden" ></TextBox>
                 <materialDesign:PackIcon Grid.Column="3" Grid.Row="1" Margin="10 10 0 0" HorizontalAlignment="Left" VerticalAlignment="Center" Height="30" Width="30" Kind="Gmail" />
 
                 <!--Ghi Chú-->
-                <TextBox Grid.Column="3" Grid.Row="2" Height="30"  Width="165" HorizontalAlignment="Left" Margin="40 0 5 0" materialDesign:HintAssist.Hint="Ghi Chú" materialDesign:TextFieldAssist.DecorationVisibility="Hidden" ></TextBox>
+                <TextBox x:Name="txtGhiChu" Grid.Column="3" Grid.Row="2" Height="30"  Width="165" HorizontalAlignment="Left" Margin="40 0 5 0" materialDesign:HintAssist.Hint="Ghi Chú" materialDesign:TextFieldAssist.DecorationVisibility="Hidden" ></TextBox>
                 <materialDesign:PackIcon Grid.Column="3" Grid.Row="2" Margin="10 10 0 0" HorizontalAlignment="Left" VerticalAlignment="Center" Height="30" Width="30" Kind="Note" />
 
                 <!--GIA ĐÌNH-->
-                <ComboBox IsEditable="False" Grid.Column="3" Height="30" Grid.Row="3" Width="165" HorizontalAlignment="Left" Margin="40 0 5 0" materialDesign:HintAssist.Hint="Gia Đình" materialDesign:HintAssist.HintOpacity=".25">
-                </ComboBox>
+                <TextBox x:Name="txtGiaDinh" Grid.Column="3" Height="30" Grid.Row="3" Width="165" HorizontalAlignment="Left" Margin="40 0 5 0" materialDesign:HintAssist.Hint="Gia Đình" materialDesign:HintAssist.HintOpacity=".25">
+                </TextBox>
                 <materialDesign:PackIcon Margin="10 10 0 0" HorizontalAlignment="Left" VerticalAlignment="Center" Height="30" Width="30" Kind="HomePlus" Grid.Column="3" Grid.Row="3" />
 
                 <!--TÀI KHOẢN-->
-                <ComboBox IsEditable="False" Grid.Column="4" Height="30" Grid.Row="0" Width="165" HorizontalAlignment="Left" Margin="40 0 5 0" materialDesign:HintAssist.Hint="Tài Khoản" materialDesign:HintAssist.HintOpacity=".25">
-                </ComboBox>
+                <TextBox Grid.Column="4" x:Name="txtTaiKhoan" Height="30" Grid.Row="0" Width="165" HorizontalAlignment="Left" Margin="40 0 5 0" materialDesign:HintAssist.Hint="Tài Khoản" materialDesign:HintAssist.HintOpacity=".25">
+                </TextBox>
                 <materialDesign:PackIcon Margin="10 10 0 0" HorizontalAlignment="Left" VerticalAlignment="Center" Height="30" Width="30" Kind="AccountMultiplePlus" Grid.Column="4" Grid.Row="0" />
 
                 <!--THÔNG TIN TỐT NGHIỆP-->
-                <ComboBox IsEditable="False" Grid.Column="4" Height="30" Grid.Row="1" Width="165" HorizontalAlignment="Left" Margin="40 0 5 0" materialDesign:HintAssist.Hint="Thông Tin Tốt Nghiệp" materialDesign:HintAssist.HintOpacity=".25">
-                </ComboBox>
+                <TextBox Grid.Column="4" x:Name="txtTotNghiep" Height="30" Grid.Row="1" Width="165" HorizontalAlignment="Left" Margin="40 0 5 0" materialDesign:HintAssist.Hint="Thông Tin Tốt Nghiệp" materialDesign:HintAssist.HintOpacity=".25">
+                </TextBox>
                 <materialDesign:PackIcon Margin="10 10 0 0" HorizontalAlignment="Left" VerticalAlignment="Center" Height="30" Width="30" Kind="CreditCardPlus" Grid.Column="4" Grid.Row="1" />
-
 
                 <!--#region Button THÊM SINH VIÊN -->
                 <Button Grid.Column="4" Grid.Row="2" Margin="20 10 10 0" Padding="0" FontSize="17" Width="130" Height="25" VerticalAlignment="Center" HorizontalAlignment="Left" materialDesign:ButtonProgressAssist.IsIndicatorVisible="True" materialDesign:ButtonProgressAssist.IsIndeterminate="True"
-                    Content="Thêm Sinh Viên" />
-                <Button VerticalAlignment="Center" Margin="0 10 30 0" HorizontalAlignment="Right" Width="35" Height="35" Grid.Column="4" Grid.Row="2" Style="{StaticResource MaterialDesignFloatingActionDarkButton}" ToolTip="MaterialDesignFloatingActionDarkButton">
+                    Content="Thêm Sinh Viên" x:Name="btnThemSinhVien" Click="BtnThemSinhVien_Click" />
+                <Button x:Name="btnExcel" Click="BtnExcel_Click" VerticalAlignment="Center" Margin="0 10 30 0" HorizontalAlignment="Right" Width="35" Height="35" Grid.Column="4" Grid.Row="2" Style="{StaticResource MaterialDesignFloatingActionDarkButton}" ToolTip="MaterialDesignFloatingActionDarkButton">
                     <materialDesign:PackIcon Kind="MicrosoftExcel" Height="30" Width="30" />
                 </Button>
                 <!--#endregion-->
 
                 <!--#region CẬP NHẬT SINH VIÊN -->
                 <Button Grid.Column="4" Grid.Row="3" Padding="0" FontSize="17" Width="110" Height="25" VerticalAlignment="Center" HorizontalAlignment="Left" materialDesign:ButtonProgressAssist.IsIndicatorVisible="True" materialDesign:ButtonProgressAssist.IsIndeterminate="True"
-                    Content="Cập Nhật" />
+                    Content="Cập Nhật" x:Name="btnCapNhatSinhVien" Click="BtnCapNhatSinhVien_Click" />
                 <!--#endregion -->
 
                 <!--#region XÓA SINH VIÊN -->
                 <Button Grid.Column="4" Grid.Row="3" Padding="0" FontSize="17" Width="110" Height="25" VerticalAlignment="Center" HorizontalAlignment="Right" materialDesign:ButtonProgressAssist.IsIndicatorVisible="True" materialDesign:ButtonProgressAssist.IsIndeterminate="True"
-                    Content="Xóa Sinh Viên" />
+                    Content="Xóa Sinh Viên" x:Name="btnXoaSinhVien" Click="BtnXoaSinhVien_Click" />
                 <!--#endregion-->
 
 
