@@ -291,21 +291,9 @@ namespace QuanLySinhVienTotNghiep.View
             {
                 type = "TenTaiKhoan";
             }
-            else if (cbbLoaiTaiKhoan.SelectedIndex == 1)
-            {
-                type = "Email";
-            }
             else if (cbbLoaiTaiKhoan.SelectedIndex == 2)
             {
                 type = "SoDienThoai";
-            }
-            else if (cbbLoaiTaiKhoan.SelectedIndex == 3)
-            {
-                type = "GhiChu";
-            }
-            else if (cbbLoaiTaiKhoan.SelectedIndex == 4)
-            {
-                type = "LoaiTaiKhoan";
             }
 
             dtgAccount.ItemsSource = SearchAccount(type,txtSearchAccount.Text);
