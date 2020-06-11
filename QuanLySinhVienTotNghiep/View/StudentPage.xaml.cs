@@ -16,6 +16,12 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using QuanLySinhVienTotNghiep.ModelExcel;
+using Microsoft.Win32;
+using System.IO;
+using System.Data.SqlClient;
+using System.Runtime.Serialization;
+using OfficeOpenXml;
 
 namespace QuanLySinhVienTotNghiep.View
 {
@@ -152,8 +158,149 @@ namespace QuanLySinhVienTotNghiep.View
 
         private void BtnExcel_Click(object sender, RoutedEventArgs e)
         {
+            List<Student> _ListStudent = new List<Student>();
 
+            try
+            {
+                ExcelPackage.LicenseContext = LicenseContext.Commercial; // giấy phép sử dụng thư viện bản thương mại
+
+                var _package = new ExcelPackage(new FileInfo("ListSV.xlsx")); // Mở file Excel
+
+                ExcelWorksheet _sheetCurrent = _package.Workbook.Worksheets[0]; // mở sheet (trang) 1 trong file excel
+
+                // duyệt tuần tự dòng thứ 2 tới dòng cuối của file
+                // duyệt file excel tương tự duyệt mảng 2 chiều
+                // chỉ số cột trong excel bắt đầu từ 1
+
+                for (int row = _sheetCurrent.Dimension.Start.Row + 1; row <= _sheetCurrent.Dimension.End.Row; row++)
+                {
+                    try
+                    {
+
+                        int col = 1;
+
+                        // lấy ra tên ở vị trí dòng 2 cột 1, col++ sau khi thực hiện câu lệnh tăng cột lên 1 (toán tử hậu tố)
+                        string _HoTen = _sheetCurrent.Cells[row, col++].Value.ToString();
+
+                        int _MaSoSinhVien = Convert.ToInt32(_sheetCurrent.Cells[row, col++].Value.ToString());
+
+                        string _GioiTinh = _sheetCurrent.Cells[row, col++].Value.ToString();
+
+                        // tạo biến tạm bằng giá trị trong ô ngày sinh 
+                        var NgaySinhTemp = _sheetCurrent.Cells[row, col++].Value;
+                        DateTime _NgaySinh = new DateTime();
+                        // kiểm tra biến tạm có null hoặc rỗng không
+                        if (NgaySinhTemp != null)
+                        {
+                            try
+                            {
+                                // nếu thỏa cố gắng ép kiểu nó 
+                                _NgaySinh = (DateTime)NgaySinhTemp;
+                            }
+                            catch (Exception ex)
+                            { MessageBox.Show(ex.ToString()); }
+                        }
+
+                        string _NoiSinh = _sheetCurrent.Cells[row, col++].Value.ToString();
+
+                        string _DiaChiThuongTru = _sheetCurrent.Cells[row, col++].Value.ToString();
+
+                        string _DanToc = _sheetCurrent.Cells[row, col++].Value.ToString();
+
+                        string _TonGiao = _sheetCurrent.Cells[row, col++].Value.ToString();
+
+                        int _chungMinhNhanDan = Convert.ToInt32(_sheetCurrent.Cells[row, col++].Value.ToString());
+
+                        // tạo biến tạm bằng giá trị trong ô ngày sinh 
+                        var NgayCapTemp = _sheetCurrent.Cells[row, col++].Value;
+                        DateTime _NgayCap = new DateTime();
+                        // kiểm tra biến tạm có null hoặc rỗng không
+                        if (NgayCapTemp != null)
+                        {
+                            try
+                            {
+                                // nếu thỏa cố gắng ép kiểu nó 
+                                _NgayCap = (DateTime)NgayCapTemp;
+                            }
+                            catch (Exception ex)
+                            { MessageBox.Show(ex.ToString()); }
+                        }
+
+                        // tạo biến tạm bằng giá trị trong ô ngày sinh 
+                        var NgayVaoDoanTemp = _sheetCurrent.Cells[row, col++].Value;
+                        DateTime _NgayVaoDoan = new DateTime();
+                        // kiểm tra biến tạm có null hoặc rỗng không
+                        if (NgayVaoDoanTemp != null)
+                        {
+                            try
+                            {
+                                // nếu thỏa cố gắng ép kiểu nó 
+                                _NgayVaoDoan = (DateTime)NgayVaoDoanTemp;
+                            }
+                            catch (Exception ex)
+                            { MessageBox.Show(ex.ToString()); }
+                        }
+
+                        // tạo biến tạm bằng giá trị trong ô ngày sinh 
+                        var NgayVaoDangTemp = _sheetCurrent.Cells[row, col++].Value;
+                        DateTime _NgayVaoDang = new DateTime();
+                        // kiểm tra biến tạm có null hoặc rỗng không
+                        if (NgayVaoDangTemp != null)
+                        {
+                            try
+                            {
+                                // nếu thỏa cố gắng ép kiểu nó 
+                                _NgayVaoDang = (DateTime)NgayVaoDangTemp;
+                            }
+                            catch (Exception ex)
+                            { MessageBox.Show(ex.ToString()); }
+                        }
+
+                        string _DienThoai = _sheetCurrent.Cells[row, col++].Value.ToString();
+                        string _Email = _sheetCurrent.Cells[row, col++].Value.ToString();
+                        string _GhiChu = _sheetCurrent.Cells[row, col++].Value.ToString();
+                        int _IDGiaDinh = Convert.ToInt32(_sheetCurrent.Cells[row, col++].Value.ToString());
+                        int _IDTaiKhoan = Convert.ToInt32(_sheetCurrent.Cells[row, col++].Value.ToString());
+                        int _IDThongTinTotNghiep = Convert.ToInt32(_sheetCurrent.Cells[row, col++].Value.ToString());
+
+                        // tạo sinh viên mới với các thuộc tính là các thuộc tính vừa đọc được trong file excel
+                        Student _student = new Student()
+                        {
+                            HoTen = _HoTen,
+                            MaSoSinhVien = _MaSoSinhVien,
+                            GioiTinh = _GioiTinh,
+                            NgaySinh = _NgaySinh,
+                            NoiSinh = _NoiSinh,
+                            DiaChiThuongTru = _DiaChiThuongTru,
+                            DanToc = _DanToc,
+                            TonGiao = _TonGiao,
+                            ChungMinhNhanDan = _chungMinhNhanDan,
+                            NgayCap = _NgayCap,
+                            NgayVaoDoan = _NgayVaoDoan,
+                            NgayVaoDang = _NgayVaoDang,
+                            DienThoai = _DienThoai,
+                            Email = _Email,
+                            GhiChu = _GhiChu,
+                            IDGiaDinh = _IDGiaDinh,
+                            IDTaiKhoan = _IDTaiKhoan,
+                            IDThongTinTotNghiep = _IDThongTinTotNghiep
+                            
+                        };
+
+                        // add user mới vào danh sách
+                        _ListStudent.Add(_student);
+
+                    }
+
+                    catch (Exception ex) { MessageBox.Show(ex.Message); }
+                }
+
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
+
+            dtgStudent.ItemsSource = _ListStudent;
         }
+            
 
         public bool CheckDataInput(string email, string hoten, string sodienthoai, string cmnd, string mssv, string noisinh, string diachi, string dantoc, string tongiao)
         {
@@ -183,3 +330,23 @@ namespace QuanLySinhVienTotNghiep.View
         }
     }
 }
+
+    [Serializable]
+    internal class MySqlException : Exception
+    {
+        public MySqlException()
+        {
+        }
+
+        public MySqlException(string message) : base(message)
+        {
+        }
+
+        public MySqlException(string message, Exception innerException) : base(message, innerException)
+        {
+        }
+
+        protected MySqlException(SerializationInfo info, StreamingContext context) : base(info, context)
+        {
+        }
+    }
