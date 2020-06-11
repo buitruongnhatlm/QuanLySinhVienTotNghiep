@@ -235,9 +235,9 @@ namespace QuanLySinhVienTotNghiep.View
 
         }
 
-        public List<AccountDTO> SearchAccount(string account)
+        public List<AccountDTO> SearchAccount(string type, string content)
         {
-            List<AccountDTO> _listAccount = AccountDAL.Instance.SearchAccount(account);
+            List<AccountDTO> _listAccount = AccountDAL.Instance.SearchAccount(type, content);
             return _listAccount;
         }
 
@@ -286,7 +286,29 @@ namespace QuanLySinhVienTotNghiep.View
 
         private void BtnSearch_Click(object sender, RoutedEventArgs e)
         {
-           dtgAccount.ItemsSource = SearchAccount(txtSearchAccount.Text);
+            string type = "";
+            if (cbbLoaiTimKiem.SelectedIndex == 0)
+            {
+                type = "TenTaiKhoan";
+            }
+            else if (cbbLoaiTaiKhoan.SelectedIndex == 1)
+            {
+                type = "Email";
+            }
+            else if (cbbLoaiTaiKhoan.SelectedIndex == 2)
+            {
+                type = "SoDienThoai";
+            }
+            else if (cbbLoaiTaiKhoan.SelectedIndex == 3)
+            {
+                type = "GhiChu";
+            }
+            else if (cbbLoaiTaiKhoan.SelectedIndex == 4)
+            {
+                type = "LoaiTaiKhoan";
+            }
+
+            dtgAccount.ItemsSource = SearchAccount(type,txtSearchAccount.Text);
         }
     }
 }

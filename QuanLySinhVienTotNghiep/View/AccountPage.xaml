@@ -40,6 +40,13 @@
                 <Button Margin="10 -5 0 0" x:Name="btnSearch" Click="BtnSearch_Click">
                     <materialDesign:PackIcon Kind="Send" />
                 </Button>
+                <ComboBox x:Name="cbbLoaiTimKiem" IsEditable="False" Grid.Column="0" Height="30" Grid.Row="3" Width="150" HorizontalAlignment="Left" Margin="40 0 5 0" materialDesign:HintAssist.Hint="Tìm Kiếm Theo" materialDesign:HintAssist.HintOpacity=".25">
+                    <ComboBoxItem Content="Tên Tài Khoản" Selector.IsSelected="True"/>
+                    <ComboBoxItem Content="Email"/>
+                    <ComboBoxItem Content="Số Điện Thoại"/>
+                    <ComboBoxItem Content="Ghi Chú"/>
+                    <ComboBoxItem Content="Loại Tài Khoản"/>
+                </ComboBox>
             </StackPanel>
         </materialDesign:ColorZone>
         <!--#endregion-->

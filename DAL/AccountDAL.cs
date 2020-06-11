@@ -65,10 +65,26 @@ namespace DAL
             return _result > 0;
         }
 
-        public List<AccountDTO> SearchAccount(string account)
+        public List<AccountDTO> SearchAccount(string type, string content)
         {
             List<AccountDTO> _list = new List<AccountDTO>();
-            string _query =string.Format("SELECT * FROM dbo.TaiKhoan WHERE dbo.[func_ConvertToUnsign](TenTaiKhoan) LIKE N'%' + dbo.[func_ConvertToUnsign](N'{0}') + '%' ", account);
+            string _query = "";
+
+            if(type.Equals("TenTaiKhoan"))
+            {
+                _query = string.Format(" SELECT * FROM dbo.TaiKhoan WHERE TenTaiKhoan LIKE '%'+'{0}'+'%'  ", content);
+            }
+            else if(type.Equals("Email"))
+            {
+                _query = string.Format(" SELECT * FROM dbo.TaiKhoan WHERE Email LIKE '%'+'{0}'+'%'  ", content);
+            }
+            else if (type.Equals("SoDienThoai"))
+            {
+                _query = string.Format(" SELECT * FROM dbo.TaiKhoan WHERE SoDienThoai LIKE '%' + {0} + '%' ", content);
+            }
+
+            // string _query =string.Format("SELECT * FROM dbo.TaiKhoan WHERE dbo.[func_ConvertToUnsign](TenTaiKhoan) LIKE N'%' + dbo.[func_ConvertToUnsign](N'{0}') + '%' ", account);
+
             DataTable _table = DataProvider.Instance.ExcuteQuery(_query);
             foreach (DataRow row in _table.Rows)
             {
