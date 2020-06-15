@@ -91,6 +91,12 @@ namespace QuanLySinhVienTotNghiep.View
 
         }
 
+        public List<StudentDTO> SearchStudent(string type, string content)
+        {
+            List<StudentDTO> _listStudent = StudentDAL.Instance.SearchStudent(type, content);
+            return _listStudent;
+        }
+
         private void DtgStudent_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             DataGrid _dataGrid = sender as DataGrid;
@@ -405,6 +411,45 @@ namespace QuanLySinhVienTotNghiep.View
                 return false;
             }
 
+        }
+
+        private void BtnSearchStudent_Click(object sender, RoutedEventArgs e)
+        {
+            string type = "";
+            if (cbbLoaiTimKiem.SelectedIndex == 0)
+            {
+                type = "HoTen";
+            }
+            else if (cbbLoaiTimKiem.SelectedIndex == 1)
+            {
+                type = "MaSoSinhVien";
+            }
+            else if (cbbLoaiTimKiem.SelectedIndex == 2)
+            {
+                type = "GioiTinh";
+            }
+            else if (cbbLoaiTimKiem.SelectedIndex == 3)
+            {
+                type = "NoiSinh";
+            }
+            else if (cbbLoaiTimKiem.SelectedIndex == 4)
+            {
+                type = "ChungMinhNhanDan";
+            }
+            else if (cbbLoaiTimKiem.SelectedIndex == 5)
+            {
+                type = "DienThoai";
+            }
+            else if (cbbLoaiTimKiem.SelectedIndex == 6)
+            {
+                type = "Email";
+            }
+            else if (cbbLoaiTimKiem.SelectedIndex == 7)
+            {
+                type = "GhiChu";
+            }
+
+            dtgStudent.ItemsSource = SearchStudent(type, txtSearchStudent.Text);
         }
     }
 }

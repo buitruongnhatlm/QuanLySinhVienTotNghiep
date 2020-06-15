@@ -28,15 +28,15 @@
                                 </Style>
                             </StackPanel.Resources>
 
-                            <Button ToolTip="Thu Nhỏ" ToolBar.OverflowMode="AsNeeded" Background="DarkGreen">
+                            <Button ToolTip="Thu Nhỏ" ToolBar.OverflowMode="AsNeeded" Background="Transparent">
                                 <materialDesign:PackIcon Kind="WindowMinimize" />
                             </Button>
 
-                            <Button ToolTip="Phóng To" ToolBar.OverflowMode="AsNeeded" Background="DarkGreen">
+                            <Button ToolTip="Phóng To" ToolBar.OverflowMode="AsNeeded" Background="Transparent">
                                 <materialDesign:PackIcon Kind="WindowMaximize" />
                             </Button>
 
-                            <Button ToolTip="Đóng" ToolBar.OverflowMode="AsNeeded" Background="DarkRed">
+                            <Button x:Name="btnClosed" Click="BtnClosed_Click" ToolTip="Đóng" ToolBar.OverflowMode="AsNeeded" Background="Transparent">
                                 <materialDesign:PackIcon Kind="WindowClose" />
                             </Button>
 

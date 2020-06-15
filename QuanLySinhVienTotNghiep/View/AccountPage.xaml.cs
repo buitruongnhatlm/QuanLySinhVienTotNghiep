@@ -291,13 +291,22 @@ namespace QuanLySinhVienTotNghiep.View
             {
                 type = "TenTaiKhoan";
             }
-            else if (cbbLoaiTaiKhoan.SelectedIndex == 2)
+            else if (cbbLoaiTimKiem.SelectedIndex == 1)
             {
                 type = "SoDienThoai";
+            }
+            else if (cbbLoaiTimKiem.SelectedIndex == 2)
+            {
+                type = "Email";
+            }
+            else if (cbbLoaiTimKiem.SelectedIndex == 3)
+            {
+                type = "GhiChu";
             }
 
             dtgAccount.ItemsSource = SearchAccount(type,txtSearchAccount.Text);
         }
+
     }
 }
 

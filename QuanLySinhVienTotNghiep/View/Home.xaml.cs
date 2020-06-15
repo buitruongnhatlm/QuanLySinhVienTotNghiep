@@ -18,9 +18,13 @@ namespace QuanLySinhVienTotNghiep.View
 
     public partial class Home : Window
     {
+        public delegate void SendMessage(string message);
+        public SendMessage _sender;
+
         public Home()
         {
             InitializeComponent();
+            _sender = new SendMessage(GetMessage);
         }
 
         /// <summary>
@@ -70,5 +74,19 @@ namespace QuanLySinhVienTotNghiep.View
             }
             
         }
+
+        private void BtnClosed_Click(object sender, RoutedEventArgs e)
+        {
+            if (MessageBox.Show("Are you sure Exit?", "Remind", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            {
+                Application.Current.Shutdown();
+            }
+        }
+
+        private void GetMessage(string message)
+        {
+            txtbUser.Text = message;
+        }
+
     }
 }

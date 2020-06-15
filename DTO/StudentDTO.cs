@@ -84,11 +84,23 @@ namespace DTO
             this.TonGiao = _row["TonGiao"].ToString();
             this.ChungMinhNhanDan = Convert.ToInt32(_row["ChungMinhNhanDan"]);
             this.NgayCap = Convert.ToDateTime(_row["NgayCap"]);
-            this.NgayVaoDoan = Convert.ToDateTime(_row["NgayVaoDoan"]);
-            this.NgayVaoDang = Convert.ToDateTime(_row["NgayVaoDang"]);
+
+            if (!string.IsNullOrEmpty(_row["NgayVaoDoan"].ToString()))
+            {
+                this.NgayVaoDoan = Convert.ToDateTime(_row["NgayVaoDoan"]);
+            }
+
+            if (!string.IsNullOrEmpty(_row["NgayVaoDang"].ToString()))
+            {
+                this.NgayVaoDang = Convert.ToDateTime(_row["NgayVaoDang"]);
+            }
+
             this.DienThoai = Convert.ToInt32(_row["DienThoai"]);
             this.Email = _row["Email"].ToString();
-            this.GhiChu = _row["GhiChu"].ToString();
+            if (!string.IsNullOrEmpty(_row["GhiChu"].ToString()))
+            {
+                this.GhiChu = _row["GhiChu"].ToString();
+            }
             this.IDGiaDinh = Convert.ToInt32(_row["IDGiaDinh"]);
             this.IDTaiKhoan = Convert.ToInt32(_row["IDTaiKhoan"]);
             this.IDThongTinTotNghiep = Convert.ToInt32(_row["IDThongTinTotNghiep"]);

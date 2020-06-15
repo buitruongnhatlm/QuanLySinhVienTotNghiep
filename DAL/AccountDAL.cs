@@ -70,14 +70,24 @@ namespace DAL
             List<AccountDTO> _list = new List<AccountDTO>();
             string _query = "";
 
-            if(type.Equals("TenTaiKhoan"))
+            if (type.Equals("TenTaiKhoan"))
             {
-                _query = string.Format(" SELECT * FROM dbo.TaiKhoan WHERE TenTaiKhoan LIKE '%'+'{0}'+'%'  ", content);
+                _query = string.Format(" EXECUTE dbo.pro_SearchAccount @type ='TenTaiKhoan' , @content = '{0}' ", content);
             }
             else if (type.Equals("SoDienThoai"))
             {
-               
-                _query = string.Format(" SELECT * FROM dbo.TaiKhoan WHERE SoDienThoai LIKE '%'+'{0}'+'%' ", content);
+
+                _query = string.Format(" EXECUTE dbo.pro_SearchAccount @type ='SoDienThoai' , @content = '{0}' ", content);
+            }
+            else if (type.Equals("Email"))
+            {
+
+                _query = string.Format(" EXECUTE dbo.pro_SearchAccount @type ='Email' , @content = '{0}' ", content);
+            }
+            else if (type.Equals("GhiChu"))
+            {
+
+                _query = string.Format(" EXECUTE dbo.pro_SearchAccount @type ='GhiChu' , @content = '{0}' ", content);
             }
 
             DataTable _table = DataProvider.Instance.ExcuteQuery(_query);

@@ -12,10 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.Windows.Forms;
 using DTO;
 using DAL;
-using MessageBox = System.Windows.Forms.MessageBox;
 using Panel = System.Windows.Forms.Panel;
 using System.Security.Cryptography;
 using System.Drawing;
@@ -49,6 +47,7 @@ namespace QuanLySinhVienTotNghiep.View
                     {
                         Home _page = new Home();
                         _page.Show();
+                        _page._sender(txtTaiKhoan.Text);
                         this.Close();
                     }
                     else
@@ -106,5 +105,9 @@ namespace QuanLySinhVienTotNghiep.View
         }
         #endregion
 
+        private void BtnClosed_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
     }
 }

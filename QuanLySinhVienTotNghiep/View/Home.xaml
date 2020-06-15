@@ -34,15 +34,15 @@
                                     </Style>
                                 </StackPanel.Resources>
 
-                                <Button ToolTip="Thu Nhỏ" ToolBar.OverflowMode="AsNeeded" Background="DarkGreen">
+                                <Button ToolTip="Thu Nhỏ" ToolBar.OverflowMode="AsNeeded" Background="Transparent">
                                     <materialDesign:PackIcon Kind="WindowMinimize" />
                                 </Button>
 
-                                <Button ToolTip="Phóng To" ToolBar.OverflowMode="AsNeeded" Background="DarkGreen">
+                                <Button ToolTip="Phóng To" ToolBar.OverflowMode="AsNeeded" Background="Transparent">
                                     <materialDesign:PackIcon Kind="WindowMaximize" />
                                 </Button>
 
-                                <Button ToolTip="Đóng" ToolBar.OverflowMode="AsNeeded" Background="DarkRed">
+                                <Button ToolTip="Đóng" x:Name="btnClosed" Click="BtnClosed_Click" ToolBar.OverflowMode="AsNeeded" Background="Transparent">
                                     <materialDesign:PackIcon Kind="WindowClose" />
                                 </Button>
 
@@ -68,7 +68,7 @@
                 </materialDesign:PopupBox>
 
                 <!--Đăng nhập góc trái trên-->
-                <Grid Height="100" Width="100" Margin="5 35 0 5" Background="White" VerticalAlignment="Top" HorizontalAlignment="Left">
+                <Grid Height="70" Width="100" Margin="5 35 0 5" Background="White" VerticalAlignment="Top" HorizontalAlignment="Left">
                     <materialDesign:Flipper>
                         <materialDesign:Flipper.FrontContent>
                             <Grid>
@@ -80,10 +80,7 @@
                                     <materialDesign:PackIcon  Margin="10 0 10 0" Kind="AccountCircle" Height="50" Width="50" VerticalAlignment="Top" HorizontalAlignment="Center" />
                                 </materialDesign:ColorZone>
                                 <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                    <TextBlock Margin="5 -50 0 25"> James Willock</TextBlock>
-                                    <Button VerticalAlignment="Bottom" Width="60" Height="25" Style="{StaticResource MaterialDesignFlatButton}" Background="White" Margin="0 -40 0 5">
-                                        EDIT
-                                    </Button>
+                                    <TextBlock Margin="5 -50 0 25" x:Name="txtbUser"> James Willock</TextBlock>
                                 </StackPanel>
                             </Grid>
                         </materialDesign:Flipper.FrontContent>

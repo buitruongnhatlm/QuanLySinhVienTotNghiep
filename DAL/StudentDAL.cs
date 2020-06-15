@@ -87,5 +87,53 @@ namespace DAL
             return _result > 0;
         }
 
+        public List<StudentDTO> SearchStudent(string type, string content)
+        {
+            List<StudentDTO> _list = new List<StudentDTO>();
+            string _query = "";
+
+            if (type.Equals("HoTen"))
+            {
+                _query = string.Format(" EXECUTE dbo.pro_SearchStudent @type = 'HoTen',  @content = N'{0}' ", content);
+            }
+            else if (type.Equals("MaSoSinhVien"))
+            {
+                _query = string.Format(" EXECUTE dbo.pro_SearchStudent @type = 'MaSoSinhVien',  @content = '{0}' ", content);
+            }
+            else if (type.Equals("GioiTinh"))
+            {
+                _query = string.Format(" EXECUTE dbo.pro_SearchStudent @type = 'GioiTinh', @content = N'{0}'  ", content);
+            }
+            else if (type.Equals("NoiSinh"))
+            {
+                _query = string.Format(" EXECUTE dbo.pro_SearchStudent @type = 'NoiSinh' , @content = N'{0}' ", content);
+            }
+            else if (type.Equals("ChungMinhNhanDan"))
+            {
+                _query = string.Format(" EXECUTE dbo.pro_SearchStudent @type = 'ChungMinhNhanDan',  @content = '{0}' ", content);
+            }
+            else if (type.Equals("DienThoai"))
+            {
+                _query = string.Format(" EXECUTE dbo.pro_SearchStudent @type = 'DienThoai' , @content = '{0}' ", content);
+            }
+            else if (type.Equals("Email"))
+            {
+                _query = string.Format(" EXECUTE dbo.pro_SearchStudent @type = 'Email' , @content = '{0}' ", content);
+            }
+            else if (type.Equals("GhiChu"))
+            {
+                _query = string.Format(" EXECUTE dbo.pro_SearchStudent @type = 'GhiChu' , @content = N'{0}' ", content);
+            }
+
+            DataTable _table = DataProvider.Instance.ExcuteQuery(_query);
+            foreach (DataRow row in _table.Rows)
+            {
+                StudentDTO _student = new StudentDTO(row);
+                _list.Add(_student);
+            }
+
+            return _list;
+        }
+
     }
 }
