@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="AccountDTO.cs" />
     <Compile Include="FamilyDTO.cs" />
+    <Compile Include="PasswordDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StudentDTO.cs" />
   </ItemGroup>

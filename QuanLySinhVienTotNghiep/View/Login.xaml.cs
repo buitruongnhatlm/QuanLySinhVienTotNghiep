@@ -109,5 +109,11 @@ namespace QuanLySinhVienTotNghiep.View
         {
             Application.Current.Shutdown();
         }
+
+        private void BtnQuenMatKhau_Click(object sender, RoutedEventArgs e)
+        {
+            ForgetPassword _window = new ForgetPassword();
+            _window.ShowDialog();
+        }
     }
 }

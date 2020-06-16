@@ -96,6 +96,9 @@
     <Compile Include="View\FamilyPage.xaml.cs">
       <DependentUpon>FamilyPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\ForgetPassword.xaml.cs">
+      <DependentUpon>ForgetPassword.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\GraduatePage.xaml.cs">
       <DependentUpon>GraduatePage.xaml</DependentUpon>
     </Compile>
@@ -130,6 +133,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\FamilyPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ForgetPassword.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
