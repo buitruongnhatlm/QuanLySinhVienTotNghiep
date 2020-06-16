@@ -53,7 +53,7 @@
 
         <!--#region DATA GRID -->
         <Grid Grid.Row="1" Height="230" Width="1180">
-            <DataGrid Background="Transparent" x:Name="dtgFamily" SelectionChanged="DtgFamily_SelectionChanged" AutoGenerateColumns="False" >
+            <DataGrid Background="LightSkyBlue" x:Name="dtgFamily" SelectionChanged="DtgFamily_SelectionChanged" AutoGenerateColumns="False" >
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Số Thứ Tự" Width="100" Binding="{Binding IDGiaDinh}" />
                     <DataGridTextColumn Header="Họ Tên Cha" Width="250" Binding="{Binding HoTenCha}" />

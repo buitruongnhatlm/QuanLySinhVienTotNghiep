@@ -69,7 +69,7 @@ namespace DTO
                 this.GhiChu = row["GhiChu"].ToString();
             }
 
-            this.IDTaiKhoan = IDTaiKhoan;
+            this.IDTaiKhoan = Convert.ToInt32(row["IDTaiKhoan"].ToString());
         }
     }
 }
