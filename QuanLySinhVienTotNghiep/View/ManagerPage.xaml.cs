@@ -19,9 +19,7 @@ using DTO;
 
 namespace QuanLySinhVienTotNghiep.View
 {
-    /// <summary>
-    /// Interaction logic for ManagerPage.xaml
-    /// </summary>
+
     public partial class ManagerPage : Page
     {
         public ManagerPage()
