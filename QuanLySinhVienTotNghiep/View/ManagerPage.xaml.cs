@@ -132,7 +132,7 @@ namespace QuanLySinhVienTotNghiep.View
                 }
                 else
                 {
-                    MessageBox.Show("Dữ Liệu Nhập vào không đúng định dạng");
+                    MessageBox.Show("Dữ Liệu Nhập vào không đúng định dạng","Thông Báo");
                     return false;
                 }
 
