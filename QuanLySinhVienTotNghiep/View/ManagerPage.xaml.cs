@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using DAL;
+using DTO;
 
 namespace QuanLySinhVienTotNghiep.View
 {
@@ -23,6 +25,17 @@ namespace QuanLySinhVienTotNghiep.View
         public ManagerPage()
         {
             InitializeComponent();
+            LoadData();
+        }
+
+        public void LoadData()
+        {
+            dtgManager.ItemsSource = ManagerDAL.Instance.GetListManager().DefaultView;
+        }
+
+        private void DtgManager_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }

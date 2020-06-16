@@ -45,7 +45,23 @@
 
         <!--#region DATA GRID -->
         <Grid Grid.Row="1" Height="270" Width="1180">
-            <DataGrid Background="Pink"></DataGrid>
+            <DataGrid Background="Pink" x:Name="dtgManager" SelectionChanged="DtgManager_SelectionChanged" AutoGenerateColumns="False" >
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Số Thứ Tự" Width="100" Binding="{Binding IDQuanLyVien}" />
+                    <DataGridTextColumn Header="Họ Tên" Width="250" Binding="{Binding HoTen}" />
+                    <DataGridTextColumn Header="Ngày Sinh" Width="145" Binding="{Binding NgaySinh}" />
+                    <DataGridTextColumn Header="Giới Tính" Width="100" Binding="{Binding GioiTinh}" />
+                    <DataGridTextColumn Header="Chứng Minh Nhân Dân" Width="150" Binding="{Binding ChungMinhNhanDan}" />
+                    <DataGridTextColumn Header="Nơi Sinh" Width="200" Binding="{Binding NoiSinh}" />
+                    <DataGridTextColumn Header="Địa Chỉ Thường Trú" Width="250" Binding="{Binding DiaChiThuongTru}" />
+                    <DataGridTextColumn Header="Học Hàm" Width="150" Binding="{Binding HocHam}" />
+                    <DataGridTextColumn Header="Trình Độ" Width="150" Binding="{Binding TrinhDo}" />
+                    <DataGridTextColumn Header="Chuyên Môn" Width="150" Binding="{Binding ChuyenMon}" />
+                    <DataGridTextColumn Header="Đơn Vị Công Tác" Width="250" Binding="{Binding DonViCongTac}" />
+                    <DataGridTextColumn Header="Ghi Chú" Width="150" Binding="{Binding GhiChu}" />
+                    <DataGridTextColumn Header="IDTài Khoản" Width="100" Binding="{Binding IDTaiKhoan}" />
+                </DataGrid.Columns>
+            </DataGrid>
         </Grid>
         <!--#endregion-->
 
