@@ -45,11 +45,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccountDTO.cs" />
+    <Compile Include="ClassDTO.cs" />
+    <Compile Include="CourseDTO.cs" />
     <Compile Include="FamilyDTO.cs" />
+    <Compile Include="GraduateDTO.cs" />
+    <Compile Include="GraduateTypeDTO.cs" />
     <Compile Include="ManagerDTO.cs" />
+    <Compile Include="MarkDTO.cs" />
     <Compile Include="PasswordDTO.cs" />
+    <Compile Include="ProfessionDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StudentDTO.cs" />
+    <Compile Include="TrainingDTO.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

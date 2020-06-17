@@ -149,20 +149,18 @@ namespace QuanLySinhVienTotNghiep.View
                 txtEmail.Text = _dataRow["Email"].ToString();
                 txtDienThoai.Text = _dataRow["SoDienThoai"].ToString();
                 txtGhiChu.Text = _dataRow["GhiChu"].ToString();
-                switch (Convert.ToInt32(_dataRow["IDLoaiTaiKhoan"]))
-                {
-                    case 1:
-                        cbbLoaiTaiKhoan.SelectedIndex = 0;
-                        break;
-                    case 2:
-                        cbbLoaiTaiKhoan.SelectedIndex = 1;
-                        break;
-                    case 3:
-                        cbbLoaiTaiKhoan.SelectedIndex = 2;
-                        break;
-
-                }
-
+                    switch (Convert.ToInt32(_dataRow["IDLoaiTaiKhoan"]))
+                    {
+                        case 1:
+                            cbbLoaiTaiKhoan.SelectedIndex = 0;
+                            break;
+                        case 2:
+                            cbbLoaiTaiKhoan.SelectedIndex = 1;
+                            break;
+                        case 3:
+                            cbbLoaiTaiKhoan.SelectedIndex = 2;
+                            break;
+                    }
             }
 
         }

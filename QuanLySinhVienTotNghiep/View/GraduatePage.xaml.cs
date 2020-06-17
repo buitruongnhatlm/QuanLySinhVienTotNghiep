@@ -24,5 +24,10 @@ namespace QuanLySinhVienTotNghiep.View
         {
             InitializeComponent();
         }
+
+        private void DtgGraduate_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

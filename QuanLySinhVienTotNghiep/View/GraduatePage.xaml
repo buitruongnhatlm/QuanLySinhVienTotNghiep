@@ -45,7 +45,23 @@
 
         <!--#region DATA GRID -->
         <Grid Grid.Row="1" Height="240" Width="1180">
-            <DataGrid Background="Pink"></DataGrid>
+            <DataGrid x:Name="dtgGraduate" SelectionChanged="DtgGraduate_SelectionChanged" AutoGenerateColumns="False" Background="DeepSkyBlue">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Số Thứ Tự" Width="100" Binding="{Binding IDThongTinTotNghiep}" />
+                    <DataGridTextColumn Header="Ngày Vào Trường" Width="250" Binding="{Binding HoTenCha}" />
+                    <DataGridTextColumn Header="Ngày Tốt Nghiệp" Width="145" Binding="{Binding NamSinhCha}" />
+                    <DataGridTextColumn Header="Ngày Cấp Bằng" Width="125" Binding="{Binding DienThoaiCha}" />
+                    <DataGridTextColumn Header="Điểm 10" Width="250" Binding="{Binding HoTenMe}" />
+                    <DataGridTextColumn Header="Điểm 4" Width="145" Binding="{Binding NamSinhMe}" />
+                    <DataGridTextColumn Header="Ghi Chú" Width="125" Binding="{Binding DienThoaiMe}" />
+                    <DataGridTextColumn Header="Loại Tốt Nghiệp" Width="150" Binding="{Binding DiaChi}" />
+                    <DataGridTextColumn Header="Hệ Đào Tạo" Width="100" Binding="{Binding GhiChu}" />
+                    <DataGridTextColumn Header="Ngành" Width="125" Binding="{Binding DienThoaiMe}" />
+                    <DataGridTextColumn Header="Lớp" Width="150" Binding="{Binding DiaChi}" />
+                    <DataGridTextColumn Header="Điểm Chữ" Width="100" Binding="{Binding GhiChu}" />
+
+                </DataGrid.Columns>
+            </DataGrid>
         </Grid>
         <!--#endregion-->
 
@@ -120,7 +136,7 @@
 
                 <!--#region Button THÊM -->
                 <Button Grid.Column="1" Grid.Row="2" Padding="0" FontSize="17" Width="130" Height="25" VerticalAlignment="Center" HorizontalAlignment="Center" materialDesign:ButtonProgressAssist.IsIndicatorVisible="True" materialDesign:ButtonProgressAssist.IsIndeterminate="True"
-                    Content="Thêm Sinh Viên" />
+                    Content="Thêm" />
                 <!--#endregion-->
 
                 <!--#region CẬP NHẬT-->
@@ -130,7 +146,7 @@
 
                 <!--#region XÓA -->
                 <Button Grid.Column="3" Grid.Row="3" Padding="0" FontSize="17" Width="110" Height="25" VerticalAlignment="Center" HorizontalAlignment="Center" materialDesign:ButtonProgressAssist.IsIndicatorVisible="True" materialDesign:ButtonProgressAssist.IsIndeterminate="True"
-                    Content="Xóa Sinh Viên" />
+                    Content="Xóa" />
                 <!--#endregion-->
 
 

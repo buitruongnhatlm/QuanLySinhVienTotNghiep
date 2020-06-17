@@ -44,10 +44,14 @@
     <Compile Include="AccountDAL.cs" />
     <Compile Include="DataProvider.cs" />
     <Compile Include="FamilyDAL.cs" />
+    <Compile Include="GraduateDAL.cs" />
+    <Compile Include="GraduateTypeDAL.cs" />
     <Compile Include="ManagerDAL.cs" />
+    <Compile Include="MarkDAL.cs" />
     <Compile Include="PasswordDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StudentDAL.cs" />
+    <Compile Include="TrainingDAL.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DTO\DTO.csproj">
