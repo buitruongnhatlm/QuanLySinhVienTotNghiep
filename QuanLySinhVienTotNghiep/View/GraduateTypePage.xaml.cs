@@ -376,6 +376,5 @@ namespace QuanLySinhVienTotNghiep.View
             LoadDataToMarkGrid();
         }
 
-        
     }
 }
