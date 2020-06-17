@@ -32,14 +32,27 @@
         <TextBlock Foreground="HotPink" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" Grid.Column="1" Grid.Row="0" >KHÓA HỌC</TextBlock>
 
         <!--#region DATA GRID NGÀNH HỌC -->
-        <Grid Grid.Row="1" Grid.Column="0" Margin="0 0 10 0" Height="240" Width="580">
-            <DataGrid Background="Pink"></DataGrid>
+        <Grid Grid.Row="1" Grid.Column="0" Margin="0 0 10 0" Height="190" Width="580">
+            <DataGrid Background="LightSkyBlue" x:Name="dtgNganh" SelectionChanged="DtgNganh_SelectionChanged" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Số Thứ Tự" Width="100" Binding="{Binding IDNganh}" />
+                    <DataGridTextColumn Header="Tên Ngành" Width="250" Binding="{Binding TenNganh}" />
+                    <DataGridTextColumn Header="Ghi Chú" Width="150" Binding="{Binding GhiChu}" />
+                </DataGrid.Columns>
+            </DataGrid>
         </Grid>
         <!--#endregion-->
 
         <!--#region DATA GRID KHÓA HỌC -->
-        <Grid  Margin="10 0 0 0" Grid.Row="1" Grid.Column="1" Height="240" Width="580">
-            <DataGrid Background="Pink"></DataGrid>
+        <Grid  Margin="10 0 0 0" Grid.Row="1" Grid.Column="1" Height="190" Width="580">
+            <DataGrid Background="LightSkyBlue" x:Name="dtgKhoa" SelectionChanged="DtgKhoa_SelectionChanged" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Số Thứ Tự" Width="100" Binding="{Binding IDKhoa}" />
+                    <DataGridTextColumn Header="Mã Khóa" Width="150" Binding="{Binding MaKhoa}" />
+                    <DataGridTextColumn Header="Tên Khóa" Width="150" Binding="{Binding TenKhoa}" />
+                    <DataGridTextColumn Header="Ghi Chú" Width="150" Binding="{Binding GhiChu}" />
+                </DataGrid.Columns>
+            </DataGrid>
         </Grid>
         <!--#endregion-->
 
@@ -57,29 +70,27 @@
                 </Grid.RowDefinitions>
 
                 <!--TÊN LOẠI TỐT NGHIỆP-->
-                <TextBox Grid.Column="0" Height="30" Grid.Row="0" Width="165" HorizontalAlignment="Center" Margin="40 0 5 0" materialDesign:HintAssist.Hint="Tên Ngành" materialDesign:TextFieldAssist.DecorationVisibility="Hidden" ></TextBox>
+                <TextBox x:Name="txtTenNganh" Grid.Column="0" Height="30" Grid.Row="0" Width="165" HorizontalAlignment="Center" Margin="40 0 5 0" materialDesign:HintAssist.Hint="Tên Ngành" materialDesign:TextFieldAssist.DecorationVisibility="Hidden" ></TextBox>
                 <materialDesign:PackIcon Margin="-160 10 0 0" HorizontalAlignment="Center" VerticalAlignment="Center" Height="30" Width="30" Kind="School" Grid.Column="0" Grid.Row="0" />
 
                 <!--Ghi Chú-->
-                <TextBox Grid.Column="0" Grid.Row="1" Height="30"  Width="165" HorizontalAlignment="Center" Margin="40 0 5 0" materialDesign:HintAssist.Hint="Ghi Chú" materialDesign:TextFieldAssist.DecorationVisibility="Hidden" ></TextBox>
+                <TextBox x:Name="txtGhiChuNganh" Grid.Column="0" Grid.Row="1" Height="30"  Width="165" HorizontalAlignment="Center" Margin="40 0 5 0" materialDesign:HintAssist.Hint="Ghi Chú" materialDesign:TextFieldAssist.DecorationVisibility="Hidden" ></TextBox>
                 <materialDesign:PackIcon Grid.Column="0" Grid.Row="1" Margin="-160 10 0 0" HorizontalAlignment="Center" VerticalAlignment="Center" Height="30" Width="30" Kind="Note" />
 
                 <!--#region Button THÊM NGÀNH -->
                 <Button Grid.Column="1" Grid.Row="0" Margin="10 10 10 0" Padding="0" FontSize="18" Width="150" Height="25" VerticalAlignment="Center" HorizontalAlignment="Center" materialDesign:ButtonProgressAssist.IsIndicatorVisible="True" materialDesign:ButtonProgressAssist.IsIndeterminate="True"
-                    Content="Thêm Ngành" />
+                    Content="Thêm Ngành" x:Name="btnThemNganh" Click="BtnThemNganh_Click" />
                 <!--#endregion-->
 
-                <!--#region CẬP NHẬT LOẠI TỐT NGHIỆP -->
+                <!--#region CẬP NHẬT NGÀNH -->
                 <Button Grid.Column="1" Grid.Row="1" Padding="0" FontSize="18" Width="150" Height="25" VerticalAlignment="Center" HorizontalAlignment="Center" materialDesign:ButtonProgressAssist.IsIndicatorVisible="True" materialDesign:ButtonProgressAssist.IsIndeterminate="True"
-                    Content="Cập Nhật" />
+                    Content="Cập Nhật" x:Name="btnCapNhatNganh" Click="BtnCapNhatNganh_Click" />
                 <!--#endregion -->
 
                 <!--#region XÓA Ngành -->
                 <Button Grid.Column="4" Grid.Row="3" Padding="0" FontSize="18" Width="150" Height="25" VerticalAlignment="Center" HorizontalAlignment="Center" materialDesign:ButtonProgressAssist.IsIndicatorVisible="True" materialDesign:ButtonProgressAssist.IsIndeterminate="True"
-                    Content="Xóa Ngành" />
+                    Content="Xóa Ngành" x:Name="btnXoaNganh" Click="BtnXoaNganh_Click" />
                 <!--#endregion-->
-
-
 
             </Grid>
         </StackPanel>
@@ -99,30 +110,30 @@
                 </Grid.RowDefinitions>
 
                 <!--Mã KHÓA-->
-                <TextBox Grid.Column="0" Height="30" Grid.Row="0" Width="165" HorizontalAlignment="Center" Margin="40 0 5 0" materialDesign:HintAssist.Hint="Mã Khóa Học" materialDesign:TextFieldAssist.DecorationVisibility="Hidden" ></TextBox>
+                <TextBox x:Name="txtMaKhoa" Grid.Column="0" Height="30" Grid.Row="0" Width="165" HorizontalAlignment="Center" Margin="40 0 5 0" materialDesign:HintAssist.Hint="Mã Khóa Học" materialDesign:TextFieldAssist.DecorationVisibility="Hidden" ></TextBox>
                 <materialDesign:PackIcon Margin="-160 10 0 0" HorizontalAlignment="Center" VerticalAlignment="Center" Height="30" Width="30" Kind="Numbers" Grid.Column="0" Grid.Row="0" />
 
                 <!--Tên Khóa-->
-                <TextBox Grid.Column="0" Height="30" Grid.Row="1" Width="165" HorizontalAlignment="Center" Margin="40 0 5 0" materialDesign:HintAssist.Hint="Tên Khóa Học" materialDesign:TextFieldAssist.DecorationVisibility="Hidden" ></TextBox>
+                <TextBox x:Name="txtTenKhoa" Grid.Column="0" Height="30" Grid.Row="1" Width="165" HorizontalAlignment="Center" Margin="40 0 5 0" materialDesign:HintAssist.Hint="Tên Khóa Học" materialDesign:TextFieldAssist.DecorationVisibility="Hidden" ></TextBox>
                 <materialDesign:PackIcon Margin="-160 10 0 0" HorizontalAlignment="Center" VerticalAlignment="Center" Height="30" Width="30" Kind="Notes" Grid.Column="0" Grid.Row="1" />
 
                 <!--Ghi Chú-->
-                <TextBox Grid.Column="0" Grid.Row="2" Height="30"  Width="165" HorizontalAlignment="Center" Margin="40 0 5 0" materialDesign:HintAssist.Hint="Ghi Chú" materialDesign:TextFieldAssist.DecorationVisibility="Hidden" ></TextBox>
+                <TextBox x:Name="txtGhiChuKhoa" Grid.Column="0" Grid.Row="2" Height="30"  Width="165" HorizontalAlignment="Center" Margin="40 0 5 0" materialDesign:HintAssist.Hint="Ghi Chú" materialDesign:TextFieldAssist.DecorationVisibility="Hidden" ></TextBox>
                 <materialDesign:PackIcon Grid.Column="0" Grid.Row="2" Margin="-160 10 0 0" HorizontalAlignment="Center" VerticalAlignment="Center" Height="30" Width="30" Kind="Note" />
 
                 <!--#region Button THÊM KHÓA -->
                 <Button Grid.Column="1" Grid.Row="0" Margin="10 10 10 0" Padding="0" FontSize="18" Width="150" Height="25" VerticalAlignment="Center" HorizontalAlignment="Center" materialDesign:ButtonProgressAssist.IsIndicatorVisible="True" materialDesign:ButtonProgressAssist.IsIndeterminate="True"
-                    Content="Thêm Khóa Học" />
+                    Content="Thêm Khóa Học" x:Name="btnThemKhoa" Click="BtnThemKhoa_Click" />
                 <!--#endregion-->
 
                 <!--#region CẬP NHẬT KHÓA -->
                 <Button Grid.Column="1" Grid.Row="1" Padding="0" FontSize="18" Width="150" Height="25" VerticalAlignment="Center" HorizontalAlignment="Center" materialDesign:ButtonProgressAssist.IsIndicatorVisible="True" materialDesign:ButtonProgressAssist.IsIndeterminate="True"
-                    Content="Cập Nhật" />
+                    Content="Cập Nhật" x:Name="btnCapNhatKhoa" Click="BtnCapNhatKhoa_Click" />
                 <!--#endregion -->
 
                 <!--#region XÓA KHÓA -->
                 <Button Grid.Column="4" Grid.Row="3" Padding="0" FontSize="18" Width="150" Height="25" VerticalAlignment="Center" HorizontalAlignment="Center" materialDesign:ButtonProgressAssist.IsIndicatorVisible="True" materialDesign:ButtonProgressAssist.IsIndeterminate="True"
-                    Content="Xóa Khóa Học" />
+                    Content="Xóa Khóa Học" x:Name="btnXoaKhoa" Click="BtnXoaKhoa_Click" />
                 <!--#endregion-->
 
             </Grid>

@@ -27,8 +27,7 @@ namespace QuanLySinhVienTotNghiep.View
         public GraduateTypePage()
         {
             InitializeComponent();
-            LoadDataToGraduateDataGrid();
-            LoadDataToTrainingDataGrid();
+            LoadDataToDataGrid();
         }
 
         private void BtnThemLoaiTotNghiep_Click(object sender, RoutedEventArgs e)
@@ -132,6 +131,39 @@ namespace QuanLySinhVienTotNghiep.View
         }
 
 
+        private void BtnThemDiem_Click(object sender, RoutedEventArgs e)
+        {
+            string _tendiem = txtDiemChu.Text;
+            int _iddiemchu = Convert.ToInt32(txtIDiemChu.Text);
+            string _ghichu = txtGhiChuDiem.Text;
+
+            AddMark(_iddiemchu, _tendiem, _ghichu);
+            ClearDataTextbox(txtDiemChu, txtIDiemChu, txtGhiChuDiem);
+
+        }
+
+        private void BtnCapNhatDiem_Click(object sender, RoutedEventArgs e)
+        {
+            int _idDiem = Convert.ToInt32(txtIDiemChu.Text);
+            string _tendiem = txtDiemChu.Text;
+            string _ghichu = txtGhiChuDiem.Text;
+
+            EditMark(_idDiem, _tendiem, _ghichu);
+            ClearDataTextbox(txtIDiemChu, txtDiemChu, txtGhiChuDiem);
+        }
+
+        private void BtnXoaDiem_Click(object sender, RoutedEventArgs e)
+        {
+            int _iddiem = 0;
+
+                if (MessageBox.Show("Are you sure Delete?", "Delete Confirmation", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                {
+                    _iddiem = Convert.ToInt32(txtIDiemChu.Text);
+                    DeleteMark(_iddiem);
+                    ClearDataTextbox(txtDiemChu, txtIDiemChu, txtGhiChuDiem);
+                }
+        }
+
         private void DtgHeDaoTao_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             DataGrid _dataGrid = sender as DataGrid;
@@ -157,6 +189,19 @@ namespace QuanLySinhVienTotNghiep.View
             }
         }
 
+        private void DtgDiem_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            DataGrid _dataGrid = sender as DataGrid;
+            DataRowView _dataRow = _dataGrid.SelectedItem as DataRowView;
+
+            if (_dataGrid != null && _dataRow != null)
+            {
+                txtIDiemChu.Text = _dataRow["IDDiemChu"].ToString();
+                txtDiemChu.Text = _dataRow["TenDiem"].ToString();
+                txtGhiChuDiem.Text = _dataRow["GhiChu"].ToString();
+            }
+        }
+
 
         public void AddGraduateType(string tenloaitotnghiep, string ghichu = null)
         {
@@ -169,7 +214,7 @@ namespace QuanLySinhVienTotNghiep.View
                 MessageBox.Show("Thêm Loại Tốt Nghiệp Không Thành Công\n Vui Lòng Kiểm Tra lại", "Thông Báo");
             }
 
-            LoadDataToGraduateDataGrid();
+            LoadDataToGraduateTypeDataGrid();
         }
 
         public void AddTraining(string tenloaitotnghiep,int thoigiandaotao ,string ghichu=null)
@@ -185,6 +230,20 @@ namespace QuanLySinhVienTotNghiep.View
             LoadDataToTrainingDataGrid();
         }
 
+        public void AddMark(int iddiemchu, string tendiem, string ghichu = null)
+        {
+            if (MarkDAL.Instance.InsertMark(iddiemchu, tendiem, ghichu))
+            {
+                MessageBox.Show("Thêm Thành Công");
+            }
+            else
+            {
+                MessageBox.Show("Thêm Không Thành Công\n Vui Lòng Kiểm Tra lại", "Thông Báo");
+            }
+
+            LoadDataToMarkGrid();
+        }
+
         public void EditGraduateType(int idloaitotnghiep, string tenloaitotnghiep, string ghichu = null)
         {
             if (GraduateTypeDAL.Instance.UpdateGraduateType(idloaitotnghiep,tenloaitotnghiep, ghichu))
@@ -196,7 +255,7 @@ namespace QuanLySinhVienTotNghiep.View
                 MessageBox.Show("Cập Nhật Loại Tốt Nghiệp Không Thành Công\n Vui Lòng Kiểm Tra lại", "Thông Báo");
             }
 
-            LoadDataToGraduateDataGrid();
+            LoadDataToGraduateTypeDataGrid();
         }
 
         public void EditTraining(int idhedaotao, string tenhedaotao, int thoigiandaotao, string ghichu=null)
@@ -213,6 +272,20 @@ namespace QuanLySinhVienTotNghiep.View
             LoadDataToTrainingDataGrid();
         }
 
+        public void EditMark(int iddiemchu, string tendiem, string ghichu = null)
+        {
+            if (MarkDAL.Instance.UpdateMark(iddiemchu, tendiem, ghichu))
+            {
+                MessageBox.Show("Cập Nhật Thành Công");
+            }
+            else
+            {
+                MessageBox.Show("Cập Nhật Không Thành Công\n Vui Lòng Kiểm Tra lại", "Thông Báo");
+            }
+
+            LoadDataToMarkGrid();
+        }
+
         public void DeleteGraduateType(int idloaitotnghiep)
         {
             if (GraduateTypeDAL.Instance.DeleteGraduateType(idloaitotnghiep))
@@ -224,7 +297,7 @@ namespace QuanLySinhVienTotNghiep.View
                 MessageBox.Show("Xóa không thành công do xảy ra lỗi", "Thông Báo");
             }
 
-            LoadDataToGraduateDataGrid();
+            LoadDataToGraduateTypeDataGrid();
         }
 
         public void DeleteTraining(int idhedaotao)
@@ -241,6 +314,20 @@ namespace QuanLySinhVienTotNghiep.View
             LoadDataToTrainingDataGrid();
         }
 
+        public void DeleteMark(int iddiemchu)
+        {
+            if (MarkDAL.Instance.DeleteMark(iddiemchu))
+            {
+                MessageBox.Show("Xóa Thành Công", "Thông Báo");
+            }
+            else
+            {
+                MessageBox.Show("Xóa không thành công do xảy ra lỗi", "Thông Báo");
+            }
+
+            LoadDataToMarkGrid();
+        }
+
         public void ClearDataTextbox(params TextBox[] array)
         {
             foreach (TextBox item in array)
@@ -249,7 +336,7 @@ namespace QuanLySinhVienTotNghiep.View
             }
         }
 
-        public void LoadDataToGraduateDataGrid()
+        public void LoadDataToGraduateTypeDataGrid()
         {
             dtgGraduateType.ItemsSource = GraduateTypeDAL.Instance.GetListGraduateType().DefaultView;
         }
@@ -257,6 +344,11 @@ namespace QuanLySinhVienTotNghiep.View
         public void LoadDataToTrainingDataGrid()
         {
             dtgHeDaoTao.ItemsSource = TrainingDAL.Instance.GetListTraining().DefaultView;
+        }
+
+        public void LoadDataToMarkGrid()
+        {
+            dtgDiem.ItemsSource = MarkDAL.Instance.GetListMark().DefaultView;
         }
 
         public bool CheckDataInput(string tenloaitotnghiep)
@@ -277,5 +369,13 @@ namespace QuanLySinhVienTotNghiep.View
 
         }
 
+        public void LoadDataToDataGrid()
+        {
+            LoadDataToGraduateTypeDataGrid();
+            LoadDataToTrainingDataGrid();
+            LoadDataToMarkGrid();
+        }
+
+        
     }
 }

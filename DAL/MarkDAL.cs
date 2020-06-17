@@ -28,7 +28,7 @@ namespace DAL
 
         private MarkDAL() { }
 
-        public DataTable GetListGraduateType()
+        public DataTable GetListMark()
         {
             return DataProvider.Instance.ExcuteQuery(" SELECT * FROM dbo.DiemChu ");
         }
@@ -49,7 +49,7 @@ namespace DAL
 
         }
 
-        public bool DeleteGraduateType(int iddiemchu)
+        public bool DeleteMark(int iddiemchu)
         {
             string _query = string.Format(" DELETE dbo.DiemChu WHERE IDDiemChu= {0} ", iddiemchu);
             int _result = DataProvider.Instance.ExcuteNonQuery(_query);

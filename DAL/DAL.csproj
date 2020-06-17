@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccountDAL.cs" />
+    <Compile Include="CourseDAL.cs" />
     <Compile Include="DataProvider.cs" />
     <Compile Include="FamilyDAL.cs" />
     <Compile Include="GraduateDAL.cs" />
@@ -49,6 +50,7 @@
     <Compile Include="ManagerDAL.cs" />
     <Compile Include="MarkDAL.cs" />
     <Compile Include="PasswordDAL.cs" />
+    <Compile Include="ProfessionDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StudentDAL.cs" />
     <Compile Include="TrainingDAL.cs" />
