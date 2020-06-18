@@ -34,14 +34,12 @@ namespace DAL
             return DataProvider.Instance.ExcuteQuery(" EXECUTE dbo.pro_GetListClass ");
         }
 
-
-
-        //public bool InsertAccount(string tentaikhoan, string matkhau, string email, int sodienthoai, int idloaitaikhoan, string ghichu = null)
-        //{
-        //    string _query = string.Format("INSERT INTO dbo.TaiKhoan (TenTaiKhoan,MatKhau,Email,SoDienThoai,GhiChu,IDLoaiTaiKhoan) VALUES (N'{0}',N'{1}',N'{2}',{3}, N'{4}',{5})", tentaikhoan, matkhau, email, sodienthoai, ghichu, idloaitaikhoan);
-        //    int _result = DataProvider.Instance.ExcuteNonQuery(_query);
-        //    return _result > 0;
-        //}
+        public bool InsertClass(string malop, string tenlop, int soluongsinhvien, string covan, int idkhoa, string ghichu = null)
+        {
+            string _query = string.Format(" INSERT INTO dbo.Lop ( MaLop ,TenLop , SoLuongSinhVien, CoVan , IDKhoa, GhiChu) VALUES (N'{0}', N'{1}', {2}, N'{3}', {4} , N'{5}') ",malop,tenlop,soluongsinhvien,covan,idkhoa,ghichu);
+            int _result = DataProvider.Instance.ExcuteNonQuery(_query);
+            return _result > 0;
+        }
 
         //public bool UpdateAccount(string tentaikhoan, string email, int sodienthoai, int idloaitaikhoan, string ghichu = null)
         //{

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -59,7 +60,59 @@ namespace QuanLySinhVienTotNghiep.View
 
         private void BtnThemLop_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show(cbbKhoa.SelectedIndex.ToString());
+            string _malop = txtMaLop.Text;
+            string _tenlop = txtTenLop.Text;
+            int _soluongsinhvien = Convert.ToInt32(txtSoLuongSinhVien.Text);
+            string _covan = txtCoVan.Text;
+            int _idkhoa = cbbKhoa.SelectedIndex + 1;
+            string _ghichu = txtGhiChu.Text;
+
+            if (CheckDataInput(_tenlop,_covan,_soluongsinhvien))
+            {
+                AddClass(_malop,_tenlop,_soluongsinhvien,_covan,_idkhoa, _ghichu);
+            }
         }
+
+        public void AddClass(string malop, string tenlop, int soluongsinhvien, string covan, int idkhoa, string ghichu = null)
+        {
+            if (ClassDAL.Instance.InsertClass(malop,tenlop,soluongsinhvien,covan,idkhoa,ghichu))
+            {
+                MessageBox.Show("Thêm Thành Công");
+            }
+            else
+            {
+                MessageBox.Show("Thêm Không Thành Công\n Vui Lòng Kiểm Tra lại", "Thông Báo");
+            }
+
+            LoadDataToGrid();
+        }
+
+        public bool CheckDataInput(string tenlop, string covan, int soluongsinhvien)
+        {
+            string _patternChar = @"^[a-zA-Z_ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶ" + "ẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợ" + "ụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\\s]+$";
+
+            Regex _regexChar = new Regex(_patternChar);
+
+            if (_regexChar.IsMatch(tenlop) && _regexChar.IsMatch(covan))
+            {
+                if(soluongsinhvien >= 5 && soluongsinhvien <= 300)
+                {
+                    return true;
+                }
+                else
+                {
+                    MessageBox.Show(" Số lượng sinh viên của lớp phải từ 5 đến 300 ");
+                    return false;
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("Dữ Liệu Nhập vào không đúng định dạng");
+                return false;
+            }
+
+        }
+
     }
 }
