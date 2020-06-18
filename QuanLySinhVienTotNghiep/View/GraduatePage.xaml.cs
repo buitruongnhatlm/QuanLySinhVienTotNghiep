@@ -25,7 +25,24 @@ namespace QuanLySinhVienTotNghiep.View
             InitializeComponent();
         }
 
+
+
         private void DtgGraduate_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void BtnThemLop_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnCapNhat_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnXoa_Click(object sender, RoutedEventArgs e)
         {
 
         }
