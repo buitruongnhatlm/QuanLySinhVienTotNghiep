@@ -33,6 +33,23 @@ namespace DAL
             return DataProvider.Instance.ExcuteQuery(" EXECUTE dbo.pro_GetListCourse ");
         }
 
+        public List<CourseDTO> GetListCourseToCombobox()
+        {
+            List<CourseDTO> _List = new List<CourseDTO>();
+
+            string _Query = "SELECT * FROM dbo.Khoa";
+
+            DataTable _Table = DataProvider.Instance.ExcuteQuery(_Query);
+
+            foreach (DataRow item in _Table.Rows)
+            {
+                CourseDTO _course = new CourseDTO(item);
+                _List.Add(_course);
+            }
+
+            return _List;
+        }
+
         public bool InsertCourse(int makhoa, string tenkhoa, string ghichu = null)
         {
             string _query = string.Format(" INSERT INTO dbo.Khoa ( MaKhoa, TenKhoa, GhiChu ) VALUES ( {0}, N'{1}', N'{2}' ) ",makhoa,tenkhoa,ghichu);

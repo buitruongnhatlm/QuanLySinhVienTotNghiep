@@ -52,7 +52,7 @@
 
         <!--#region KHUNG DƯỚI-->
         <Grid Grid.Row="1" Height="320" Width="1180">
-            <DataGrid SelectionChanged="DtgAccount_SelectionChanged" x:Name="dtgAccount" Background="Pink" AutoGenerateColumns="False" >
+            <DataGrid SelectionChanged="DtgAccount_SelectionChanged" x:Name="dtgAccount" Background="LightSkyBlue" AutoGenerateColumns="False" >
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Số Thứ Tự" Width="100" Binding="{Binding IDTaikhoan}" />
                     <DataGridTextColumn  Header="Tên Tài Khoản" Width="200" Binding="{Binding TenTaiKhoan}" />

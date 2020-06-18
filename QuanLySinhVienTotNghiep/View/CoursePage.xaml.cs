@@ -29,26 +29,16 @@ namespace QuanLySinhVienTotNghiep.View
             LoadDataToGrid();
         }
 
-
-
         private void DtgNganh_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+                DataGrid _dataGrid = sender as DataGrid;
+                DataRowView _dataRow = _dataGrid.SelectedItem as DataRowView;
 
-        }
-
-        private void BtnThemNganh_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void BtnCapNhatNganh_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void BtnXoaNganh_Click(object sender, RoutedEventArgs e)
-        {
-
+                if (_dataGrid != null && _dataRow != null)
+                {
+                    txtTenNganh.Text = _dataRow["TenNganh"].ToString();
+                    txtGhiChuNganh.Text = _dataRow["GhiChu"].ToString();
+                }
         }
 
         private void DtgKhoa_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -63,6 +53,49 @@ namespace QuanLySinhVienTotNghiep.View
                 txtGhiChuKhoa.Text = _dataRow["GhiChu"].ToString();
             }
         }
+
+        private void BtnThemNganh_Click(object sender, RoutedEventArgs e)
+        {
+            string _tennganh = txtTenNganh.Text;
+            string _ghichu = txtGhiChuNganh.Text;
+
+            AddProfession(_tennganh, _ghichu);
+            ClearDataTextbox(txtTenNganh,txtGhiChuNganh);
+        }
+
+        private void BtnCapNhatNganh_Click(object sender, RoutedEventArgs e)
+        {
+            int _idnganh = 0;
+            DataRowView _rowCurrent = dtgNganh.SelectedItem as DataRowView;
+
+            if (_rowCurrent != null)
+            {
+                _idnganh = Convert.ToInt32(_rowCurrent["IDNganh"].ToString());
+            }
+
+            string _tennganh = txtTenNganh.Text;
+            string _ghichu = txtGhiChuNganh.Text;
+
+            EditProfession(_idnganh, _tennganh, _ghichu);
+            ClearDataTextbox(txtTenNganh, txtGhiChuNganh);
+        }
+
+        private void BtnXoaNganh_Click(object sender, RoutedEventArgs e)
+        {
+            int _idnganh = 0;
+            DataRowView _rowCurrent = dtgNganh.SelectedItem as DataRowView;
+
+            if (_rowCurrent != null)
+            {
+                if (MessageBox.Show("Are you sure Delete?", "Delete Confirmation", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                {
+                    _idnganh = Convert.ToInt32(_rowCurrent["IDNganh"]);
+                    DeleteProfession(_idnganh);
+                    ClearDataTextbox(txtTenNganh, txtGhiChuNganh);
+                }
+            }
+        }
+
 
         private void BtnThemKhoa_Click(object sender, RoutedEventArgs e)
         {
@@ -114,9 +147,15 @@ namespace QuanLySinhVienTotNghiep.View
             dtgKhoa.ItemsSource = CourseDAL.Instance.GetListCourse().DefaultView;
         }
 
+        public void LoadDataToProfessionGrid()
+        {
+            dtgNganh.ItemsSource = ProfessionDAL.Instance.GetListProfession().DefaultView;
+        }
+
         public void LoadDataToGrid()
         {
             LoadDataToCourseGrid();
+            LoadDataToProfessionGrid();
         }
 
         public void ClearDataTextbox(params TextBox[] array)
@@ -167,6 +206,48 @@ namespace QuanLySinhVienTotNghiep.View
             }
 
             LoadDataToCourseGrid();
+        }
+
+        public void AddProfession(string tennganh, string ghichu = null)
+        {
+            if (ProfessionDAL.Instance.InsertProfession(tennganh, ghichu))
+            {
+                MessageBox.Show("Thêm Thành Công");
+            }
+            else
+            {
+                MessageBox.Show("Thêm Không Thành Công\n Vui Lòng Kiểm Tra lại", "Thông Báo");
+            }
+
+            LoadDataToProfessionGrid();
+        }
+
+        public void EditProfession(int idnganh, string tennganh, string ghichu = null)
+        {
+            if (ProfessionDAL.Instance.UpdateProfession(idnganh, tennganh, ghichu))
+            {
+                MessageBox.Show("Cập Nhật Thành Công");
+            }
+            else
+            {
+                MessageBox.Show("Cập Nhật Không Thành Công\n Vui Lòng Kiểm Tra lại", "Thông Báo");
+            }
+
+            LoadDataToProfessionGrid();
+        }
+
+        public void DeleteProfession(int idnganh)
+        {
+            if (ProfessionDAL.Instance.DeleteProfession(idnganh))
+            {
+                MessageBox.Show("Xóa Thành Công", "Thông Báo");
+            }
+            else
+            {
+                MessageBox.Show("Xóa không thành công do xảy ra lỗi", "Thông Báo");
+            }
+
+            LoadDataToProfessionGrid();
         }
 
     }
