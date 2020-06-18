@@ -85,6 +85,37 @@ namespace QuanLySinhVienTotNghiep.View
             }
 
             LoadDataToGrid();
+            ClearDataTextbox(txtMaLop,txtTenLop,txtSoLuongSinhVien,txtCoVan,txtGhiChu);
+        }
+
+        public void EditClass(int idlop, string malop, string tenlop, int soluongsinhvien, string covan, int idkhoa, string ghichu = null)
+        {
+            if (ClassDAL.Instance.UpdateClass(idlop, malop, tenlop, soluongsinhvien, covan, idkhoa, ghichu))
+            {
+                MessageBox.Show("Cập nhật Thành Công");
+            }
+            else
+            {
+                MessageBox.Show("Cập nhật Không Thành Công\n Vui Lòng Kiểm Tra lại", "Thông Báo");
+            }
+
+            LoadDataToGrid();
+            ClearDataTextbox(txtMaLop, txtTenLop, txtSoLuongSinhVien, txtCoVan, txtGhiChu);
+        }
+
+        public void DeleteClass(int idlop)
+        {
+            if (ClassDAL.Instance.DeleteClass(idlop))
+            {
+                MessageBox.Show("Xóa Thành Công");
+            }
+            else
+            {
+                MessageBox.Show("Xóa Không Thành Công\n Vui Lòng Kiểm Tra lại", "Thông Báo");
+            }
+
+            LoadDataToGrid();
+            ClearDataTextbox(txtMaLop, txtTenLop, txtSoLuongSinhVien, txtCoVan, txtGhiChu);
         }
 
         public bool CheckDataInput(string tenlop, string covan, int soluongsinhvien)
@@ -112,6 +143,79 @@ namespace QuanLySinhVienTotNghiep.View
                 return false;
             }
 
+        }
+
+        private void BtnCapNhat_Click(object sender, RoutedEventArgs e)
+        {
+            int _idlop = 0;
+            DataRowView _rowCurrent = dtgLop.SelectedItem as DataRowView;
+            if (_rowCurrent != null)
+            {
+                _idlop = Convert.ToInt32(_rowCurrent["IDLop"].ToString());
+            }
+
+            string _malop = txtMaLop.Text;
+            string _tenlop = txtTenLop.Text;
+            int _soluongsinhvien = Convert.ToInt32(txtSoLuongSinhVien.Text);
+            string _covan = txtCoVan.Text;
+            string _ghichu = txtGhiChu.Text;
+            int _idkhoa = cbbKhoa.SelectedIndex + 1;
+
+            if (CheckDataInput(_tenlop,_covan,_soluongsinhvien))
+            {
+                EditClass(_idlop,_malop,_tenlop,_soluongsinhvien,_covan,_idkhoa,_ghichu);
+            }
+        }
+
+        private void BtnXoa_Click(object sender, RoutedEventArgs e)
+        {
+            int _idlop = 0;
+            DataRowView _rowCurrent = dtgLop.SelectedItem as DataRowView;
+            if (_rowCurrent != null)
+            {
+                if (MessageBox.Show("Are you sure Delete?", "Delete Confirmation", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                {
+                    _idlop = Convert.ToInt32(_rowCurrent["IDLop"].ToString());
+                    DeleteClass(_idlop);
+                }
+            }
+        }
+
+        public void ClearDataTextbox(params TextBox[] array)
+        {
+            foreach (TextBox item in array)
+            {
+                item.Text = "";
+            }
+        }
+
+        private void BtnSearch_Click(object sender, RoutedEventArgs e)
+        {
+            string type = "";
+            if (cbbLoaiTimKiem.SelectedIndex == 0)
+            {
+                type = "MaLop";
+            }
+            else if (cbbLoaiTimKiem.SelectedIndex == 1)
+            {
+                type = "TenLop";
+            }
+            else if (cbbLoaiTimKiem.SelectedIndex == 2)
+            {
+                type = "CoVan";
+            }
+            else if (cbbLoaiTimKiem.SelectedIndex == 3)
+            {
+                type = "GhiChu";
+            }
+
+            dtgLop.ItemsSource = SearchClass(type, txtSearch.Text);
+        }
+
+        public List<ClassDTO> SearchClass(string type, string content)
+        {
+            List<ClassDTO> _list = ClassDAL.Instance.SearchClass(type, content);
+            return _list;
         }
 
     }

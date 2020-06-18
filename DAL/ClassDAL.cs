@@ -41,52 +41,49 @@ namespace DAL
             return _result > 0;
         }
 
-        //public bool UpdateAccount(string tentaikhoan, string email, int sodienthoai, int idloaitaikhoan, string ghichu = null)
-        //{
-        //    string _query = string.Format("UPDATE dbo.TaiKhoan SET Email=N'{0}', SoDienThoai={1} , GhiChu=N'{2}' , IDLoaiTaiKhoan={3} WHERE TenTaiKhoan = N'{4}' ", email, sodienthoai, ghichu, idloaitaikhoan, tentaikhoan);
-        //    int _result = DataProvider.Instance.ExcuteNonQuery(_query);
-        //    return _result > 0;
-        //}
+        public bool UpdateClass(int idlop, string malop, string tenlop, int soluongsinhvien, string covan, int idkhoa, string ghichu = null)
+        {
+            string _query = string.Format(" UPDATE dbo.Lop SET MaLop= '{0}' , TenLop = N'{1}', SoLuongSinhVien={2} , CoVan=N'{3}', GhiChu=N'{4}', IDKhoa={5} WHERE IDLop = {6} ",malop,tenlop,soluongsinhvien,covan,ghichu,idkhoa,idlop);
+            int _result = DataProvider.Instance.ExcuteNonQuery(_query);
+            return _result > 0;
+        }
 
-        //public bool DeleteAccount(string tentaikhoan)
-        //{
-        //    string _query = string.Format("DELETE dbo.TaiKhoan WHERE TenTaiKhoan=N'{0}' ", tentaikhoan);
-        //    int _result = DataProvider.Instance.ExcuteNonQuery(_query);
-        //    return _result > 0;
-        //}
+        public bool DeleteClass(int idlop)
+        {
+            string _query = string.Format(" DELETE dbo.Lop WHERE IDLop = {0} ", idlop);
+            int _result = DataProvider.Instance.ExcuteNonQuery(_query);
+            return _result > 0;
+        }
 
-        //public List<AccountDTO> SearchAccount(string type, string content)
-        //{
-        //    List<AccountDTO> _list = new List<AccountDTO>();
-        //    string _query = "";
+        public List<ClassDTO> SearchClass(string type, string content)
+        {
+            List<ClassDTO> _list = new List<ClassDTO>();
+            string _query = "";
 
-        //    if (type.Equals("TenTaiKhoan"))
-        //    {
-        //        _query = string.Format(" EXECUTE dbo.pro_SearchAccount @type ='TenTaiKhoan' , @content = '{0}' ", content);
-        //    }
-        //    else if (type.Equals("SoDienThoai"))
-        //    {
+            if (type.Equals("MaLop"))
+            {
+                _query = string.Format(" EXECUTE dbo.pro_SearchClass @type = 'MaLop',  @content = N'{0}' ",content);
+            }
+            else if (type.Equals("TenLop"))
+            {
+                _query = string.Format(" EXECUTE dbo.pro_SearchClass @type = 'TenLop',  @content = N'{0}' ", content);
+            }
+            else if (type.Equals("CoVan"))
+            {
+                _query = string.Format(" EXECUTE dbo.pro_SearchClass @type = 'CoVan', @content = N'{0}' ", content);
+            }
+            else if (type.Equals("GhiChu"))
+            {
+                _query = string.Format(" EXECUTE dbo.pro_SearchClass @type = 'GhiChu', @content = N'{0}' ", content);
+            }
 
-        //        _query = string.Format(" EXECUTE dbo.pro_SearchAccount @type ='SoDienThoai' , @content = '{0}' ", content);
-        //    }
-        //    else if (type.Equals("Email"))
-        //    {
-
-        //        _query = string.Format(" EXECUTE dbo.pro_SearchAccount @type ='Email' , @content = '{0}' ", content);
-        //    }
-        //    else if (type.Equals("GhiChu"))
-        //    {
-
-        //        _query = string.Format(" EXECUTE dbo.pro_SearchAccount @type ='GhiChu' , @content = '{0}' ", content);
-        //    }
-
-        //    DataTable _table = DataProvider.Instance.ExcuteQuery(_query);
-        //    foreach (DataRow row in _table.Rows)
-        //    {
-        //        AccountDTO _accountDTO = new AccountDTO(row);
-        //        _list.Add(_accountDTO);
-        //    }
-        //    return _list;
-        //}
+            DataTable _table = DataProvider.Instance.ExcuteQuery(_query);
+            foreach (DataRow row in _table.Rows)
+            {
+                ClassDTO _class = new ClassDTO(row);
+                _list.Add(_class);
+            }
+            return _list;
+        }
     }
 }

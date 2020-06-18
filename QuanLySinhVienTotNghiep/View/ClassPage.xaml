@@ -32,13 +32,19 @@
                         <Button Style="{DynamicResource MaterialDesignToolButton}">
                             <materialDesign:PackIcon Kind="Search" Opacity="50" />
                         </Button>
-                        <TextBox Grid.Column="1" Margin="10 0 0 0" materialDesign:HintAssist.Hint="Nhập thông tin cần tìm kiếm" materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                        <TextBox x:Name="txtSearch" Grid.Column="1" Margin="10 0 0 0" materialDesign:HintAssist.Hint="Nhập thông tin cần tìm kiếm" materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
                              BorderThickness="0" VerticalAlignment="Center" />
                     </Grid>
                 </materialDesign:ColorZone>
-                <Button Margin="10 -5 0 0">
+                <Button Margin="10 -5 0 0" x:Name="btnSearch" Click="BtnSearch_Click" >
                     <materialDesign:PackIcon Kind="Send" />
                 </Button>
+                <ComboBox x:Name="cbbLoaiTimKiem" IsEditable="False" Grid.Column="0" Height="30" Grid.Row="3" Width="150" HorizontalAlignment="Left" Margin="20 0 0 10" materialDesign:HintAssist.Hint="Tìm Kiếm Theo" materialDesign:HintAssist.HintOpacity=".25">
+                    <ComboBoxItem Content="Mã Lớp" Selector.IsSelected="True"/>
+                    <ComboBoxItem Content="Tên Lớp"/>
+                    <ComboBoxItem Content="Cố Vấn"/>
+                    <ComboBoxItem Content="Ghi Chú"/>
+                </ComboBox>
             </StackPanel>
         </materialDesign:ColorZone>
         <!--#endregion-->
@@ -107,12 +113,12 @@
 
                 <!--#region CẬP NHẬT -->
                 <Button Grid.Column="3" Grid.Row="1" Margin="10 10 10 0" Padding="0" FontSize="18" Width="150" Height="25" VerticalAlignment="Center" HorizontalAlignment="Left" materialDesign:ButtonProgressAssist.IsIndicatorVisible="True" materialDesign:ButtonProgressAssist.IsIndeterminate="True"
-                    Content="Cập Nhật" />
+                    Content="Cập Nhật" x:Name="btnCapNhat" Click="BtnCapNhat_Click" />
                 <!--#endregion -->
 
                 <!--#region XÓA Lớp -->
                 <Button Grid.Column="4" Grid.Row="1" Margin="10 10 10 0" Padding="0" FontSize="18" Width="150" Height="25" VerticalAlignment="Center" HorizontalAlignment="Left" materialDesign:ButtonProgressAssist.IsIndicatorVisible="True" materialDesign:ButtonProgressAssist.IsIndeterminate="True"
-                    Content="Xóa Lớp" />
+                    Content="Xóa Lớp" x:Name="btnXoa" Click="BtnXoa_Click" />
                 <!--#endregion-->
 
             </Grid>
