@@ -33,6 +33,23 @@ namespace DAL
             return DataProvider.Instance.ExcuteQuery(" SELECT * FROM dbo.DiemChu ");
         }
 
+        public List<MarkDTO> GetListMarkToCombobox()
+        {
+            List<MarkDTO> _List = new List<MarkDTO>();
+
+            string _Query = "SELECT * FROM dbo.DiemChu";
+
+            DataTable _Table = DataProvider.Instance.ExcuteQuery(_Query);
+
+            foreach (DataRow item in _Table.Rows)
+            {
+                MarkDTO _mark = new MarkDTO(item);
+                _List.Add(_mark);
+            }
+
+            return _List;
+        }
+
         public bool InsertMark(int iddiemchu, string tendiem, string ghichu = null)
         {
             string _query = string.Format(" INSERT INTO dbo.DiemChu ( IDDiemChu, TenDiem, GhiChu ) VALUES  ( {0}, N'{1}', N'{2}' ) ",iddiemchu,tendiem,ghichu);

@@ -61,15 +61,15 @@
                     <DataGridTextColumn Header="Họ Tên" Width="150" Binding="{Binding HoTen}" />
                     <DataGridTextColumn Header="Mã Số Sinh Viên" Width="125" Binding="{Binding MaSoSinhVien}" />
                     <DataGridTextColumn Header="Giới Tính" Width="100" Binding="{Binding GioiTinh}" />
-                    <DataGridTextColumn Header="Ngày Sinh" Width="90" Binding="{Binding NgaySinh}" />
+                    <DataGridTextColumn Header="Ngày Sinh" Width="120" Binding="{Binding NgaySinh , StringFormat='dd/MM/yyyy' }" />
                     <DataGridTextColumn Header="Nơi Sinh" Width="100" Binding="{Binding NoiSinh}" />
                     <DataGridTextColumn Header="Địa Chỉ" Width="100" Binding="{Binding DiaChiThuongTru}" />
                     <DataGridTextColumn Header="Dân Tộc" Width="100" Binding="{Binding DanToc}" />
                     <DataGridTextColumn Header="Tôn Giáo" Width="100" Binding="{Binding TonGiao}" />
                     <DataGridTextColumn Header="CMND" Width="100" Binding="{Binding ChungMinhNhanDan}" />
-                    <DataGridTextColumn Header="Ngày Cấp" Width="90" Binding="{Binding NgayCap}" />
-                    <DataGridTextColumn Header="Đoàn Viên" Width="90" Binding="{Binding NgayVaoDoan}" />
-                    <DataGridTextColumn Header="Đảng Viên" Width="90" Binding="{Binding NgayVaoDang}" />
+                    <DataGridTextColumn Header="Ngày Cấp" Width="120" Binding="{Binding NgayCap , StringFormat='dd/MM/yyyy' }" />
+                    <DataGridTextColumn Header="Đoàn Viên" Width="120" Binding="{Binding NgayVaoDoan , StringFormat='dd/MM/yyyy' }" />
+                    <DataGridTextColumn Header="Đảng Viên" Width="120" Binding="{Binding NgayVaoDang , StringFormat='dd/MM/yyyy' }" />
                     <DataGridTextColumn Header="Điện Thoại" Width="100" Binding="{Binding DienThoai}" />
                     <DataGridTextColumn Header="Email" Width="300" Binding="{Binding Email}" />
                     <DataGridTextColumn Header="Ghi Chú" Width="200" Binding="{Binding GhiChu}" />

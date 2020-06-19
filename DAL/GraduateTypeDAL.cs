@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DTO;
 
 namespace DAL
 {
@@ -30,6 +31,23 @@ namespace DAL
         public DataTable GetListGraduateType()
         {
             return DataProvider.Instance.ExcuteQuery("EXECUTE dbo.pro_GetListGraduateType");
+        }
+
+        public List<GraduateTypeDTO> GetListGraduateTypeToCombobox()
+        {
+            List<GraduateTypeDTO> _List = new List<GraduateTypeDTO>();
+
+            string _Query = "SELECT * FROM dbo.LoaiTotNghiep";
+
+            DataTable _Table = DataProvider.Instance.ExcuteQuery(_Query);
+
+            foreach (DataRow item in _Table.Rows)
+            {
+                GraduateTypeDTO _graduate = new GraduateTypeDTO(item);
+                _List.Add(_graduate);
+            }
+
+            return _List;
         }
 
         public bool InsertGraduateType(string tenloaitotnghiep,string ghichu = null)

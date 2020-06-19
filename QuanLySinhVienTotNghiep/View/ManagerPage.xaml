@@ -56,9 +56,9 @@
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Số Thứ Tự" Width="100" Binding="{Binding IDQuanLyVien}" />
                     <DataGridTextColumn Header="Họ Tên" Width="250" Binding="{Binding HoTen}" />
-                    <DataGridTextColumn Header="Ngày Sinh" Width="145" Binding="{Binding NgaySinh}" />
+                    <DataGridTextColumn Header="Ngày Sinh" Width="145" Binding="{Binding NgaySinh , StringFormat='dd/MM/yyyy' }" />
                     <DataGridTextColumn Header="Giới Tính" Width="100" Binding="{Binding GioiTinh}" />
-                    <DataGridTextColumn Header="Chứng Minh Nhân Dân" Width="150" Binding="{Binding ChungMinhNhanDan}" />
+                    <DataGridTextColumn Header="Chứng Minh Nhân Dân" Width="160" Binding="{Binding ChungMinhNhanDan}" />
                     <DataGridTextColumn Header="Nơi Sinh" Width="200" Binding="{Binding NoiSinh}" />
                     <DataGridTextColumn Header="Địa Chỉ Thường Trú" Width="250" Binding="{Binding DiaChiThuongTru}" />
                     <DataGridTextColumn Header="Học Hàm" Width="150" Binding="{Binding HocHam}" />

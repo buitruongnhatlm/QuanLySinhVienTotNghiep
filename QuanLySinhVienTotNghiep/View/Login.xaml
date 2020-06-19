@@ -80,7 +80,7 @@
             </Button>
         </Grid>
 
-        <Button x:Name="btnDangNhap" Click="btnDangNhap_Click" Content="Đăng Nhập" Width="150" Height="30" VerticalAlignment="Bottom" Margin="100,0,100,60"></Button>
+        <Button x:Name="btnDangNhap" Click="btnDangNhap_Click" IsDefault="True" Content="Đăng Nhập" Width="150" Height="30" VerticalAlignment="Bottom" Margin="100,0,100,60"></Button>
         <Button x:Name="btnQuenMatKhau" Click="BtnQuenMatKhau_Click" Foreground="White" FontStretch="UltraCondensed" FontSize="15" Width="150" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="80,0,80,20" Grid.RowSpan="2">
             <TextBlock TextDecorations="Underline">Quên mật khẩu</TextBlock>
         </Button>

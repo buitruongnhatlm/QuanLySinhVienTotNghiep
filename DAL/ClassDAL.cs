@@ -34,6 +34,23 @@ namespace DAL
             return DataProvider.Instance.ExcuteQuery(" EXECUTE dbo.pro_GetListClass ");
         }
 
+        public List<ClassDTO> GetListClassToCombobox()
+        {
+            List<ClassDTO> _List = new List<ClassDTO>();
+
+            string _Query = "SELECT * FROM dbo.Lop";
+
+            DataTable _Table = DataProvider.Instance.ExcuteQuery(_Query);
+
+            foreach (DataRow item in _Table.Rows)
+            {
+                ClassDTO _class = new ClassDTO(item);
+                _List.Add(_class);
+            }
+
+            return _List;
+        }
+
         public bool InsertClass(string malop, string tenlop, int soluongsinhvien, string covan, int idkhoa, string ghichu = null)
         {
             string _query = string.Format(" INSERT INTO dbo.Lop ( MaLop ,TenLop , SoLuongSinhVien, CoVan , IDKhoa, GhiChu) VALUES (N'{0}', N'{1}', {2}, N'{3}', {4} , N'{5}') ",malop,tenlop,soluongsinhvien,covan,idkhoa,ghichu);

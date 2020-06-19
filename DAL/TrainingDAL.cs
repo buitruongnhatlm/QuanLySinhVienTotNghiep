@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DAL;
+using DTO;
 
 namespace DAL
 {
@@ -31,6 +32,23 @@ namespace DAL
         public DataTable GetListTraining()
         {
             return DataProvider.Instance.ExcuteQuery("EXECUTE dbo.pro_GetListTraining");
+        }
+
+        public List<TrainingDTO> GetListTrainingToCombobox()
+        {
+            List<TrainingDTO> _List = new List<TrainingDTO>();
+
+            string _Query = "SELECT * FROM dbo.HeDaoTao";
+
+            DataTable _Table = DataProvider.Instance.ExcuteQuery(_Query);
+
+            foreach (DataRow item in _Table.Rows)
+            {
+                TrainingDTO _training = new TrainingDTO(item);
+                _List.Add(_training);
+            }
+
+            return _List;
         }
 
         public bool InsertTraining(string TenHeDaoTao,int Thoigiandaotao, string ghichu = null)

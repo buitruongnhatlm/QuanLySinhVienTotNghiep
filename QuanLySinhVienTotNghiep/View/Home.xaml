@@ -59,10 +59,6 @@
                 <!--Popup Góc phải Trên-->
                 <materialDesign:PopupBox Height="60" PlacementMode="BottomAndAlignRightEdges" HorizontalAlignment="Right" Margin="0,25,10,0" StaysOpen="False" >
                     <StackPanel Background="{StaticResource PrimaryHueMidBrush}" Width="200">
-                        <Button Content="Cài Đặt" FontWeight="Bold" Foreground="White" />
-                        <Button Content="Báo Lỗi" FontWeight="Bold" Foreground="White" />
-                        <Button Content="Thông Tin Phần Mềm" FontWeight="Bold" Foreground="White" />
-                        <Separator />
                         <Button Content="Đăng Xuất" x:Name="ButtonPopupLogout" Click="ButtonPopupLogout_Click" FontWeight="Bold" Foreground="White" />
                     </StackPanel>
                 </materialDesign:PopupBox>

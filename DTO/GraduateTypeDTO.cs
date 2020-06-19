@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DTO
 {
-    class GraduateTypeDTO
+    public class GraduateTypeDTO
     {
         private string _TenLoaiTotNghiep;
         private string _GhiChu;

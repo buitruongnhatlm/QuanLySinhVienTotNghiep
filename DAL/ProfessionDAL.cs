@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DTO;
 
 namespace DAL
 {
@@ -30,6 +31,23 @@ namespace DAL
         public DataTable GetListProfession()
         {
             return DataProvider.Instance.ExcuteQuery(" EXECUTE dbo.pro_GetListProfession ");
+        }
+
+        public List<ProfessionDTO> GetListProfessionToCombobox()
+        {
+            List<ProfessionDTO> _List = new List<ProfessionDTO>();
+
+            string _Query = "SELECT * FROM dbo.Nganh";
+
+            DataTable _Table = DataProvider.Instance.ExcuteQuery(_Query);
+
+            foreach (DataRow item in _Table.Rows)
+            {
+                ProfessionDTO _profession = new ProfessionDTO(item);
+                _List.Add(_profession);
+            }
+
+            return _List;
         }
 
         public bool InsertProfession(string tennganh, string ghichu = null)

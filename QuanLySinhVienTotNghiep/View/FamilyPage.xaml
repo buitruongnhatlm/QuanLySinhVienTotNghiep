@@ -53,14 +53,14 @@
 
         <!--#region DATA GRID -->
         <Grid Grid.Row="1" Height="230" Width="1180">
-            <DataGrid Background="DeepSkyBlue" x:Name="dtgFamily" CanUserAddRows="False" CanUserDeleteRows="False" SelectionChanged="DtgFamily_SelectionChanged" AutoGenerateColumns="False" >
+            <DataGrid Background="LightSkyBlue" x:Name="dtgFamily" CanUserAddRows="False" CanUserDeleteRows="False" SelectionChanged="DtgFamily_SelectionChanged" AutoGenerateColumns="False" >
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Số Thứ Tự" Width="100" Binding="{Binding IDGiaDinh}" />
                     <DataGridTextColumn Header="Họ Tên Cha" Width="250" Binding="{Binding HoTenCha}" />
-                    <DataGridTextColumn Header="Ngày Sinh Cha" Width="145" Binding="{Binding NamSinhCha}" />
+                    <DataGridTextColumn Header="Ngày Sinh Cha" Width="145" Binding="{Binding NamSinhCha , StringFormat='dd/MM/yyyy' }" />
                     <DataGridTextColumn Header="Điện Thoại Cha" Width="125" Binding="{Binding DienThoaiCha}" />
                     <DataGridTextColumn Header="Họ Tên Mẹ" Width="250" Binding="{Binding HoTenMe}" />
-                    <DataGridTextColumn Header="Ngày Sinh Mẹ" Width="145" Binding="{Binding NamSinhMe}" />
+                    <DataGridTextColumn Header="Ngày Sinh Mẹ" Width="145" Binding="{Binding NamSinhMe , StringFormat='dd/MM/yyyy' }" />
                     <DataGridTextColumn Header="Điện Thoại Mẹ" Width="125" Binding="{Binding DienThoaiMe}" />
                     <DataGridTextColumn Header="Địa Chỉ" Width="150" Binding="{Binding DiaChi}" />
                     <DataGridTextColumn Header="Ghi Chú" Width="100" Binding="{Binding GhiChu}" />
