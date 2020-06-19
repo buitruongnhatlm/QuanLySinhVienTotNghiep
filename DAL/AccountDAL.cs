@@ -10,6 +10,8 @@ namespace DAL
 {
     public class AccountDAL
     {
+        int TYPE;
+
         // sử dụng singleton pattern
         private static AccountDAL _instance;
 
@@ -29,14 +31,26 @@ namespace DAL
 
         private AccountDAL() { }
 
+
         public bool Login(string tentaikhoan, string matkhau)
         {
             string _query = "EXECUTE dbo.pro_Login @TenTaiKhoan , @MatKhau ";
 
             DataTable _result = DataProvider.Instance.ExcuteQuery(_query, new object[] { tentaikhoan, matkhau });
 
+            foreach (DataRow row in _result.Rows)
+            {
+                AccountDTO _accountDTO = new AccountDTO(row);
+                TYPE = _accountDTO.IDLoaiTaiKhoan;
+            }
+
             return _result.Rows.Count > 0;
 
+        }
+
+        public int GetAccountType()
+        {
+            return TYPE;
         }
 
         public DataTable GetListAccount()

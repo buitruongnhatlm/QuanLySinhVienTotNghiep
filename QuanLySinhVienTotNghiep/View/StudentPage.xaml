@@ -58,7 +58,7 @@
             <DataGrid x:Name="dtgStudent" SelectionChanged="DtgStudent_SelectionChanged" Background="LightSkyBlue" AutoGenerateColumns="False" >
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Số Thứ Tự" Width="100" Binding="{Binding IDSinhVien}" />
-                    <DataGridTextColumn Header="Họ Tên" Width="150" Binding="{Binding HoTen}" />
+                    <DataGridTextColumn Header="Họ Tên" Width="250" Binding="{Binding HoTen}" />
                     <DataGridTextColumn Header="Mã Số Sinh Viên" Width="125" Binding="{Binding MaSoSinhVien}" />
                     <DataGridTextColumn Header="Giới Tính" Width="100" Binding="{Binding GioiTinh}" />
                     <DataGridTextColumn Header="Ngày Sinh" Width="120" Binding="{Binding NgaySinh , StringFormat='dd/MM/yyyy' }" />

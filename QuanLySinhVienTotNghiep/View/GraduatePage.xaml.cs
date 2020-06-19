@@ -63,9 +63,11 @@ namespace QuanLySinhVienTotNghiep.View
             decimal _temp2 = decimal.Round(_temp1,1);
             float _diem10 = float.Parse(_temp2.ToString());
 
-            decimal _temp3 = decimal.Parse(txtDiem4.Text);
-            decimal _temp4 = decimal.Round(_temp3,1);
-            float _diem4 = float.Parse(_temp4.ToString());
+            //decimal _temp3 = decimal.Parse(txtDiem4.Text);
+            //decimal _temp4 = decimal.Round(_temp3,1);
+            //float _diem4 = float.Parse(_temp4.ToString());
+
+            decimal _diem4 = (_temp2 / 100) * 40;
 
             string _ghichu = txtGhiChu.Text;
             int _idloaitotnghiep = cbbLoaitotnghiep.SelectedIndex + 1;
@@ -82,7 +84,7 @@ namespace QuanLySinhVienTotNghiep.View
                 cmd.Parameters.Add(new SqlParameter("@NgayTotNghiep", SqlDbType.Date, 100) { Value = _ngaytotnghiep });
                 cmd.Parameters.Add(new SqlParameter("@NgayCapBang", SqlDbType.Date) { Value = _ngaycapbang });
                 cmd.Parameters.Add(new SqlParameter("@Diem10", SqlDbType.Decimal) { Value = _temp2 });
-                cmd.Parameters.Add(new SqlParameter("@Diem4", SqlDbType.Decimal) { Value = _temp4 });
+                cmd.Parameters.Add(new SqlParameter("@Diem4", SqlDbType.Decimal) { Value = _diem4 });
 
                 cmd.Parameters.Add(new SqlParameter("@IDLoaiTotNghiep", SqlDbType.Int) { Value = _idloaitotnghiep });
                 cmd.Parameters.Add(new SqlParameter("@IDHeDaoTao", SqlDbType.Int, 100) { Value = _idhedaotao });
@@ -122,9 +124,11 @@ namespace QuanLySinhVienTotNghiep.View
             decimal _temp2 = decimal.Round(_temp1, 1);
             float _diem10 = float.Parse(_temp2.ToString());
 
-            decimal _temp3 = decimal.Parse(txtDiem4.Text);
-            decimal _temp4 = decimal.Round(_temp3, 1);
-            float _diem4 = float.Parse(_temp4.ToString());
+            //decimal _temp3 = decimal.Parse(txtDiem4.Text);
+            //decimal _temp4 = decimal.Round(_temp3, 1);
+            //float _diem4 = float.Parse(_temp4.ToString());
+
+            decimal _diem4 = (_temp2 / 100) * 40;
 
             string _ghichu = txtGhiChu.Text;
             int _idloaitotnghiep = cbbLoaitotnghiep.SelectedIndex + 1;
@@ -141,7 +145,7 @@ namespace QuanLySinhVienTotNghiep.View
                 cmd.Parameters.Add(new SqlParameter("@NgayTotNghiep", SqlDbType.Date, 100) { Value = _ngaytotnghiep });
                 cmd.Parameters.Add(new SqlParameter("@NgayCapBang", SqlDbType.Date) { Value = _ngaycapbang });
                 cmd.Parameters.Add(new SqlParameter("@Diem10", SqlDbType.Decimal) { Value = _temp2 });
-                cmd.Parameters.Add(new SqlParameter("@Diem4", SqlDbType.Decimal) { Value = _temp4 });
+                cmd.Parameters.Add(new SqlParameter("@Diem4", SqlDbType.Decimal) { Value = _diem4 });
 
                 cmd.Parameters.Add(new SqlParameter("@IDLoaiTotNghiep", SqlDbType.Int) { Value = _idloaitotnghiep });
                 cmd.Parameters.Add(new SqlParameter("@IDHeDaoTao", SqlDbType.Int, 100) { Value = _idhedaotao });

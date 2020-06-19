@@ -68,20 +68,20 @@
         <Grid Height="300" Width="300" VerticalAlignment="Bottom" Margin="25,0,25.4,62">
             <TextBlock Text="ĐĂNG NHẬP" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,0,0,0" Foreground="DarkRed" FontSize="15" FontWeight="Bold"></TextBlock>
             <StackPanel VerticalAlignment="Center" Margin="5,-100,5,0">
-                <TextBox x:Name="txtTaiKhoan" FontSize="13" materialDesign:HintAssist.Hint="TÀI KHOẢN" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="0,5" />
-                <PasswordBox x:Name="txtMatKhau" FontSize="13" materialDesign:HintAssist.Hint="MẬT KHẨU" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" Margin="0,5" />
-                <TextBox x:Name="txtRecaptcha" FontSize="13" materialDesign:HintAssist.Hint="MÃ XÁC NHẬN" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                <TextBox x:Name="txtTaiKhoan" TabIndex="0" FontSize="13" materialDesign:HintAssist.Hint="TÀI KHOẢN" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="0,5" />
+                <PasswordBox x:Name="txtMatKhau" TabIndex="1" FontSize="13" materialDesign:HintAssist.Hint="MẬT KHẨU" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" Margin="0,5" />
+                <TextBox x:Name="txtRecaptcha" TabIndex="2" FontSize="13" materialDesign:HintAssist.Hint="MÃ XÁC NHẬN" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
             </StackPanel>
             <TextBlock x:Name="txtbCaptcha" Padding="50 10 0 0" Foreground="Violet" FontStyle="Italic" FontSize="20" Height="50" Width="230" Margin="-60,140,0,0" TextDecorations="Strikethrough" /> 
-            <Button x:Name="btnRefesh" Click="BtnRefesh_Click" Width="40" Height="40" VerticalAlignment="Bottom" Margin="230,0,0,60">
+            <Button x:Name="btnRefesh" Click="BtnRefesh_Click" TabIndex="5" Width="40" Height="40" VerticalAlignment="Bottom" Margin="230,0,0,60">
                 <Button.Background>
                     <ImageBrush ImageSource="pack://application:,,,/QuanLySinhVienTotNghiep;component/Images/refesh.png" />
                 </Button.Background>
             </Button>
         </Grid>
 
-        <Button x:Name="btnDangNhap" Click="btnDangNhap_Click" IsDefault="True" Content="Đăng Nhập" Width="150" Height="30" VerticalAlignment="Bottom" Margin="100,0,100,60"></Button>
-        <Button x:Name="btnQuenMatKhau" Click="BtnQuenMatKhau_Click" Foreground="White" FontStretch="UltraCondensed" FontSize="15" Width="150" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="80,0,80,20" Grid.RowSpan="2">
+        <Button x:Name="btnDangNhap" TabIndex="3" Click="btnDangNhap_Click" IsDefault="True" Content="Đăng Nhập" Width="150" Height="30" VerticalAlignment="Bottom" Margin="100,0,100,60"></Button>
+        <Button x:Name="btnQuenMatKhau" TabIndex="4" Click="BtnQuenMatKhau_Click" Foreground="White" FontStretch="UltraCondensed" FontSize="15" Width="150" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="80,0,80,20" Grid.RowSpan="2">
             <TextBlock TextDecorations="Underline">Quên mật khẩu</TextBlock>
         </Button>
     </Grid>

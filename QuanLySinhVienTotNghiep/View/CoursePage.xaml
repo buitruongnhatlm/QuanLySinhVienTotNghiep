@@ -32,7 +32,7 @@
         <TextBlock Foreground="HotPink" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" Grid.Column="1" Grid.Row="0" >KHÓA HỌC</TextBlock>
 
         <!--#region DATA GRID NGÀNH HỌC -->
-        <Grid Grid.Row="1" Grid.Column="0" Margin="0 0 10 0" Height="190" Width="580">
+        <Grid Grid.Row="1" Grid.Column="0" Margin="10 0 10 0" Height="190" Width="570">
             <DataGrid Background="LightSkyBlue" x:Name="dtgNganh" SelectionChanged="DtgNganh_SelectionChanged" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Số Thứ Tự" Width="100" Binding="{Binding IDNganh}" />

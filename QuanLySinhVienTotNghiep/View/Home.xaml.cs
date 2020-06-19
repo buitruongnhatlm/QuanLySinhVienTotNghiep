@@ -12,6 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using MaterialDesignThemes.Wpf;
+using DAL;
+using DTO;
+
 
 namespace QuanLySinhVienTotNghiep.View
 {
@@ -35,7 +38,7 @@ namespace QuanLySinhVienTotNghiep.View
         {
             int index = int.Parse(((Button)e.Source).Uid);
 
-            GridCursor.Margin = new Thickness(10 + (150 * index), 0, 0, 0);
+            GridCursor.Margin = new Thickness(10 + (230 * index), 0, 0, 0);
 
             switch (index)
             {
@@ -46,16 +49,11 @@ namespace QuanLySinhVienTotNghiep.View
                     FrameTabMain.Content = new StudyInfo();
                     break;
                 case 2:
-                    FrameTabMain.Content = new ManagerPage();
-                    break;
-                case 3:
-                    break;
-                case 4:
-                    break;
-                case 5:
                     FrameTabMain.Content = new AccountPage();
                     break;
-
+                case 3:
+                    FrameTabMain.Content = new ManagerPage();
+                    break;
             }
         }
 
@@ -88,5 +86,19 @@ namespace QuanLySinhVienTotNghiep.View
             txtbUser.Text = message;
         }
 
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            int idloaitaikhoan = AccountDAL.Instance.GetAccountType();
+            if(idloaitaikhoan==2)
+            {
+                btnQUANLYVIEN.Visibility = Visibility.Hidden;
+            }
+            else if(idloaitaikhoan==3)
+            {
+                btnTAIKHOAN.Visibility = Visibility.Hidden;
+                btnHOCVU.Visibility = Visibility.Hidden;
+                btnQUANLYVIEN.Visibility = Visibility.Hidden;
+            }
+        }
     }
 }

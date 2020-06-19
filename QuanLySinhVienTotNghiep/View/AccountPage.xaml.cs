@@ -305,6 +305,14 @@ namespace QuanLySinhVienTotNghiep.View
             dtgAccount.ItemsSource = SearchAccount(type,txtSearchAccount.Text);
         }
 
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            int idloaitaikhoan = AccountDAL.Instance.GetAccountType();
+            if(idloaitaikhoan==2)
+            {
+                cbbIQuanTriVien.Visibility = Visibility.Collapsed;
+            }
+        }
     }
 }
 

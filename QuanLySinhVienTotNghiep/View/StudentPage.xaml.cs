@@ -115,7 +115,13 @@ namespace QuanLySinhVienTotNghiep.View
                 dateNgayCap.Text = _dataRow["NgayCap"].ToString();
                 dateNgayVaoDoan.Text = _dataRow["NgayVaoDoan"].ToString();
                 dateNgayVaoDang.Text = _dataRow["NgayVaoDang"].ToString();
-                txtDienThoai.Text = _dataRow["DienThoai"].ToString();
+
+                string t = _dataRow["DienThoai"].ToString(); 
+                string temp1 = t.Substring(0, 1);
+                string temp2 = t.Substring(1, 4);
+                string temp3 = t.Substring(5, 4);
+                txtDienThoai.Text = "0" +temp1 + "-" + temp2 + "-" + temp3;
+
                 txtEmail.Text = _dataRow["Email"].ToString();
                 txtGhiChu.Text = _dataRow["GhiChu"].ToString();
                 txtGiaDinh.Text = _dataRow["IDGiaDinh"].ToString();
@@ -138,8 +144,10 @@ namespace QuanLySinhVienTotNghiep.View
 
         private void BtnThemSinhVien_Click(object sender, RoutedEventArgs e)
         {
+
+
             string _hoTen = txtHoTen.Text;
-            string _gioiTinh="";
+            string _gioiTinh = "";
 
             if (cbbGioiTinh.SelectedIndex == 0)
             {
@@ -162,7 +170,7 @@ namespace QuanLySinhVienTotNghiep.View
 
             string _maSoSinhVien = txtMSSV.Text;
             int maSoSinhVien = Convert.ToInt32(_maSoSinhVien);
-            
+
             DateTime? _ngayCap = dateNgayCap.SelectedDate;
             DateTime? _ngayVaoDoan = dateNgayVaoDoan.SelectedDate;
             DateTime? _ngayVaoDang = dateNgayVaoDang.SelectedDate;
@@ -178,9 +186,9 @@ namespace QuanLySinhVienTotNghiep.View
             int _idTaiKhoan = Convert.ToInt32(txtTaiKhoan.Text);
             int _idThongTinTotNghiep = Convert.ToInt32(txtTotNghiep.Text);
 
-            if (CheckDataInput(_email,_hoTen,_dienThoai, _chungMinhNhanDan, _maSoSinhVien,_noiSinh,_diaChiThuongTru,_danToc,_tonGiao))
+            if (CheckDataInput(_email, _hoTen, _dienThoai, _chungMinhNhanDan, _maSoSinhVien, _noiSinh, _diaChiThuongTru, _danToc, _tonGiao))
             {
-                AddStudent(_hoTen,maSoSinhVien,_gioiTinh,_ngaySinh,_noiSinh,_diaChiThuongTru,_danToc,_tonGiao,chungMinhNhanDan,_ngayCap,_ngayVaoDoan,_ngayVaoDang, dienThoai,_email,_idGiaDinh,_idTaiKhoan,_idThongTinTotNghiep,_ghiChu);
+                AddStudent(_hoTen, maSoSinhVien, _gioiTinh, _ngaySinh, _noiSinh, _diaChiThuongTru, _danToc, _tonGiao, chungMinhNhanDan, _ngayCap, _ngayVaoDoan, _ngayVaoDang, dienThoai, _email, _idGiaDinh, _idTaiKhoan, _idThongTinTotNghiep, _ghiChu);
             }
 
         }

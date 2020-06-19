@@ -7,6 +7,7 @@
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         WindowStartupLocation="CenterScreen" WindowStyle="None" ResizeMode="NoResize" 
+        Loaded="Window_Loaded"
         Title="QUẢN LÝ SINH VIÊN TỐT NGHIỆP" Height="600" Width="1200">
     <Grid>
 
@@ -57,7 +58,7 @@
                 </Grid>
 
                 <!--Popup Góc phải Trên-->
-                <materialDesign:PopupBox Height="60" PlacementMode="BottomAndAlignRightEdges" HorizontalAlignment="Right" Margin="0,25,10,0" StaysOpen="False" >
+                <materialDesign:PopupBox Height="60" PlacementMode="BottomAndAlignRightEdges" HorizontalAlignment="Right" Margin="0,25,40,0" StaysOpen="False" >
                     <StackPanel Background="{StaticResource PrimaryHueMidBrush}" Width="200">
                         <Button Content="Đăng Xuất" x:Name="ButtonPopupLogout" Click="ButtonPopupLogout_Click" FontWeight="Bold" Foreground="White" />
                     </StackPanel>
@@ -85,17 +86,15 @@
                 </Grid>
 
                 <!--Thanh Menu-->
-                <materialDesign:ColorZone Mode="PrimaryMid" Grid.Column="0" Margin="200,45,0,0" Height="50" Width="950" HorizontalAlignment="Left">
+                <materialDesign:ColorZone Mode="PrimaryMid" Grid.Column="0" Margin="150,45,0,0" Height="50" Width="950" HorizontalAlignment="Left">
                     <Grid Height="100">
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="10 0">
-                            <Button Uid="0" Width="150" Content="SINH VIÊN" Height="50" Background="Transparent" BorderBrush="{x:Null}" Foreground="White" Click="Button_Click" />
-                            <Button Uid="1" Width="150" Content="HỌC VỤ" Height="50" Background="Transparent" BorderBrush="{x:Null}" Foreground="White" Click="Button_Click" />
-                            <Button Uid="2" Width="150" Content="QUẢN LÝ VIÊN" Height="50" Background="Transparent" BorderBrush="{x:Null}" Foreground="White" Click="Button_Click" />
-                            <Button Uid="3" Width="150" Content="THỐNG KÊ" Height="50" Background="Transparent" BorderBrush="{x:Null}" Foreground="White" Click="Button_Click" />
-                            <Button Uid="4" Width="150" Content="BÁO CÁO" Height="50" Background="Transparent" BorderBrush="{x:Null}" Foreground="White" Click="Button_Click" />
-                            <Button Uid="5" Width="150" Content="TÀI KHOẢN" Height="50" Background="Transparent" BorderBrush="{x:Null}" Foreground="White" Click="Button_Click" />
+                            <Button Uid="0" x:Name="btnSINHVIEN" Width="230" Content="SINH VIÊN" Height="50" Background="Transparent" BorderBrush="{x:Null}" Foreground="White" Click="Button_Click" />
+                            <Button Uid="1" x:Name="btnHOCVU" Width="230" Content="HỌC VỤ" Height="50" Background="Transparent" BorderBrush="{x:Null}" Foreground="White" Click="Button_Click" />
+                            <Button Uid="2" x:Name="btnTAIKHOAN" Width="230" Content="TÀI KHOẢN" Height="50" Background="Transparent" BorderBrush="{x:Null}" Foreground="White" Click="Button_Click" />
+                            <Button Uid="3" x:Name="btnQUANLYVIEN" Width="230" Content="QUẢN LÝ VIÊN" Height="50" Background="Transparent" BorderBrush="{x:Null}" Foreground="White" Click="Button_Click" />
                         </StackPanel>
-                        <Grid x:Name="GridCursor" Width="150" Height="10" Margin="10 0" Background="White" HorizontalAlignment="Left" />
+                        <Grid x:Name="GridCursor" Width="230" Height="10" Margin="10 0" Background="White" HorizontalAlignment="Left" />
                     </Grid>
                 </materialDesign:ColorZone>
 

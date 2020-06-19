@@ -48,8 +48,12 @@ namespace DAL
             DateTime dt3 = DateTime.ParseExact(ngayvaodoan.ToString(), "dd/MM/yyyy hh:mm:ss", CultureInfo.InvariantCulture);
             string _ngayvaodoan = dt.ToString("yyyy/MM/dd", CultureInfo.InvariantCulture);
 
-            DateTime dt4 = DateTime.ParseExact(ngayvaodang.ToString(), "dd/MM/yyyy hh:mm:ss", CultureInfo.InvariantCulture);
-            string _ngayvaodang = dt.ToString("yyyy/MM/dd", CultureInfo.InvariantCulture);
+            string _ngayvaodang="01/01/0001";
+            if (ngayvaodang!=null)
+            {
+                DateTime dt4 = DateTime.ParseExact(ngayvaodang.ToString(), "dd/MM/yyyy hh:mm:ss", CultureInfo.InvariantCulture);
+                _ngayvaodang = dt.ToString("yyyy/MM/dd", CultureInfo.InvariantCulture);
+            }
 
             string _query = string.Format("INSERT INTO dbo.SinhVien ( HoTen, MaSoSinhVien, GioiTinh, NgaySinh, NoiSinh, DiaChiThuongTru, DanToc, TonGiao, ChungMinhNhanDan, NgayCap, NgayVaoDoan, NgayVaoDang, DienThoai, Email, GhiChu, IDGiaDinh, IDTaiKhoan, IDThongTinTotNghiep) VALUES ( N'{0}', {1}, N'{2}', '{3}' , N'{4}', N'{5}', N'{6}', N'{7}', {8}, '{9}' , '{10}' , '{11}' , {12}, '{13}', N'{14}', {15}, {16}, {17})",hoten,mssv,gioitinh,_ngaysinh,noisinh,diachi,dantoc,tongiao,cmnd,_ngaycap,_ngayvaodoan,_ngayvaodang,dienthoai,email,ghichu,idgiadinh,idtaikhoan,idthongtintotnghiep);
 

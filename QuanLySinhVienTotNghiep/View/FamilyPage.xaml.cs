@@ -184,10 +184,22 @@ namespace QuanLySinhVienTotNghiep.View
             if (_dataGrid != null && _dataRow != null)
             {
                 txtHoTenCha.Text = _dataRow["HoTenCha"].ToString();
-                txtDienThoaiCha.Text = _dataRow["DienThoaiCha"].ToString();
+
+                string t = _dataRow["DienThoaiCha"].ToString();
+                string temp1 = t.Substring(0, 1);
+                string temp2 = t.Substring(1, 4);
+                string temp3 = t.Substring(5, 4);
+                txtDienThoaiCha.Text = "0" + temp1 + "-" + temp2 + "-" + temp3;
+
                 dtNamSinhCha.Text = _dataRow["NamSinhCha"].ToString();
                 txtHoTenMe.Text = _dataRow["HoTenMe"].ToString();
-                txtDienThoaiMe.Text = _dataRow["DienThoaiMe"].ToString();
+
+                string m = _dataRow["DienThoaiMe"].ToString();
+                string temp4 = m.Substring(0, 1);
+                string temp5 = m.Substring(1, 4);
+                string temp6 = m.Substring(5, 4);
+                txtDienThoaiMe.Text = "0" + temp4 + "-" + temp5 + "-" + temp6;
+
                 dtNamSinhMe.Text = _dataRow["NamSinhMe"].ToString();
                 txtGhiChu.Text = _dataRow["GhiChu"].ToString();
                 txtDiaChi.Text = _dataRow["DiaChi"].ToString();
