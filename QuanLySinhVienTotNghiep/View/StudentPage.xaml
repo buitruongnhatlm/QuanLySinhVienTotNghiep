@@ -8,6 +8,7 @@
       mc:Ignorable="d" 
       ShowsNavigationUI="False"
       d:DesignHeight="430" d:DesignWidth="1180"
+      Loaded="Page_Loaded"
       Title="StudentPage">
 
         <Grid>
@@ -73,8 +74,8 @@
                     <DataGridTextColumn Header="Điện Thoại" Width="100" Binding="{Binding DienThoai}" />
                     <DataGridTextColumn Header="Email" Width="300" Binding="{Binding Email}" />
                     <DataGridTextColumn Header="Ghi Chú" Width="200" Binding="{Binding GhiChu}" />
+                    <DataGridTextColumn Header="Tài Khoản" Width="150" Binding="{Binding TenTaiKhoan}" />
                     <DataGridTextColumn Header="Gia Đình" Width="100" Binding="{Binding IDGiaDinh}" />
-                    <DataGridTextColumn Header="Tài Khoản" Width="100" Binding="{Binding IDTaiKhoan}" />
                     <DataGridTextColumn Header="Tốt Nghiệp" Width="100" Binding="{Binding IDThongTinTotNghiep}" />
                 </DataGrid.Columns>
             </DataGrid>
@@ -167,8 +168,8 @@
                 <materialDesign:PackIcon Margin="10 10 0 0" HorizontalAlignment="Left" VerticalAlignment="Center" Height="30" Width="30" Kind="HomePlus" Grid.Column="3" Grid.Row="3" />
 
                 <!--TÀI KHOẢN-->
-                <TextBox Grid.Column="4" x:Name="txtTaiKhoan" Height="30" Grid.Row="0" Width="165" HorizontalAlignment="Left" Margin="40 0 5 0" materialDesign:HintAssist.Hint="Tài Khoản" materialDesign:HintAssist.HintOpacity=".25">
-                </TextBox>
+                <ComboBox Grid.Column="4" x:Name="cbbTaiKhoan" IsEditable="False" Height="30" Grid.Row="0" Width="165" HorizontalAlignment="Left" Margin="40 0 5 0" materialDesign:HintAssist.Hint="Tài Khoản" materialDesign:HintAssist.HintOpacity=".25">
+                </ComboBox>
                 <materialDesign:PackIcon Margin="10 10 0 0" HorizontalAlignment="Left" VerticalAlignment="Center" Height="30" Width="30" Kind="AccountMultiplePlus" Grid.Column="4" Grid.Row="0" />
 
                 <!--THÔNG TIN TỐT NGHIỆP-->

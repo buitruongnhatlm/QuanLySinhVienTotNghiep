@@ -37,17 +37,17 @@ namespace QuanLySinhVienTotNghiep.View
 
         private void btnDangNhap_Click(object sender, RoutedEventArgs e)
         {
-            string _taiKhoan = txtTaiKhoan.Text;
             string _matKhau = txtMatKhau.Password;
+            string _taikhoan = txtTaiKhoan.Text;
             if (!string.IsNullOrEmpty(txtRecaptcha.Text))
             {
                 if (txtRecaptcha.Text.Equals(txtbCaptcha.Text))
                 {
-                    if (CheckLogin(_taiKhoan, _matKhau))
+                    if (CheckLogin(_taikhoan, _matKhau))
                     {
-                        Home _page = new Home();
-                        _page.Show();
-                        _page._sender(txtTaiKhoan.Text);
+                        Home _home = new Home();
+                        _home._sender(txtTaiKhoan.Text);
+                        _home.Show();
                         this.Close();
                     }
                     else
@@ -115,5 +115,6 @@ namespace QuanLySinhVienTotNghiep.View
             ForgetPassword _window = new ForgetPassword();
             _window.ShowDialog();
         }
+
     }
 }

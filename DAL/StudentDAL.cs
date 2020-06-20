@@ -34,6 +34,36 @@ namespace DAL
             return DataProvider.Instance.ExcuteQuery("EXECUTE dbo.pro_GetListStudent");
         }
 
+        public DataTable GetListStudentByStudent()
+        {
+            return DataProvider.Instance.ExcuteQuery("EXECUTE dbo.pro_GetListStudent");
+        }
+
+        public DataTable GetStudentCurrent(int idtaikhoan)
+        {
+            string _query = string.Format("EXECUTE dbo.pro_GetStudentCurrent @idtaikhoan = {0} ",idtaikhoan);
+            return DataProvider.Instance.ExcuteQuery(_query);
+        }
+
+        public int GetIDStudentByIDAccount(int idtaikhoan)
+        {
+
+            int _idsinhvien = 1;
+
+            string _query = string.Format("EXECUTE dbo.pro_GetIDSinhVienByIDTaiKhoan @idtaikhoan = {0} ", idtaikhoan);
+
+            DataTable _result = DataProvider.Instance.ExcuteQuery(_query, new object[] { idtaikhoan });
+
+            foreach (DataRow row in _result.Rows)
+            {
+                Student _student = new Student(row);
+                _idsinhvien = _student.IDSinhVien;
+            }
+
+            return _idsinhvien;
+
+        }
+
         public bool InsertStudent(string hoten, int mssv, string gioitinh, DateTime? ngaysinh, string noisinh, string diachi, 
             string dantoc, string tongiao, int cmnd, DateTime? ngaycap, DateTime? ngayvaodoan, DateTime? ngayvaodang, int dienthoai,
             string email, int idgiadinh, int idtaikhoan, int idthongtintotnghiep, string ghichu = null)

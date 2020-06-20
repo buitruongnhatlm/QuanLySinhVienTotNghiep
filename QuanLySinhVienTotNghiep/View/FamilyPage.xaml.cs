@@ -30,6 +30,8 @@ namespace QuanLySinhVienTotNghiep.View
             LoadData();
         }
 
+        int _IDLOAITAIKHOAN = AccountDAL.Instance.GetAccountType();
+
         private void ThemGiaDinh_Click(object sender, RoutedEventArgs e)
         {
             string _hoTenCha = txtHoTenCha.Text;
@@ -151,9 +153,21 @@ namespace QuanLySinhVienTotNghiep.View
 
         }
 
+        string _USERNAME = AccountDAL.Instance.GetUsername();
         public void LoadData()
         {
-            dtgFamily.ItemsSource = FamilyDAL.Instance.GetListFamily().DefaultView;
+            int _idaccount = AccountDAL.Instance.GetIDAccountByUsername(_USERNAME);
+            int _idsinhvien = StudentDAL.Instance.GetIDStudentByIDAccount(_idaccount);
+
+            if (_IDLOAITAIKHOAN==3)
+            {
+                dtgFamily.ItemsSource = FamilyDAL.Instance.GetFamilyByStudent(_idsinhvien).DefaultView;
+            }
+            else
+            {
+                dtgFamily.ItemsSource = FamilyDAL.Instance.GetListFamily().DefaultView;
+            }
+            
         }
 
         public bool CheckDataInput(string hotencha, string dienthoaicha, string hotenme, string dienthoaime, string diachi)
@@ -241,6 +255,15 @@ namespace QuanLySinhVienTotNghiep.View
             }
 
             dtgFamily.ItemsSource = SearchFamily(type, txtSearchFamily.Text);
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (_IDLOAITAIKHOAN == 3)
+            {
+                ThemGiaDinh.Visibility = Visibility.Collapsed;
+                XoaGiaDinh.Visibility = Visibility.Collapsed;
+            }
         }
     }
 }

@@ -10,7 +10,8 @@ namespace DAL
 {
     public class AccountDAL
     {
-        int TYPE;
+        int _TYPE;
+        string _TENTAIKHOAN;
 
         // sử dụng singleton pattern
         private static AccountDAL _instance;
@@ -31,6 +32,56 @@ namespace DAL
 
         private AccountDAL() { }
 
+        public int GetIDAccountByUsername(string tentaikhoan)
+        {
+            int _idtaikhoan = 1;
+
+            string _query = string.Format("EXECUTE dbo.pro_GetIDAccountByUsername @username = '{0}' ",tentaikhoan);
+
+            DataTable _result = DataProvider.Instance.ExcuteQuery(_query, new object[] { tentaikhoan });
+
+            foreach (DataRow row in _result.Rows)
+            {
+                Account _account = new Account(row);
+                _idtaikhoan = _account.IDTaiKhoan;
+            }
+
+            return _idtaikhoan;
+        }
+
+        public List<AccountDTO> GetListAccountToCombobox()
+        {
+            List<AccountDTO> _List = new List<AccountDTO>();
+
+            string _Query = "SELECT * FROM dbo.TaiKhoan";
+
+            DataTable _Table = DataProvider.Instance.ExcuteQuery(_Query);
+
+            foreach (DataRow item in _Table.Rows)
+            {
+                AccountDTO _account = new AccountDTO(item);
+                _List.Add(_account);
+            }
+
+            return _List;
+        }
+
+        public List<AccountDTO> GetAccountToCombobox(string tentaikhoan)
+        {
+            List<AccountDTO> _List = new List<AccountDTO>();
+
+            string _Query = string.Format("SELECT * FROM dbo.TaiKhoan WHERE TenTaiKhoan='{0}' ",tentaikhoan);
+
+            DataTable _Table = DataProvider.Instance.ExcuteQuery(_Query);
+
+            foreach (DataRow item in _Table.Rows)
+            {
+                AccountDTO _account = new AccountDTO(item);
+                _List.Add(_account);
+            }
+
+            return _List;
+        }
 
         public bool Login(string tentaikhoan, string matkhau)
         {
@@ -41,7 +92,8 @@ namespace DAL
             foreach (DataRow row in _result.Rows)
             {
                 AccountDTO _accountDTO = new AccountDTO(row);
-                TYPE = _accountDTO.IDLoaiTaiKhoan;
+                _TYPE = _accountDTO.IDLoaiTaiKhoan;
+                _TENTAIKHOAN = _accountDTO.TenTaiKhoan;
             }
 
             return _result.Rows.Count > 0;
@@ -50,7 +102,12 @@ namespace DAL
 
         public int GetAccountType()
         {
-            return TYPE;
+            return _TYPE;
+        }
+
+        public string GetUsername()
+        {
+            return _TENTAIKHOAN;
         }
 
         public DataTable GetListAccount()

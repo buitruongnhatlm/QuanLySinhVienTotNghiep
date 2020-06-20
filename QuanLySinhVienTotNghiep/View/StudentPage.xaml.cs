@@ -33,12 +33,39 @@ namespace QuanLySinhVienTotNghiep.View
         {
             InitializeComponent();
             LoadData();
+            LoadDataToCombobox();
         }
 
+        int _IDLOAITAIKHOAN = AccountDAL.Instance.GetAccountType();
+        string _USERNAME = AccountDAL.Instance.GetUsername();
 
         public void LoadData()
         {
-            dtgStudent.ItemsSource = StudentDAL.Instance.GetListStudent().DefaultView;
+            int _idaccount = AccountDAL.Instance.GetIDAccountByUsername(_USERNAME);
+
+            if (_IDLOAITAIKHOAN == 3)
+            {
+                dtgStudent.ItemsSource = StudentDAL.Instance.GetStudentCurrent(_idaccount).DefaultView;
+            }
+            else
+            {
+                dtgStudent.ItemsSource = StudentDAL.Instance.GetListStudent().DefaultView;
+            }
+
+        }
+
+        public void LoadDataToCombobox()
+        {
+            if(_IDLOAITAIKHOAN == 3)
+            {
+                cbbTaiKhoan.ItemsSource = AccountDAL.Instance.GetAccountToCombobox(_USERNAME);
+                cbbTaiKhoan.DisplayMemberPath = "TenTaiKhoan";
+            }
+            else
+            {
+                cbbTaiKhoan.ItemsSource = AccountDAL.Instance.GetListAccountToCombobox();
+                cbbTaiKhoan.DisplayMemberPath = "TenTaiKhoan";
+            }
         }
 
         public void AddStudent(string hoten, int mssv, string gioitinh, DateTime? ngaysinh, string noisinh, string diachi,
@@ -125,7 +152,7 @@ namespace QuanLySinhVienTotNghiep.View
                 txtEmail.Text = _dataRow["Email"].ToString();
                 txtGhiChu.Text = _dataRow["GhiChu"].ToString();
                 txtGiaDinh.Text = _dataRow["IDGiaDinh"].ToString();
-                txtTaiKhoan.Text = _dataRow["IDTaiKhoan"].ToString();
+                cbbTaiKhoan.Text = _dataRow["TenTaiKhoan"].ToString();
                 txtTotNghiep.Text = _dataRow["IDThongTinTotNghiep"].ToString();
 
                 switch (_dataRow["GioiTinh"].ToString())
@@ -144,7 +171,9 @@ namespace QuanLySinhVienTotNghiep.View
 
         private void BtnThemSinhVien_Click(object sender, RoutedEventArgs e)
         {
+            string _tentaikhoan = cbbTaiKhoan.Text;
 
+            int _idtaikhoan = AccountDAL.Instance.GetIDAccountByUsername(_tentaikhoan);
 
             string _hoTen = txtHoTen.Text;
             string _gioiTinh = "";
@@ -183,12 +212,11 @@ namespace QuanLySinhVienTotNghiep.View
             string _email = txtEmail.Text;
             string _ghiChu = txtGhiChu.Text;
             int _idGiaDinh = Convert.ToInt32(txtGiaDinh.Text);
-            int _idTaiKhoan = Convert.ToInt32(txtTaiKhoan.Text);
             int _idThongTinTotNghiep = Convert.ToInt32(txtTotNghiep.Text);
 
             if (CheckDataInput(_email, _hoTen, _dienThoai, _chungMinhNhanDan, _maSoSinhVien, _noiSinh, _diaChiThuongTru, _danToc, _tonGiao))
             {
-                AddStudent(_hoTen, maSoSinhVien, _gioiTinh, _ngaySinh, _noiSinh, _diaChiThuongTru, _danToc, _tonGiao, chungMinhNhanDan, _ngayCap, _ngayVaoDoan, _ngayVaoDang, dienThoai, _email, _idGiaDinh, _idTaiKhoan, _idThongTinTotNghiep, _ghiChu);
+                AddStudent(_hoTen, maSoSinhVien, _gioiTinh, _ngaySinh, _noiSinh, _diaChiThuongTru, _danToc, _tonGiao, chungMinhNhanDan, _ngayCap, _ngayVaoDoan, _ngayVaoDang, dienThoai, _email, _idGiaDinh, _idtaikhoan, _idThongTinTotNghiep, _ghiChu);
             }
 
         }
@@ -201,7 +229,11 @@ namespace QuanLySinhVienTotNghiep.View
             {
                 _idsinhvien = Convert.ToInt32(_rowCurrent["IDSinhVien"].ToString());
             }
-            
+
+            string _tentaikhoan = cbbTaiKhoan.SelectedValue.ToString();
+
+            int _idtaikhoan = AccountDAL.Instance.GetIDAccountByUsername(_tentaikhoan);
+
             string _hoTen = txtHoTen.Text;
             string _gioiTinh = "";
 
@@ -239,12 +271,11 @@ namespace QuanLySinhVienTotNghiep.View
             string _email = txtEmail.Text;
             string _ghiChu = txtGhiChu.Text;
             int _idGiaDinh = Convert.ToInt32(txtGiaDinh.Text);
-            int _idTaiKhoan = Convert.ToInt32(txtTaiKhoan.Text);
             int _idThongTinTotNghiep = Convert.ToInt32(txtTotNghiep.Text);
 
             if (CheckDataInput(_email, _hoTen, _dienThoai, _chungMinhNhanDan, _maSoSinhVien, _noiSinh, _diaChiThuongTru, _danToc, _tonGiao))
             {
-                EditStudent(_idsinhvien,_hoTen, maSoSinhVien, _gioiTinh, _ngaySinh, _noiSinh, _diaChiThuongTru, _danToc, _tonGiao, chungMinhNhanDan, _ngayCap, _ngayVaoDoan, _ngayVaoDang, dienThoai, _email, _idGiaDinh, _idTaiKhoan, _idThongTinTotNghiep, _ghiChu);
+                EditStudent(_idsinhvien,_hoTen, maSoSinhVien, _gioiTinh, _ngaySinh, _noiSinh, _diaChiThuongTru, _danToc, _tonGiao, chungMinhNhanDan, _ngayCap, _ngayVaoDoan, _ngayVaoDang, dienThoai, _email, _idGiaDinh, _idtaikhoan, _idThongTinTotNghiep, _ghiChu);
             }
         }
 
@@ -270,128 +301,138 @@ namespace QuanLySinhVienTotNghiep.View
             {
                 ExcelPackage.LicenseContext = LicenseContext.Commercial; // giấy phép sử dụng thư viện bản thương mại
 
-                var _package = new ExcelPackage(new FileInfo("ImportListStudent.xlsx")); // Mở file Excel
+                OpenFileDialog _opendialog = new OpenFileDialog();
+                _opendialog.Filter = "Excel Files|*.xls;*.xlsx";
 
-                ExcelWorksheet _sheetCurrent = _package.Workbook.Worksheets[0]; // mở sheet (trang) 1 trong file excel
-
-                // duyệt tuần tự dòng thứ 2 tới dòng cuối của file
-                // duyệt file excel tương tự duyệt mảng 2 chiều
-                // chỉ số cột trong excel bắt đầu từ 1
-
-                for (int row = _sheetCurrent.Dimension.Start.Row + 1; row <= _sheetCurrent.Dimension.End.Row; row++)
+                if (_opendialog.ShowDialog() == true )
                 {
-                    try
+                   string _filepath = _opendialog.FileName;
+
+                    var _package = new ExcelPackage(new FileInfo(_filepath)); // Mở file Excel
+                    //var _package = new ExcelPackage(new FileInfo("ImportListStudent.xlsx")); // Mở file Excel
+
+                    ExcelWorksheet _sheetCurrent = _package.Workbook.Worksheets[0]; // mở sheet (trang) 1 trong file excel
+
+                    // duyệt tuần tự dòng thứ 2 tới dòng cuối của file
+                    // duyệt file excel tương tự duyệt mảng 2 chiều
+                    // chỉ số cột trong excel bắt đầu từ 1
+
+                    for (int row = _sheetCurrent.Dimension.Start.Row + 1; row <= _sheetCurrent.Dimension.End.Row; row++)
                     {
-                        int col = 1;
-
-                        // lấy ra tên ở vị trí dòng 2 cột 1, col++ sau khi thực hiện câu lệnh tăng cột lên 1 (toán tử hậu tố)
-
-                        string _HoTen = _sheetCurrent.Cells[row, col++].Value.ToString();
-
-                        int _MaSoSinhVien = Convert.ToInt32(_sheetCurrent.Cells[row, col++].Value.ToString());
-
-                        string _GioiTinh = _sheetCurrent.Cells[row, col++].Value.ToString();
-
-                        // tạo biến tạm bằng giá trị trong ô ngày sinh 
-                        var NgaySinhTemp = _sheetCurrent.Cells[row, col++].Value;
-                        DateTime _NgaySinh = new DateTime();
-                        // kiểm tra biến tạm có null hoặc rỗng không
-                        if (NgaySinhTemp != null)
+                        try
                         {
-                            try
+                            int col = 1;
+
+                            // lấy ra tên ở vị trí dòng 2 cột 1, col++ sau khi thực hiện câu lệnh tăng cột lên 1 (toán tử hậu tố)
+
+                            string _HoTen = _sheetCurrent.Cells[row, col++].Value.ToString();
+
+                            int _MaSoSinhVien = Convert.ToInt32(_sheetCurrent.Cells[row, col++].Value.ToString());
+
+                            string _GioiTinh = _sheetCurrent.Cells[row, col++].Value.ToString();
+
+                            // tạo biến tạm bằng giá trị trong ô ngày sinh 
+                            var NgaySinhTemp = _sheetCurrent.Cells[row, col++].Value;
+                            DateTime _NgaySinh = new DateTime();
+                            // kiểm tra biến tạm có null hoặc rỗng không
+                            if (NgaySinhTemp != null)
                             {
-                                // nếu thỏa cố gắng ép kiểu nó 
-                                _NgaySinh = (DateTime)NgaySinhTemp;
+                                try
+                                {
+                                    // nếu thỏa cố gắng ép kiểu nó 
+                                    _NgaySinh = (DateTime)NgaySinhTemp;
+                                }
+                                catch (Exception ex)
+                                { MessageBox.Show(ex.ToString()); }
                             }
-                            catch (Exception ex)
-                            { MessageBox.Show(ex.ToString()); }
+
+                            string _NoiSinh = _sheetCurrent.Cells[row, col++].Value.ToString();
+
+                            string _DiaChiThuongTru = _sheetCurrent.Cells[row, col++].Value.ToString();
+
+                            string _DanToc = _sheetCurrent.Cells[row, col++].Value.ToString();
+
+                            string _TonGiao = _sheetCurrent.Cells[row, col++].Value.ToString();
+
+                            int _chungMinhNhanDan = Convert.ToInt32(_sheetCurrent.Cells[row, col++].Value.ToString());
+
+                            // tạo biến tạm bằng giá trị trong ô ngày sinh 
+                            var NgayCapTemp = _sheetCurrent.Cells[row, col++].Value;
+                            DateTime _NgayCap = new DateTime();
+                            // kiểm tra biến tạm có null hoặc rỗng không
+                            if (NgayCapTemp != null)
+                            {
+                                try
+                                {
+                                    // nếu thỏa cố gắng ép kiểu nó 
+                                    _NgayCap = (DateTime)NgayCapTemp;
+                                }
+                                catch (Exception ex)
+                                { MessageBox.Show(ex.ToString()); }
+                            }
+
+                            // tạo biến tạm bằng giá trị trong ô ngày sinh 
+                            var NgayVaoDoanTemp = _sheetCurrent.Cells[row, col++].Value;
+                            DateTime _NgayVaoDoan = new DateTime();
+                            // kiểm tra biến tạm có null hoặc rỗng không
+                            if (NgayVaoDoanTemp != null)
+                            {
+                                try
+                                {
+                                    // nếu thỏa cố gắng ép kiểu nó 
+                                    _NgayVaoDoan = (DateTime)NgayVaoDoanTemp;
+                                }
+                                catch (Exception ex)
+                                { MessageBox.Show(ex.ToString()); }
+                            }
+
+                            // tạo biến tạm bằng giá trị trong ô ngày sinh 
+                            var NgayVaoDangTemp = _sheetCurrent.Cells[row, col++].Value;
+                            DateTime _NgayVaoDang = new DateTime();
+                            // kiểm tra biến tạm có null hoặc rỗng không
+                            if (NgayVaoDangTemp != null)
+                            {
+                                try
+                                {
+                                    // nếu thỏa cố gắng ép kiểu nó 
+                                    _NgayVaoDang = (DateTime)NgayVaoDangTemp;
+                                }
+                                catch (Exception ex)
+                                { MessageBox.Show(ex.ToString()); }
+                            }
+
+                            string _dienThoai = _sheetCurrent.Cells[row, col++].Value.ToString();
+                            string[] _temp = _dienThoai.Split('-');
+                            string temp2 = string.Concat(_temp[0], _temp[1], _temp[2]);
+                            int _DienThoai = Convert.ToInt32(temp2);
+
+                            string _Email = _sheetCurrent.Cells[row, col++].Value.ToString();
+                            string _GhiChu = _sheetCurrent.Cells[row, col++].Value.ToString();
+                            int _IDGiaDinh = Convert.ToInt32(_sheetCurrent.Cells[row, col++].Value.ToString());
+                            int _IDTaiKhoan = Convert.ToInt32(_sheetCurrent.Cells[row, col++].Value.ToString());
+                            int _IDThongTinTotNghiep = Convert.ToInt32(_sheetCurrent.Cells[row, col++].Value.ToString());
+
+                            // tạo sinh viên mới với các thuộc tính là các thuộc tính vừa đọc được trong file excel
+                            StudentDTO _student = new StudentDTO(_HoTen, _MaSoSinhVien, _GioiTinh, _NgaySinh, _NoiSinh, _DiaChiThuongTru, _DanToc, _TonGiao, _chungMinhNhanDan,
+                                _NgayCap, _NgayVaoDoan, _NgayVaoDang, _DienThoai, _Email, _GhiChu, _IDGiaDinh, _IDTaiKhoan, _IDThongTinTotNghiep);
+
+                            // add user mới vào danh sách
+                            _ListStudent.Add(_student);
+
+                            AddStudent(_HoTen, _MaSoSinhVien, _GioiTinh, _NgaySinh, _NoiSinh, _DiaChiThuongTru, _DanToc, _TonGiao, _chungMinhNhanDan,
+                                _NgayCap, _NgayVaoDoan, _NgayVaoDang, _DienThoai, _Email, _IDGiaDinh, _IDTaiKhoan, _IDThongTinTotNghiep, _GhiChu);
                         }
 
-                        string _NoiSinh = _sheetCurrent.Cells[row, col++].Value.ToString();
-
-                        string _DiaChiThuongTru = _sheetCurrent.Cells[row, col++].Value.ToString();
-
-                        string _DanToc = _sheetCurrent.Cells[row, col++].Value.ToString();
-
-                        string _TonGiao = _sheetCurrent.Cells[row, col++].Value.ToString();
-
-                        int _chungMinhNhanDan = Convert.ToInt32(_sheetCurrent.Cells[row, col++].Value.ToString());
-
-                        // tạo biến tạm bằng giá trị trong ô ngày sinh 
-                        var NgayCapTemp = _sheetCurrent.Cells[row, col++].Value;
-                        DateTime _NgayCap = new DateTime();
-                        // kiểm tra biến tạm có null hoặc rỗng không
-                        if (NgayCapTemp != null)
-                        {
-                            try
-                            {
-                                // nếu thỏa cố gắng ép kiểu nó 
-                                _NgayCap = (DateTime)NgayCapTemp;
-                            }
-                            catch (Exception ex)
-                            { MessageBox.Show(ex.ToString()); }
-                        }
-
-                        // tạo biến tạm bằng giá trị trong ô ngày sinh 
-                        var NgayVaoDoanTemp = _sheetCurrent.Cells[row, col++].Value;
-                        DateTime _NgayVaoDoan = new DateTime();
-                        // kiểm tra biến tạm có null hoặc rỗng không
-                        if (NgayVaoDoanTemp != null)
-                        {
-                            try
-                            {
-                                // nếu thỏa cố gắng ép kiểu nó 
-                                _NgayVaoDoan = (DateTime)NgayVaoDoanTemp;
-                            }
-                            catch (Exception ex)
-                            { MessageBox.Show(ex.ToString()); }
-                        }
-
-                        // tạo biến tạm bằng giá trị trong ô ngày sinh 
-                        var NgayVaoDangTemp = _sheetCurrent.Cells[row, col++].Value;
-                        DateTime _NgayVaoDang = new DateTime();
-                        // kiểm tra biến tạm có null hoặc rỗng không
-                        if (NgayVaoDangTemp != null)
-                        {
-                            try
-                            {
-                                // nếu thỏa cố gắng ép kiểu nó 
-                                _NgayVaoDang = (DateTime)NgayVaoDangTemp;
-                            }
-                            catch (Exception ex)
-                            { MessageBox.Show(ex.ToString()); }
-                        }
-
-                        string _dienThoai = _sheetCurrent.Cells[row, col++].Value.ToString();
-                        string[] _temp = _dienThoai.Split('-');
-                        string temp2 = string.Concat(_temp[0], _temp[1], _temp[2]);
-                        int _DienThoai = Convert.ToInt32(temp2);
-
-
-                        string _Email = _sheetCurrent.Cells[row, col++].Value.ToString();
-                        string _GhiChu = _sheetCurrent.Cells[row, col++].Value.ToString();
-                        int _IDGiaDinh = Convert.ToInt32(_sheetCurrent.Cells[row, col++].Value.ToString());
-                        int _IDTaiKhoan = Convert.ToInt32(_sheetCurrent.Cells[row, col++].Value.ToString());
-                        int _IDThongTinTotNghiep = Convert.ToInt32(_sheetCurrent.Cells[row, col++].Value.ToString());
-
-                        // tạo sinh viên mới với các thuộc tính là các thuộc tính vừa đọc được trong file excel
-                        StudentDTO _student = new StudentDTO(_HoTen, _MaSoSinhVien, _GioiTinh, _NgaySinh, _NoiSinh, _DiaChiThuongTru, _DanToc, _TonGiao, _chungMinhNhanDan,
-                            _NgayCap,_NgayVaoDoan, _NgayVaoDang, _DienThoai, _Email, _GhiChu, _IDGiaDinh, _IDTaiKhoan, _IDThongTinTotNghiep);
-
-                        // add user mới vào danh sách
-                        _ListStudent.Add(_student);
-
-                        AddStudent(_HoTen, _MaSoSinhVien, _GioiTinh, _NgaySinh, _NoiSinh, _DiaChiThuongTru, _DanToc, _TonGiao, _chungMinhNhanDan,
-                            _NgayCap, _NgayVaoDoan, _NgayVaoDang, _DienThoai, _Email, _IDGiaDinh, _IDTaiKhoan, _IDThongTinTotNghiep,_GhiChu);
+                        catch (Exception ex) { MessageBox.Show(ex.Message); }
                     }
 
-                    catch (Exception ex) { MessageBox.Show(ex.Message); }
                 }
 
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
 
             dtgStudent.ItemsSource = _ListStudent;
+            LoadData();
         }
             
         public bool CheckDataInput(string email, string hoten, string sodienthoai, string cmnd, string mssv, string noisinh, string diachi, string dantoc, string tongiao)
@@ -458,6 +499,17 @@ namespace QuanLySinhVienTotNghiep.View
             }
 
             dtgStudent.ItemsSource = SearchStudent(type, txtSearchStudent.Text);
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (_IDLOAITAIKHOAN == 3)
+            {
+                btnThemSinhVien.Visibility = Visibility.Collapsed;
+                btnXoaSinhVien.Visibility = Visibility.Collapsed;
+                btnExcel.Visibility = Visibility.Collapsed;
+            }
+            
         }
     }
 }

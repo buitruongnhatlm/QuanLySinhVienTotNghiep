@@ -26,6 +26,7 @@ namespace QuanLySinhVienTotNghiep.View
         {
             InitializeComponent();
             LoadData();
+            LoadDataToCombobox();
         }
 
         public void LoadData()
@@ -113,7 +114,7 @@ namespace QuanLySinhVienTotNghiep.View
                 txtChuyenMon.Text = _dataRow["ChuyenMon"].ToString();
                 txtDonViCongTac.Text = _dataRow["DonViCongTac"].ToString();
                 txtGhiChu.Text = _dataRow["GhiChu"].ToString();
-                txtIDTaiKhoan.Text = _dataRow["IDTaiKhoan"].ToString();
+                cbbTaiKhoan.Text = _dataRow["TenTaiKhoan"].ToString();
             }
         }
 
@@ -141,6 +142,10 @@ namespace QuanLySinhVienTotNghiep.View
         private void BtnThemQuanLy_Click(object sender, RoutedEventArgs e)
         {
             string _hoTen = txtHoTen.Text;
+
+            string _tentaikhoan = cbbTaiKhoan.Text;
+
+            int _idtaikhoan = AccountDAL.Instance.GetIDAccountByUsername(_tentaikhoan);
 
             // datatype? allow null
             DateTime? _namSinh = dtNgaySinh.SelectedDate;
@@ -170,11 +175,10 @@ namespace QuanLySinhVienTotNghiep.View
             string _trinhDo = txtTrinhDo.Text;
             string _chuyenMon = txtChuyenMon.Text;
             string _donViCongTac = txtDonViCongTac.Text;
-            int _idTaiKhoan = Convert.ToInt32(txtIDTaiKhoan.Text);
 
             if (CheckDataInput(_hoTen, _chungMinhNhanDan, _noiSinh, _diaChiThuongTru,_hocHam,_trinhDo,_chuyenMon,_donViCongTac))
             {
-                AddManager(_hoTen, _namSinh, _gioiTinh, chungMinhNhanDan, _noiSinh, _diaChiThuongTru,_hocHam,_trinhDo,_chuyenMon,_donViCongTac,_idTaiKhoan, _ghiChu);
+                AddManager(_hoTen, _namSinh, _gioiTinh, chungMinhNhanDan, _noiSinh, _diaChiThuongTru,_hocHam,_trinhDo,_chuyenMon,_donViCongTac, _idtaikhoan, _ghiChu);
             }
         }
 
@@ -186,6 +190,10 @@ namespace QuanLySinhVienTotNghiep.View
             {
                 _idquanlyvien = Convert.ToInt32(_rowCurrent["IDQuanLyVien"].ToString());
             }
+
+            string _tentaikhoan = cbbTaiKhoan.Text;
+
+            int _idtaikhoan = AccountDAL.Instance.GetIDAccountByUsername(_tentaikhoan);
 
             string _hoTen = txtHoTen.Text;
             string _gioiTinh = "";
@@ -212,11 +220,10 @@ namespace QuanLySinhVienTotNghiep.View
             string _chuyenMon = txtChuyenMon.Text;
             string _ghiChu = txtGhiChu.Text;
             string _donViCongTac = txtDonViCongTac.Text;
-            int _idTaiKhoan = Convert.ToInt32(txtIDTaiKhoan.Text);
 
             if (CheckDataInput(_hoTen, _chungMinhNhanDan, _noiSinh, _diaChiThuongTru, _hocHam,_trinhDo,_chuyenMon,_donViCongTac))
             {
-                EditManager(_idquanlyvien, _hoTen, _ngaySinh, _gioiTinh,chungMinhNhanDan, _noiSinh, _diaChiThuongTru, _hocHam, _trinhDo, _chuyenMon, _donViCongTac,_idTaiKhoan, _ghiChu);
+                EditManager(_idquanlyvien, _hoTen, _ngaySinh, _gioiTinh,chungMinhNhanDan, _noiSinh, _diaChiThuongTru, _hocHam, _trinhDo, _chuyenMon, _donViCongTac, _idtaikhoan, _ghiChu);
             }
         }
 
@@ -259,6 +266,12 @@ namespace QuanLySinhVienTotNghiep.View
             }
 
             dtgManager.ItemsSource = SearchManager(type, txtSearchManager.Text);
+        }
+
+        public void LoadDataToCombobox()
+        {
+            cbbTaiKhoan.ItemsSource = AccountDAL.Instance.GetListAccountToCombobox();
+            cbbTaiKhoan.DisplayMemberPath = "TenTaiKhoan";
         }
     }
 }

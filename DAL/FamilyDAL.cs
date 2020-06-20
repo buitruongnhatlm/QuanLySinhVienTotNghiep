@@ -34,6 +34,12 @@ namespace DAL
             return DataProvider.Instance.ExcuteQuery("EXECUTE dbo.pro_GetListFamily");
         }
 
+        public DataTable GetFamilyByStudent(int idsinhvien)
+        {
+            string _query = string.Format(" EXECUTE dbo.pro_GetFamilyByStudent @idsinhvien = {0} ",idsinhvien);
+            return DataProvider.Instance.ExcuteQuery(_query);
+        }
+
         public bool InsertFamily(string hotencha, DateTime? namsinhcha, int dienthoaicha, string hotenme, DateTime? namsinhme, int dienthoaime, string diachi, string ghichu=null)
         {
             DateTime dt = DateTime.ParseExact(namsinhcha.ToString(), "dd/MM/yyyy hh:mm:ss", CultureInfo.InvariantCulture);
