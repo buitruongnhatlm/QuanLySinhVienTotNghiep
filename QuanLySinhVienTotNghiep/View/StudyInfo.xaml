@@ -21,11 +21,11 @@
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Top" >
                     <Button Width="240" Uid="0" Content="THÔNG TIN TỐT NGHIỆP" Height="50" Background="Transparent" BorderBrush="{x:Null}" Foreground="White" Click="Button_Click" />
                     <Button Width="240" Uid="1" Content="SINH VIÊN NỢ MÔN" Height="50" Background="Transparent" BorderBrush="{x:Null}" Foreground="White" Click="Button_Click" />
-                    <Button Width="240" Uid="2" Content="LỚP HỌC" Height="50" Background="Transparent" BorderBrush="{x:Null}" Foreground="White" Click="Button_Click" />
-                    <Button Width="240" Uid="3" Content="LOẠI TỐT NGHIỆP / HỆ ĐÀO TẠO" Height="50" Background="Transparent" BorderBrush="{x:Null}" Foreground="White" Click="Button_Click" />
+                    <Button Width="230" Uid="2" Content="LỚP HỌC" Height="50" Background="Transparent" BorderBrush="{x:Null}" Foreground="White" Click="Button_Click" />
+                    <Button Width="250" Uid="3" Content="LOẠI TỐT NGHIỆP / HỆ ĐÀO TẠO" Height="50" Background="Transparent" BorderBrush="{x:Null}" Foreground="White" Click="Button_Click" />
                     <Button Width="240" Uid="4" Content="KHÓA HỌC / NGÀNH HỌC" Margin="0 0 10 0" Height="50" Background="Transparent" BorderBrush="{x:Null}" Foreground="White" Click="Button_Click" />
                     </StackPanel>
-                <Grid x:Name="GridCursor" Width="230" Height="5" Margin="0 30 0 0" Background="White" HorizontalAlignment="Left" />
+                <Grid x:Name="GridCursor" Width="230" Height="3" Margin="0 30 0 0" Background="White" HorizontalAlignment="Left" />
             </Grid>
             </materialDesign:ColorZone>
 

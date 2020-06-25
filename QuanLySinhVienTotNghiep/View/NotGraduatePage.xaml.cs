@@ -257,7 +257,6 @@ namespace QuanLySinhVienTotNghiep.View
                     string _filepath = _opendialog.FileName;
 
                     var _package = new ExcelPackage(new FileInfo(_filepath)); // Mở file Excel
-                    //var _package = new ExcelPackage(new FileInfo("ImportListStudent.xlsx")); // Mở file Excel
 
                     ExcelWorksheet _sheetCurrent = _package.Workbook.Worksheets[0]; // mở sheet (trang) 1 trong file excel
 
@@ -343,8 +342,8 @@ namespace QuanLySinhVienTotNghiep.View
                             string _NoMon = _sheetCurrent.Cells[row, col++].Value.ToString();
 
                             // tạo thông tin tốt nghiệp mới với các thuộc tính là các thuộc tính vừa đọc được trong file excel
-                            //GraduateDTO _NotGraduate = new GraduateDTO(_NgayVaoTruong, _NgayTotNghiep, _NgayCapBang,
-                            //_Diem4, _IDLoaiTotNghiep, _IDHeDaoTao, _IDNganh, _IDLop, _IDDiemChu, _TrangThai, _NoMon, _GhiChu);
+                            GraduateDTO _NotGraduate = new GraduateDTO(_IDThongTinTotNghiep,_NgayVaoTruong, _NgayTotNghiep, _NgayCapBang,
+                            _Diem4, _IDLoaiTotNghiep, _IDHeDaoTao, _IDNganh, _IDLop, _IDDiemChu, _TrangThai, _NoMon, _GhiChu);
 
                             #region ThemTT
                             const string sql = @" INSERT INTO dbo.ThongTinTotNghiep (NgayVaoTruong,NgayTotNghiep,NgayCapBang,Diem4,IDLoaiTotNghiep,IDHeDaoTao,IDNghanh,IDLop,IDDiemChu,TrangThai,NoMon,GhiChu) VALUES (@ngayvaotruong,@ngaytotnghiep,@ngaycapbang,@diem4,@idloaitotnghiep,@idhedaotao,@idnganh,@idlop,@iddiemchu,@trangthai,@nomon,@ghichu) ";
@@ -377,8 +376,8 @@ namespace QuanLySinhVienTotNghiep.View
                             }
                             #endregion
 
-                            // add user mới vào danh sách
-                           // _List.Add(_NotGraduate);
+                            //add user mới vào danh sách
+                            _List.Add(_NotGraduate);
 
                         }
 
@@ -390,9 +389,8 @@ namespace QuanLySinhVienTotNghiep.View
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
 
-           // dtgNotGraduate.ItemsSource = _List;
+            dtgNotGraduate.ItemsSource = _List;
             LoadDataToGrid();
-            MessageBox.Show("them thanh cong");
         }
     }
 }

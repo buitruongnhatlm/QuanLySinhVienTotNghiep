@@ -94,7 +94,7 @@
                             <Button Uid="2" x:Name="btnTAIKHOAN" Width="230" Content="TÀI KHOẢN" Height="50" Background="Transparent" BorderBrush="{x:Null}" Foreground="White" Click="Button_Click" />
                             <Button Uid="3" x:Name="btnQUANLYVIEN" Width="230" Content="QUẢN LÝ VIÊN" Height="50" Background="Transparent" BorderBrush="{x:Null}" Foreground="White" Click="Button_Click" />
                         </StackPanel>
-                        <Grid x:Name="GridCursor" Width="230" Height="10" Margin="10 0" Background="White" HorizontalAlignment="Left" />
+                        <Grid x:Name="GridCursor" Width="230" Height="7" Margin="10 0" Background="White" HorizontalAlignment="Left" />
                     </Grid>
                 </materialDesign:ColorZone>
 

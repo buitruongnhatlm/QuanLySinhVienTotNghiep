@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,6 +18,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using DAL;
 using DTO;
+using Microsoft.Win32;
+using OfficeOpenXml;
 
 namespace QuanLySinhVienTotNghiep.View
 {
@@ -211,5 +214,156 @@ namespace QuanLySinhVienTotNghiep.View
             cbbDiemChu.DisplayMemberPath = "TenDiem";
         }
 
+        private void BtnExcel_Click(object sender, RoutedEventArgs e)
+        {
+            List<GraduateDTO> _List = new List<GraduateDTO>();
+
+            try
+            {
+                ExcelPackage.LicenseContext = LicenseContext.Commercial; // giấy phép sử dụng thư viện bản thương mại
+
+                OpenFileDialog _opendialog = new OpenFileDialog();
+                _opendialog.Filter = "Excel Files|*.xls;*.xlsx";
+
+                if (_opendialog.ShowDialog() == true)
+                {
+                    string _filepath = _opendialog.FileName;
+
+                    var _package = new ExcelPackage(new FileInfo(_filepath)); // Mở file Excel
+
+                    ExcelWorksheet _sheetCurrent = _package.Workbook.Worksheets[0]; // mở sheet (trang) 1 trong file excel
+
+                    // duyệt tuần tự dòng thứ 2 tới dòng cuối của file
+                    // duyệt file excel tương tự duyệt mảng 2 chiều
+                    // chỉ số cột trong excel bắt đầu từ 1
+
+                    for (int row = _sheetCurrent.Dimension.Start.Row + 1; row <= _sheetCurrent.Dimension.End.Row; row++)
+                    {
+                        try
+                        {
+                            int col = 1;
+
+                            // lấy ra tên ở vị trí dòng 2 cột 1, col++ sau khi thực hiện câu lệnh tăng cột lên 1 (toán tử hậu tố)
+
+                            int _IDThongTinTotNghiep = Convert.ToInt32(_sheetCurrent.Cells[row, col++].Value);
+
+                            // tạo biến tạm bằng giá trị trong ô ngày sinh 
+                            var NgayVaoTruongTemp = _sheetCurrent.Cells[row, col++].Value;
+                            DateTime _NgayVaoTruong = new DateTime();
+                            // kiểm tra biến tạm có null hoặc rỗng không
+                            if (NgayVaoTruongTemp != null)
+                            {
+                                try
+                                {
+                                    // nếu thỏa cố gắng ép kiểu nó 
+                                    _NgayVaoTruong = (DateTime)NgayVaoTruongTemp;
+                                }
+                                catch (Exception ex)
+                                { MessageBox.Show(ex.ToString()); }
+                            }
+
+                            // tạo biến tạm bằng giá trị trong ô ngày sinh 
+                            var NgayTotNghiepTemp = _sheetCurrent.Cells[row, col++].Value;
+                            DateTime _NgayTotNghiep = new DateTime();
+                            // kiểm tra biến tạm có null hoặc rỗng không
+                            if (NgayTotNghiepTemp != null)
+                            {
+                                try
+                                {
+                                    // nếu thỏa cố gắng ép kiểu nó 
+                                    _NgayTotNghiep = (DateTime)NgayTotNghiepTemp;
+                                }
+                                catch (Exception ex)
+                                { MessageBox.Show(ex.ToString()); }
+                            }
+
+                            // tạo biến tạm bằng giá trị trong ô ngày sinh 
+                            var NgayCapBangTemp = _sheetCurrent.Cells[row, col++].Value;
+                            DateTime _NgayCapBang = new DateTime();
+                            // kiểm tra biến tạm có null hoặc rỗng không
+                            if (NgayCapBangTemp != null)
+                            {
+                                try
+                                {
+                                    // nếu thỏa cố gắng ép kiểu nó 
+                                    _NgayCapBang = (DateTime)NgayCapBangTemp;
+                                }
+                                catch (Exception ex)
+                                { MessageBox.Show(ex.ToString()); }
+                            }
+
+                            decimal _Diem4 = decimal.Parse(_sheetCurrent.Cells[row, col++].Value.ToString());
+
+                            string _GhiChu;
+                            if (_sheetCurrent.Cells[row, col++].Value != null)
+                            {
+                                _GhiChu = _sheetCurrent.Cells[row, col++].Value.ToString();
+                            }
+                            else
+                            {
+                                _GhiChu = "";
+                            }
+
+
+                            int _IDLoaiTotNghiep = Convert.ToInt32(_sheetCurrent.Cells[row, col++].Value.ToString());
+                            int _IDHeDaoTao = Convert.ToInt32(_sheetCurrent.Cells[row, col++].Value.ToString());
+                            int _IDNganh = Convert.ToInt32(_sheetCurrent.Cells[row, col++].Value.ToString());
+                            int _IDLop = Convert.ToInt32(_sheetCurrent.Cells[row, col++].Value.ToString());
+                            int _IDDiemChu = Convert.ToInt32(_sheetCurrent.Cells[row, col++].Value.ToString());
+
+                            string _TrangThai = _sheetCurrent.Cells[row, col++].Value.ToString();
+                            string _NoMon = _sheetCurrent.Cells[row, col++].Value.ToString();
+
+                            // tạo thông tin tốt nghiệp mới với các thuộc tính là các thuộc tính vừa đọc được trong file excel
+                            GraduateDTO _Graduate = new GraduateDTO(_IDThongTinTotNghiep, _NgayVaoTruong, _NgayTotNghiep, _NgayCapBang,
+                            _Diem4, _IDLoaiTotNghiep, _IDHeDaoTao, _IDNganh, _IDLop, _IDDiemChu, _TrangThai, _NoMon, _GhiChu);
+
+                            #region ThemTT
+                            const string sql = @" INSERT INTO dbo.ThongTinTotNghiep (NgayVaoTruong,NgayTotNghiep,NgayCapBang,Diem4,IDLoaiTotNghiep,IDHeDaoTao,IDNghanh,IDLop,IDDiemChu,TrangThai,NoMon,GhiChu) VALUES (@ngayvaotruong,@ngaytotnghiep,@ngaycapbang,@diem4,@idloaitotnghiep,@idhedaotao,@idnganh,@idlop,@iddiemchu,@trangthai,@nomon,@ghichu) ";
+                            using (SqlConnection conn = new SqlConnection(@"Data Source=(local);Initial Catalog=QuanLySinhVienTotNghiep;Integrated Security=True"))
+                            using (SqlCommand cmd = new SqlCommand(sql, conn))
+                            {
+                                cmd.Parameters.Add(new SqlParameter("@Ngayvaotruong", SqlDbType.Date) { Value = _NgayVaoTruong });
+                                cmd.Parameters.Add(new SqlParameter("@NgayTotNghiep", SqlDbType.Date, 100) { Value = _NgayTotNghiep });
+                                cmd.Parameters.Add(new SqlParameter("@NgayCapBang", SqlDbType.Date) { Value = _NgayCapBang });
+                                cmd.Parameters.Add(new SqlParameter("@Diem4", SqlDbType.Decimal) { Value = _Diem4 });
+
+                                cmd.Parameters.Add(new SqlParameter("@TrangThai", SqlDbType.NVarChar, 25) { Value = _TrangThai });
+                                cmd.Parameters.Add(new SqlParameter("@NoMon", SqlDbType.NVarChar, 10) { Value = _NoMon });
+
+                                cmd.Parameters.Add(new SqlParameter("@IDLoaiTotNghiep", SqlDbType.Int) { Value = _IDLoaiTotNghiep });
+                                cmd.Parameters.Add(new SqlParameter("@IDHeDaoTao", SqlDbType.Int, 100) { Value = _IDHeDaoTao });
+                                cmd.Parameters.Add(new SqlParameter("@IDNganh", SqlDbType.Int) { Value = _IDNganh });
+                                cmd.Parameters.Add(new SqlParameter("@IDLop", SqlDbType.Int) { Value = _IDLop });
+                                cmd.Parameters.Add(new SqlParameter("@IDDiemChu", SqlDbType.Int) { Value = _IDDiemChu });
+                                cmd.Parameters.Add(new SqlParameter("@GhiChu", SqlDbType.NVarChar) { Value = _GhiChu });
+
+                                conn.Open();
+
+                                DataTable _table = new DataTable();
+                                SqlDataAdapter _adapter = new SqlDataAdapter(cmd);
+
+                                _adapter.Fill(_table);
+
+                                conn.Close();
+                            }
+                            #endregion
+
+                            //add user mới vào danh sách
+                            _List.Add(_Graduate);
+
+                        }
+
+                        catch (Exception ex) { MessageBox.Show(ex.Message); }
+                    }
+
+                }
+
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
+
+            dtgGraduate.ItemsSource = _List;
+            LoadDataToGrid();
+        }
     }
 }

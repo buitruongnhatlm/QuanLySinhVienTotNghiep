@@ -123,6 +123,9 @@
     <Compile Include="View\StudyInfo.xaml.cs">
       <DependentUpon>StudyInfo.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\SubjectDebt.xaml.cs">
+      <DependentUpon>SubjectDebt.xaml</DependentUpon>
+    </Compile>
     <Page Include="View\AccountPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -184,6 +187,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\StudyInfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\SubjectDebt.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

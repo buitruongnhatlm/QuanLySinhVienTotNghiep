@@ -42,7 +42,7 @@ namespace QuanLySinhVienTotNghiep.View
                     FrameTabMain.Content = new GraduatePage();
                     break;
                 case 1:
-                    FrameTabMain.Content = new ClassPage();
+                    FrameTabMain.Content = new NotGraduatePage();
                     break;
                 case 2:
                     FrameTabMain.Content = new ClassPage();
