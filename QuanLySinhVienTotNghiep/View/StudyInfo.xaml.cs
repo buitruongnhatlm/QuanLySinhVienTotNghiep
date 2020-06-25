@@ -34,6 +34,8 @@ namespace QuanLySinhVienTotNghiep.View
         {
             int index = int.Parse(((Button)e.Source).Uid);
 
+            GridCursor.Margin = new Thickness((240 * index), 30, 0, 0);
+
             switch (index)
             {
                 case 0:
@@ -43,9 +45,12 @@ namespace QuanLySinhVienTotNghiep.View
                     FrameTabMain.Content = new ClassPage();
                     break;
                 case 2:
-                    FrameTabMain.Content = new GraduateTypePage();
+                    FrameTabMain.Content = new ClassPage();
                     break;
                 case 3:
+                    FrameTabMain.Content = new GraduateTypePage();
+                    break;
+                case 4:
                     FrameTabMain.Content = new CoursePage();
                     break;
 

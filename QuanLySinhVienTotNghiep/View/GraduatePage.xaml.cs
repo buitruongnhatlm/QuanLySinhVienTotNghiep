@@ -42,7 +42,6 @@ namespace QuanLySinhVienTotNghiep.View
                 dtngayvaotruong.Text = _dataRow["NgayVaoTruong"].ToString();
                 dtngaytotnghiep.Text = _dataRow["NgayTotNghiep"].ToString();
                 dtngaycapbang.Text = _dataRow["NgayCapBang"].ToString();
-                txtDiem10.Text = _dataRow["Diem10"].ToString();
                 txtDiem4.Text = _dataRow["Diem4"].ToString();
                 txtGhiChu.Text = _dataRow["GhiChu"].ToString();
                 cbbLoaitotnghiep.Text = _dataRow["TenLoaiTotNghiep"].ToString();
@@ -50,6 +49,8 @@ namespace QuanLySinhVienTotNghiep.View
                 cbbnganh.Text= _dataRow["TenNganh"].ToString();
                 cbbLop.Text = _dataRow["MaLop"].ToString();
                 cbbDiemChu.SelectedIndex = Convert.ToInt32(_dataRow["IDDiemChu"])-1;
+                txtTrangThai.Text = _dataRow["TrangThai"].ToString();
+                txtNoMon.Text = _dataRow["NoMon"].ToString();
             }
         }
 
@@ -59,32 +60,29 @@ namespace QuanLySinhVienTotNghiep.View
              DateTime? _ngaytotnghiep = dtngaytotnghiep.SelectedDate;
              DateTime? _ngaycapbang = dtngaycapbang.SelectedDate;
 
-            decimal _temp1 = decimal.Parse(txtDiem10.Text);
-            decimal _temp2 = decimal.Round(_temp1,1);
-            float _diem10 = float.Parse(_temp2.ToString());
-
-            //decimal _temp3 = decimal.Parse(txtDiem4.Text);
-            //decimal _temp4 = decimal.Round(_temp3,1);
-            //float _diem4 = float.Parse(_temp4.ToString());
-
-            decimal _diem4 = (_temp2 / 100) * 40;
+            decimal _diem4 = decimal.Parse(txtDiem4.Text);
 
             string _ghichu = txtGhiChu.Text;
+            string _trangthai = txtTrangThai.Text;
+            string _nomon = txtNoMon.Text;
+
             int _idloaitotnghiep = cbbLoaitotnghiep.SelectedIndex + 1;
             int _idhedaotao = cbbHedaotao.SelectedIndex + 1;
             int _idnganh = cbbnganh.SelectedIndex + 1;
             int _idlop = cbbLop.SelectedIndex + 1;
             int _idDiemChu = cbbDiemChu.SelectedIndex + 1;
 
-            const string sql = @" INSERT INTO dbo.ThongTinTotNghiep (NgayVaoTruong,NgayTotNghiep,NgayCapBang,Diem10,Diem4,IDLoaiTotNghiep,IDHeDaoTao,IDNghanh,IDLop,IDDiemChu,GhiChu) VALUES (@ngayvaotruong,@ngaytotnghiep,@ngaycapbang,@diem10,@diem4,@idloaitotnghiep,@idhedaotao,@idnganh,@idlop,@iddiemchu,@ghichu) ";
+            const string sql = @" INSERT INTO dbo.ThongTinTotNghiep (NgayVaoTruong,NgayTotNghiep,NgayCapBang,Diem4,IDLoaiTotNghiep,IDHeDaoTao,IDNghanh,IDLop,IDDiemChu,TrangThai,NoMon,GhiChu) VALUES (@ngayvaotruong,@ngaytotnghiep,@ngaycapbang,@diem4,@idloaitotnghiep,@idhedaotao,@idnganh,@idlop,@iddiemchu,@trangthai,@nomon,@ghichu) ";
             using (SqlConnection conn = new SqlConnection(@"Data Source=(local);Initial Catalog=QuanLySinhVienTotNghiep;Integrated Security=True"))
             using (SqlCommand cmd = new SqlCommand(sql, conn))
             {
                 cmd.Parameters.Add(new SqlParameter("@Ngayvaotruong", SqlDbType.Date) { Value = _ngayvaotruong });
                 cmd.Parameters.Add(new SqlParameter("@NgayTotNghiep", SqlDbType.Date, 100) { Value = _ngaytotnghiep });
                 cmd.Parameters.Add(new SqlParameter("@NgayCapBang", SqlDbType.Date) { Value = _ngaycapbang });
-                cmd.Parameters.Add(new SqlParameter("@Diem10", SqlDbType.Decimal) { Value = _temp2 });
                 cmd.Parameters.Add(new SqlParameter("@Diem4", SqlDbType.Decimal) { Value = _diem4 });
+
+                cmd.Parameters.Add(new SqlParameter("@TrangThai", SqlDbType.NVarChar,25) { Value = _trangthai });
+                cmd.Parameters.Add(new SqlParameter("@NoMon", SqlDbType.NVarChar,10) { Value = _nomon });
 
                 cmd.Parameters.Add(new SqlParameter("@IDLoaiTotNghiep", SqlDbType.Int) { Value = _idloaitotnghiep });
                 cmd.Parameters.Add(new SqlParameter("@IDHeDaoTao", SqlDbType.Int, 100) { Value = _idhedaotao });
@@ -120,32 +118,29 @@ namespace QuanLySinhVienTotNghiep.View
             DateTime? _ngaytotnghiep = dtngaytotnghiep.SelectedDate;
             DateTime? _ngaycapbang = dtngaycapbang.SelectedDate;
 
-            decimal _temp1 = decimal.Parse(txtDiem10.Text);
-            decimal _temp2 = decimal.Round(_temp1, 1);
-            float _diem10 = float.Parse(_temp2.ToString());
-
-            //decimal _temp3 = decimal.Parse(txtDiem4.Text);
-            //decimal _temp4 = decimal.Round(_temp3, 1);
-            //float _diem4 = float.Parse(_temp4.ToString());
-
-            decimal _diem4 = (_temp2 / 100) * 40;
+            decimal _diem4 = decimal.Parse(txtDiem4.Text);
 
             string _ghichu = txtGhiChu.Text;
+            string _trangthai = txtTrangThai.Text;
+            string _nomon = txtNoMon.Text;
+
             int _idloaitotnghiep = cbbLoaitotnghiep.SelectedIndex + 1;
             int _idhedaotao = cbbHedaotao.SelectedIndex + 1;
             int _idnganh = cbbnganh.SelectedIndex + 1;
             int _idlop = cbbLop.SelectedIndex + 1;
             int _idDiemChu = cbbDiemChu.SelectedIndex + 1;
 
-            const string _query = @" UPDATE dbo.ThongTinTotNghiep SET NgayVaoTruong = @Ngayvaotruong , NgayTotNghiep = @NgayTotNghiep  , NgayCapBang = @NgayCapBang , Diem10= @Diem10 , Diem4= @Diem4 , IDLoaiTotNghiep= @IDLoaiTotNghiep , IDHeDaoTao= @IDHeDaoTao , IDNghanh= @IDNganh , IDLop= @IDLop , IDDiemChu= @IDDiemChu , GhiChu= @GhiChu WHERE IDThongTinTotNghiep = @IDThongTinTotNghiep ";
+            const string _query = @" UPDATE dbo.ThongTinTotNghiep SET NgayVaoTruong = @Ngayvaotruong , NgayTotNghiep = @NgayTotNghiep  , NgayCapBang = @NgayCapBang , Diem4= @Diem4 , IDLoaiTotNghiep= @IDLoaiTotNghiep , IDHeDaoTao= @IDHeDaoTao , IDNghanh= @IDNganh , IDLop= @IDLop , IDDiemChu= @IDDiemChu , GhiChu = @GhiChu , TrangThai = @TrangThai , NoMon = @NoMon WHERE IDThongTinTotNghiep = @IDThongTinTotNghiep ";
             using (SqlConnection conn = new SqlConnection(@"Data Source=(local);Initial Catalog=QuanLySinhVienTotNghiep;Integrated Security=True"))
             using (SqlCommand cmd = new SqlCommand(_query, conn))
             {
                 cmd.Parameters.Add(new SqlParameter("@Ngayvaotruong", SqlDbType.Date) { Value = _ngayvaotruong });
                 cmd.Parameters.Add(new SqlParameter("@NgayTotNghiep", SqlDbType.Date, 100) { Value = _ngaytotnghiep });
                 cmd.Parameters.Add(new SqlParameter("@NgayCapBang", SqlDbType.Date) { Value = _ngaycapbang });
-                cmd.Parameters.Add(new SqlParameter("@Diem10", SqlDbType.Decimal) { Value = _temp2 });
                 cmd.Parameters.Add(new SqlParameter("@Diem4", SqlDbType.Decimal) { Value = _diem4 });
+
+                cmd.Parameters.Add(new SqlParameter("@TrangThai", SqlDbType.NVarChar, 25) { Value = _trangthai });
+                cmd.Parameters.Add(new SqlParameter("@NoMon", SqlDbType.NVarChar, 10) { Value = _nomon });
 
                 cmd.Parameters.Add(new SqlParameter("@IDLoaiTotNghiep", SqlDbType.Int) { Value = _idloaitotnghiep });
                 cmd.Parameters.Add(new SqlParameter("@IDHeDaoTao", SqlDbType.Int, 100) { Value = _idhedaotao });

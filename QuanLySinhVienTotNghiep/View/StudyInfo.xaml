@@ -15,20 +15,19 @@
             <RowDefinition Height="50"/>
             <RowDefinition Height="430" />
         </Grid.RowDefinitions>
-        <!--#endregion-->
 
-
-            <materialDesign:ColorZone Grid.Row="0" Mode="PrimaryMid" Margin="0,0,0,0" Height="50" Width="1200" HorizontalAlignment="Left">
+        <materialDesign:ColorZone Grid.Row="0" Mode="PrimaryMid" Margin="0,0,0,0" Height="50" Width="1200" HorizontalAlignment="Left">
                 <Grid>
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Top" >
-                    <Button Width="295" Uid="0" Content="THÔNG TIN TỐT NGHIỆP" Height="50" Background="Transparent" BorderBrush="{x:Null}" Foreground="White" Click="Button_Click" />
-                    <Button Width="295" Uid="1" Content="LỚP HỌC" Height="50" Background="Transparent" BorderBrush="{x:Null}" Foreground="White" Click="Button_Click" />
-                    <Button Width="295" Uid="2" Content="LOẠI TỐT NGHIỆP / HỆ ĐÀO TẠO" Height="50" Background="Transparent" BorderBrush="{x:Null}" Foreground="White" Click="Button_Click" />
-                    <Button Width="315" Uid="3" Content="KHÓA HỌC / NGÀNH HỌC" Margin="0 0 10 0" Height="50" Background="Transparent" BorderBrush="{x:Null}" Foreground="White" Click="Button_Click" />
+                    <Button Width="240" Uid="0" Content="THÔNG TIN TỐT NGHIỆP" Height="50" Background="Transparent" BorderBrush="{x:Null}" Foreground="White" Click="Button_Click" />
+                    <Button Width="240" Uid="1" Content="SINH VIÊN NỢ MÔN" Height="50" Background="Transparent" BorderBrush="{x:Null}" Foreground="White" Click="Button_Click" />
+                    <Button Width="240" Uid="2" Content="LỚP HỌC" Height="50" Background="Transparent" BorderBrush="{x:Null}" Foreground="White" Click="Button_Click" />
+                    <Button Width="240" Uid="3" Content="LOẠI TỐT NGHIỆP / HỆ ĐÀO TẠO" Height="50" Background="Transparent" BorderBrush="{x:Null}" Foreground="White" Click="Button_Click" />
+                    <Button Width="240" Uid="4" Content="KHÓA HỌC / NGÀNH HỌC" Margin="0 0 10 0" Height="50" Background="Transparent" BorderBrush="{x:Null}" Foreground="White" Click="Button_Click" />
                     </StackPanel>
-                </Grid>
+                <Grid x:Name="GridCursor" Width="230" Height="5" Margin="0 30 0 0" Background="White" HorizontalAlignment="Left" />
+            </Grid>
             </materialDesign:ColorZone>
-
 
         <StackPanel Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch">
             <Frame x:Name="FrameTabMain" NavigationUIVisibility="Hidden" />

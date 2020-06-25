@@ -111,6 +111,9 @@
     <Compile Include="View\ManagerPage.xaml.cs">
       <DependentUpon>ManagerPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\NotGraduatePage.xaml.cs">
+      <DependentUpon>NotGraduatePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\StudentInfo.xaml.cs">
       <DependentUpon>StudentInfo.xaml</DependentUpon>
     </Compile>
@@ -165,6 +168,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\ManagerPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\NotGraduatePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

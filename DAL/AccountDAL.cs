@@ -131,7 +131,7 @@ namespace DAL
 
         public bool DeleteAccount(string tentaikhoan)
         {
-            string _query = string.Format("DELETE dbo.TaiKhoan WHERE TenTaiKhoan=N'{0}' ",tentaikhoan);
+            string _query = string.Format("DELETE dbo.TaiKhoan WHERE TenTaiKhoan='{0}' ",tentaikhoan);
             int _result = DataProvider.Instance.ExcuteNonQuery(_query);
             return _result > 0;
         }
