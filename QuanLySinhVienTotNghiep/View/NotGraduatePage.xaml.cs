@@ -20,6 +20,8 @@ using OfficeOpenXml;
 using Microsoft.Win32;
 using System.IO;
 using System.Globalization;
+using System.Reflection;
+using OfficeOpenXml.Style;
 
 namespace QuanLySinhVienTotNghiep.View
 {
@@ -392,5 +394,201 @@ namespace QuanLySinhVienTotNghiep.View
             dtgNotGraduate.ItemsSource = _List;
             LoadDataToGrid();
         }
+
+        private void BtnXemNoMon_Click(object sender, RoutedEventArgs e)
+        {
+            SubjectDebt _window = new SubjectDebt();
+            _window.Show();
+        }
+
+        private void BtnExportExcel_Click(object sender, RoutedEventArgs e)
+        {
+            ExcelPackage.LicenseContext = LicenseContext.Commercial; // giấy phép sử dụng thư viện bản thương mại
+
+            string _filePath = ""; // đường dẫn lưu file
+
+            SaveFileDialog _SFD = new SaveFileDialog();
+            _SFD.Filter = "Excel Files|*.xlsx";  // tạo định dạng file
+
+            if (_SFD.ShowDialog() == true)
+            {
+                _filePath = _SFD.FileName;
+            }
+
+            if (string.IsNullOrEmpty(_filePath))
+            {
+                MessageBox.Show("Đường dẫn không hợp lệ");
+            }
+
+            try
+            {
+                using (ExcelPackage _package = new ExcelPackage())
+                {
+                    _package.Workbook.Properties.Author = "NHAT100"; // Tên author của file
+                    _package.Workbook.Properties.Title = "SinhVienNoMon"; // tên title của file
+                    _package.Workbook.Worksheets.Add("NHATsheet"); // tạo 1 sheet mới
+
+                    ExcelWorksheet _currentSheet = _package.Workbook.Worksheets[0];
+
+                    _currentSheet.Name = "NHATsheet"; // tên sheet
+                    _currentSheet.Cells.Style.Font.Size = 13; // cỡ chữ
+                    _currentSheet.Cells.Style.Font.Name = "Times New Roman"; // tên font
+                    _currentSheet.Cells.Style.Font.Italic = true;
+
+                    // mảng chứa danh sách column header của file excel
+                    string[] _arrColumnHeader = { "Số Thứ Tự","Ngày Vào Trường","Ngày Tốt Nghiệp","Ngày Cấp Bằng","Điểm 4","Ghi Chú","Loại Tốt Nghiệp",
+                    "Hệ Đào Tạo","Ngành","Lớp","Điểm Chữ","Trạng Thái","Nợ Môn"};
+
+                    var _countColumn = _arrColumnHeader.Count(); // đếm số lượng cột
+
+                    // Gom cột
+                    _currentSheet.Cells[1, 1].Value = "BÁO CÁO SINH VIÊN CHƯA TỐT NGHIỆP";
+                    _currentSheet.Cells[1, 1, 1, _countColumn].Merge = true; // merge cell từ cột 1 dòng 1 đến dòng 1 cột 2
+                    _currentSheet.Cells[1, 1, 1, _countColumn].Style.Font.Bold = true;
+                    _currentSheet.Cells[1, 1, 1, _countColumn].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+
+                    int _colIndex = 1;
+                    int _rowIndex = 2;
+
+                    //định dạng add dữ liệu cho header
+                    foreach (var item in _arrColumnHeader)
+                    {
+                        var _cell = _currentSheet.Cells[_rowIndex, _colIndex];
+
+                        // set màu
+                        var _fill = _cell.Style.Fill;
+                        _fill.PatternType = ExcelFillStyle.Solid;
+                        _fill.BackgroundColor.SetColor(System.Drawing.Color.SkyBlue);
+
+                        // tùy chỉnh border
+                        var _border = _cell.Style.Border;
+                        _border.Top.Style = _border.Bottom.Style = _border.Left.Style = _border.Right.Style = ExcelBorderStyle.Thick;
+
+                        //gán giá trị
+                        _cell.Value = item;
+                        _colIndex++;
+                    }
+
+                    DataView view = (DataView)dtgNotGraduate.ItemsSource;
+                    DataTable dataTable = view.Table.Clone();
+                    foreach (DataRowView item in view)
+                    {
+                        dataTable.ImportRow(item.Row);
+                    }
+
+                    var dataTableFromDataGrid = dataTable;
+
+                    IEnumerable<Graduate> l = GetEntities<Graduate>(dataTableFromDataGrid);
+
+                    List<Graduate> list = l.ToList();
+
+                    //với mỗi item trong danh sách sẽ ghi trên một dòng
+                    foreach (var item in list)
+                    {
+                        _colIndex = 1; // cột 1
+
+                        _rowIndex++; // dòng sẽ tự tăng
+
+                        //gán trường TÊN cho cột 1, dòng++ các dòng sẽ tăng lên dòng tiếp theo khi gán xong
+                        _currentSheet.Cells[_rowIndex, _colIndex++].Value = item.IDThongTinTotNghiep;
+
+                        //gán trường cho cột 1, dòng++, phải sắp xếp để không sai định dạng khi xuất ra file excel
+                        DateTime _temp1 = DateTime.Parse(item.NgayVaoTruong.ToString());
+                        String NgayVaoTruong = _temp1.ToString("dd-MM-yyyy");
+
+                        DateTime _temp2 = DateTime.Parse(item.NgayTotNghiep.ToString());
+                        String NgayTotNghiep = _temp2.ToString("dd-MM-yyyy");
+
+                        DateTime _temp3 = DateTime.Parse(item.NgayCapBang.ToString());
+                        String _NgayCapBang = _temp3.ToString("dd-MM-yyyy");
+
+                        _currentSheet.Cells[_rowIndex, _colIndex++].Value = NgayVaoTruong;
+                        _currentSheet.Cells[_rowIndex, _colIndex++].Value = NgayTotNghiep;
+                        _currentSheet.Cells[_rowIndex, _colIndex++].Value = _NgayCapBang;
+                        _currentSheet.Cells[_rowIndex, _colIndex++].Value = item.Diem4;
+                        _currentSheet.Cells[_rowIndex, _colIndex++].Value = item.GhiChu;
+                        _currentSheet.Cells[_rowIndex, _colIndex++].Value = item.TenLoaiTotNghiep;
+                        _currentSheet.Cells[_rowIndex, _colIndex++].Value = item.TenHeDaoTao;
+                        _currentSheet.Cells[_rowIndex, _colIndex++].Value = item.TenNganh;
+                        _currentSheet.Cells[_rowIndex, _colIndex++].Value = item.MaLop;
+                        _currentSheet.Cells[_rowIndex, _colIndex++].Value = item.TenDiem.ToString();
+                        _currentSheet.Cells[_rowIndex, _colIndex++].Value = item.TrangThai;
+                        _currentSheet.Cells[_rowIndex, _colIndex++].Value = item.NoMon;
+                    }
+
+                    //lưu file lại
+                    Byte[] _byte = _package.GetAsByteArray();
+                    File.WriteAllBytes(_filePath, _byte);
+                }
+
+                MessageBox.Show("Xuất file thành công");
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
+
+        }
+
+        public IEnumerable<T> GetEntities<T>(DataTable dt)
+        {
+            if (dt == null)
+            {
+                return null;
+            }
+
+            List<T> returnValue = new List<T>();
+            List<string> typeProperties = new List<string>();
+
+            T typeInstance = Activator.CreateInstance<T>();
+
+            foreach (DataColumn column in dt.Columns)
+            {
+                var prop = typeInstance.GetType().GetProperty(column.ColumnName, BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Public);
+                if (prop != null)
+                {
+                    typeProperties.Add(column.ColumnName);
+                }
+            }
+
+            foreach (DataRow row in dt.Rows)
+            {
+                T entity = Activator.CreateInstance<T>();
+
+                foreach (var propertyName in typeProperties)
+                {
+
+                    if (row[propertyName] != DBNull.Value)
+                    {
+                        string str = row[propertyName].GetType().FullName;
+
+                        if (entity.GetType().GetProperty(propertyName).PropertyType == typeof(System.String))
+                        {
+                            object Val = row[propertyName].ToString();
+                            entity.GetType().GetProperty(propertyName, BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Public).SetValue(entity, Val, BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Public, null, null, null);
+                        }
+                        else if (entity.GetType().GetProperty(propertyName).PropertyType == typeof(System.Guid))
+                        {
+                            object Val = Guid.Parse(row[propertyName].ToString());
+                            entity.GetType().GetProperty(propertyName, BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Public).SetValue(entity, Val, BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Public, null, null, null);
+                        }
+                        else
+                        {
+                            entity.GetType().GetProperty(propertyName, BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Public).SetValue(entity, row[propertyName], BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Public, null, null, null);
+                        }
+                    }
+                    else
+                    {
+                        entity.GetType().GetProperty(propertyName, BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Public).SetValue(entity, null, BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Public, null, null, null);
+                    }
+                }
+
+                returnValue.Add(entity);
+            }
+
+            return returnValue.AsEnumerable();
+        }
+
     }
 }

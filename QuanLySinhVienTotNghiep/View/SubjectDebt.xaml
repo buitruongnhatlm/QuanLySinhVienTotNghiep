@@ -7,13 +7,13 @@
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         WindowStartupLocation="CenterScreen" WindowStyle="None" ResizeMode="NoResize" 
-        Title="SubjectDebt" Height="500" Width="1100">
+        Title="SubjectDebt" Height="600" Width="1200">
     <Grid>
         <!--Chia Dòng-->
         <Grid.RowDefinitions>
             <RowDefinition Height="30" />
-            <RowDefinition Height="280" />
-            <RowDefinition Height="140" />
+            <RowDefinition Height="380" />
+            <RowDefinition Height="190" />
         </Grid.RowDefinitions>
 
         <!--#region Menu Thoát -->
@@ -54,22 +54,31 @@
         <!--#endregion-->
 
         <!--#region DATA GRID -->
-        <Grid Grid.Row="1" Height="290">
-            <DataGrid x:Name="dtgGraduate" SelectionChanged="DtgGraduate_SelectionChanged" AutoGenerateColumns="False" Background="LightSkyBlue">
+        <Grid Grid.Row="1" Height="380">
+            <DataGrid x:Name="dtgSubjectDebt" SelectionChanged="DtgSubjectDebt_SelectionChanged" AutoGenerateColumns="False" Background="LightSkyBlue">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Số Thứ Tự" Width="100" Binding="{Binding IDThongTinTotNghiep}" />
-                    <DataGridTextColumn Header="Ngày Vào Trường" Width="130" Binding="{Binding NgayVaoTruong , StringFormat='dd-MM-yyyy' }"  />
-                    <DataGridTextColumn Header="Ngày Tốt Nghiệp" Width="130" Binding="{Binding NgayTotNghiep , StringFormat='dd-MM-yyyy' }" />
-                    <DataGridTextColumn Header="Ngày Cấp Bằng" Width="130" Binding="{Binding NgayCapBang , StringFormat='dd-MM-yyyy' }" />
-                    <DataGridTextColumn Header="Điểm 4" Width="100" Binding="{Binding Diem4}" />
-                    <DataGridTextColumn Header="Ghi Chú" Width="150" Binding="{Binding GhiChu}" />
-                    <DataGridTextColumn Header="Loại Tốt Nghiệp" Width="125" Binding="{Binding TenLoaiTotNghiep}" />
-                    <DataGridTextColumn Header="Hệ Đào Tạo" Width="200" Binding="{Binding TenHeDaoTao}" />
-                    <DataGridTextColumn Header="Ngành" Width="200" Binding="{Binding TenNganh}" />
-                    <DataGridTextColumn Header="Lớp" Width="150" Binding="{Binding MaLop}" />
-                    <DataGridTextColumn Header="Điểm Chữ" Width="100" Binding="{Binding TenDiem}" />
-                    <DataGridTextColumn Header="Trạng Thái" Width="150" Binding="{Binding TrangThai}" />
-                    <DataGridTextColumn Header="Nợ Môn" Width="100" Binding="{Binding NoMon}" />
+                    <DataGridTextColumn Header="Số Thứ Tự" Width="100" Binding="{Binding IDMonHoc}" />
+                    <DataGridTextColumn Header="Tên Sinh Viên" Width="200" Binding="{Binding HoTen }"  />
+                    <DataGridTextColumn Header="Toán Rời Rạc" Width="125" Binding="{Binding ToanRoiRac }" />
+                    <DataGridTextColumn Header="Giải Tích" Width="100" Binding="{Binding GiaiTich }" />
+                    <DataGridTextColumn Header="Xác Suất" Width="100" Binding="{Binding XacSuatThongKe}" />
+                    <DataGridTextColumn Header="KT Lập Trình" Width="100" Binding="{Binding KyThuatLapTrinh}" />
+                    <DataGridTextColumn Header="Mạng Máy Tính" Width="125" Binding="{Binding MangMayTinh }" />
+                    <DataGridTextColumn Header="Cơ Sở Dữ Liệu" Width="125" Binding="{Binding CoSoDuLieu}" />
+                    <DataGridTextColumn Header="Kỹ Năng Giao Tiếp" Width="135" Binding="{Binding KyNangGiaoTiep}" />
+                    <DataGridTextColumn Header="LT Hướng Đối Tượng" Width="140" Binding="{Binding LapTrinhHuongDoiTuong}" />
+                    <DataGridTextColumn Header="Cấu Trúc Dữ Liệu" Width="130" Binding="{Binding CauTrucDuLieuGiaiThuat}" />
+                    <DataGridTextColumn Header="Hệ Điều Hành" Width="120" Binding="{Binding HeDieuHanh}" />
+                    <DataGridTextColumn Header="Phân Tích Thiết Kế" Width="140" Binding="{Binding PhanTichThietKe}" />
+                    <DataGridTextColumn Header="Trí Tuệ Nhân Tạo" Width="135" Binding="{Binding TriTueNhanTao}" />
+                    <DataGridTextColumn Header="PM Mã Nguồn Mở" Width="135" Binding="{Binding PhanMemMaNguonMo}" />
+                    <DataGridTextColumn Header="Bảo Trì Phần Mềm" Width="135" Binding="{Binding BaoTriPhanMem}" />
+                    <DataGridTextColumn Header="Thương Mại Điện Tử" Width="145" Binding="{Binding ThuongMaiDienTu}" />
+                    <DataGridTextColumn Header="Đồ Án 1" Width="110" Binding="{Binding DoAn1}" />
+                    <DataGridTextColumn Header="Đồ Án 2" Width="110" Binding="{Binding DoAn2}" />
+                    <DataGridTextColumn Header="Đồ Án 3" Width="110" Binding="{Binding DoAn3}" />
+                    <DataGridTextColumn Header="Học Phần Tự Chọn" Width="135" Binding="{Binding HocPhanTuChon}" />
+                    <DataGridTextColumn Header="CC Ngoại Ngữ" Width="125" Binding="{Binding ChungChiNgoaiNgu}" />
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>
@@ -79,12 +88,12 @@
         <StackPanel Grid.Row="3" Margin="0 0 0 10">
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="190" />
-                    <ColumnDefinition Width="180" />
-                    <ColumnDefinition Width="180" />
-                    <ColumnDefinition Width="180" />
-                    <ColumnDefinition Width="180" />
-                    <ColumnDefinition Width="190" />
+                    <ColumnDefinition Width="200" />
+                    <ColumnDefinition Width="200" />
+                    <ColumnDefinition Width="200" />
+                    <ColumnDefinition Width="200" />
+                    <ColumnDefinition Width="200" />
+                    <ColumnDefinition Width="200" />
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="45" />
@@ -93,18 +102,115 @@
                     <RowDefinition Height="45" />
                 </Grid.RowDefinitions>
 
-                    <ToggleButton x:Name="tgbtnToanRoiRac" Style="{StaticResource MaterialDesignSwitchDarkToggleButton}"
-                        ToolTip="MaterialDesignSwitchDarkToggleButton"
-                            IsChecked="True" />
-                    <TextBlock  />
-                <TextBlock Text="Toán Rời Rạc" />
+            <TextBox x:Name="txtSinhVien" Grid.Column="0" Height="30" Grid.Row="0" Width="130" HorizontalAlignment="Left" Margin="40 0 5 0" materialDesign:HintAssist.Hint="Sinh Viên" materialDesign:HintAssist.HintOpacity=".25">
+             </TextBox>
+            <materialDesign:PackIcon Margin="10 10 0 0" HorizontalAlignment="Left" VerticalAlignment="Center" Height="30" Width="30" Kind="SchoolOutline" Grid.Column="0" Grid.Row="0" />
 
-                <CheckBox Content="tooasn toia" />
+                <ToggleButton x:Name="tgbtnToanRoiRac" Grid.Column="0" Grid.Row="1" Style="{StaticResource MaterialDesignSwitchDarkToggleButton}" ToolTip="MaterialDesignSwitchDarkToggleButton"
+             IsChecked="False" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0 0 50 0" />
+                <TextBlock Text="Toán Rời Rạc" FontSize="13" Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="20 0 0 0" Foreground="DeepSkyBlue" FontWeight="Bold" />
+
+            <ToggleButton x:Name="tgbtnGiaiTich" Grid.Column="0" Grid.Row="2" Style="{StaticResource MaterialDesignSwitchDarkToggleButton}" ToolTip="MaterialDesignSwitchDarkToggleButton"
+             IsChecked="False" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0 0 50 0" />
+                <TextBlock Text="Giải Tích" FontSize="13" Grid.Column="0" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="20 0 0 0" Foreground="DeepSkyBlue" FontWeight="Bold" />
+
+                <ToggleButton x:Name="tgbtnXacSuat" Grid.Column="0" Grid.Row="3" Style="{StaticResource MaterialDesignSwitchDarkToggleButton}" ToolTip="MaterialDesignSwitchDarkToggleButton"
+             IsChecked="False" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0 0 50 0" />
+                <TextBlock Text="Xác Suất" FontSize="13" Grid.Column="0" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="20 0 0 0" Foreground="DeepSkyBlue" FontWeight="Bold" />
+
+                <ToggleButton x:Name="tgbtnKyThuatLapTrinh" Grid.Column="1" Grid.Row="0" Style="{StaticResource MaterialDesignSwitchDarkToggleButton}" ToolTip="MaterialDesignSwitchDarkToggleButton"
+             IsChecked="False" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0 5 25 0" />
+                <TextBlock Text="Kỹ Thuật Lập Trình" FontSize="13" Grid.Column="1" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10 0 0 0" Foreground="DeepSkyBlue" FontWeight="Bold" />
+
+                <ToggleButton x:Name="tgbtnMangMayTinh" Grid.Column="1" Grid.Row="1" Style="{StaticResource MaterialDesignSwitchDarkToggleButton}" ToolTip="MaterialDesignSwitchDarkToggleButton"
+             IsChecked="False" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0 5 25 0" />
+                <TextBlock Text="Mạng Máy Tính" FontSize="13" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10 0 0 0" Foreground="DeepSkyBlue" FontWeight="Bold" />
+
+                <ToggleButton x:Name="tgbtnCoSoDuLieu" Grid.Column="1" Grid.Row="2" Style="{StaticResource MaterialDesignSwitchDarkToggleButton}" ToolTip="MaterialDesignSwitchDarkToggleButton"
+             IsChecked="False" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0 5 25 0" />
+                <TextBlock Text="Cơ Sở Dữ Liệu" FontSize="13" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10 0 0 0" Foreground="DeepSkyBlue" FontWeight="Bold" />
+
+                <ToggleButton x:Name="tgbtnKyNangGiaoTiep" Grid.Column="1" Grid.Row="3" Style="{StaticResource MaterialDesignSwitchDarkToggleButton}" ToolTip="MaterialDesignSwitchDarkToggleButton"
+             IsChecked="False" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0 5 25 0" />
+                <TextBlock Text="Kỹ Năng Giao Tiếp" FontSize="13" Grid.Column="1" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10 0 0 0" Foreground="DeepSkyBlue" FontWeight="Bold" />
+
+                <ToggleButton x:Name="tgbtnLapTrinhHuongDoiTuong" Grid.Column="2" Grid.Row="0" Style="{StaticResource MaterialDesignSwitchDarkToggleButton}" ToolTip="MaterialDesignSwitchDarkToggleButton"
+             IsChecked="False" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0 5 10 0" />
+                <TextBlock Text="LT Hướng Đối Tượng" FontSize="13" Grid.Column="2" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10 0 0 0" Foreground="DeepSkyBlue" FontWeight="Bold" />
+
+                <ToggleButton x:Name="tgbtnCauTrucDuLieu" Grid.Column="2" Grid.Row="1" Style="{StaticResource MaterialDesignSwitchDarkToggleButton}" ToolTip="MaterialDesignSwitchDarkToggleButton"
+             IsChecked="False" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0 5 10 0" />
+                <TextBlock Text="Cấu Trúc Dữ Liệu" FontSize="13" Grid.Column="2" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10 0 0 0" Foreground="DeepSkyBlue" FontWeight="Bold" />
+
+                <ToggleButton x:Name="tgbtnHeDieuHanh" Grid.Column="2" Grid.Row="2" Style="{StaticResource MaterialDesignSwitchDarkToggleButton}" ToolTip="MaterialDesignSwitchDarkToggleButton"
+             IsChecked="False" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0 5 10 0" />
+                <TextBlock Text="Hệ Điều Hành" FontSize="13" Grid.Column="2" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10 0 0 0" Foreground="DeepSkyBlue" FontWeight="Bold" />
+
+                <ToggleButton x:Name="tgbtnPhanTichThietKe" Grid.Column="2" Grid.Row="3" Style="{StaticResource MaterialDesignSwitchDarkToggleButton}" ToolTip="MaterialDesignSwitchDarkToggleButton"
+             IsChecked="False" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0 5 10 0" />
+                <TextBlock Text="Phân Tích Thiết Kế" FontSize="13" Grid.Column="2" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10 0 0 0" Foreground="DeepSkyBlue" FontWeight="Bold" />
+
+                <ToggleButton x:Name="tgbtnTriTueNhanTao" Grid.Column="3" Grid.Row="0" Style="{StaticResource MaterialDesignSwitchDarkToggleButton}" ToolTip="MaterialDesignSwitchDarkToggleButton"
+             IsChecked="False" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0 5 15 0" />
+                <TextBlock Text="Trí Tuệ Nhân Tạo" FontSize="13" Grid.Column="3" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10 0 0 0" Foreground="DeepSkyBlue" FontWeight="Bold" />
+
+                <ToggleButton x:Name="tgbtnPhanMemMaNguonMo" Grid.Column="3" Grid.Row="1" Style="{StaticResource MaterialDesignSwitchDarkToggleButton}" ToolTip="MaterialDesignSwitchDarkToggleButton"
+             IsChecked="False" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0 5 15 0" />
+                <TextBlock Text="PM Mã Nguồn Mở" FontSize="13" Grid.Column="3" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10 0 0 0" Foreground="DeepSkyBlue" FontWeight="Bold" />
+
+                <ToggleButton x:Name="tgbtnBaoTriPhanMem" Grid.Column="3" Grid.Row="2" Style="{StaticResource MaterialDesignSwitchDarkToggleButton}" ToolTip="MaterialDesignSwitchDarkToggleButton"
+             IsChecked="False" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0 5 15 0" />
+                <TextBlock Text="Bảo Trì Phần Mềm" FontSize="13" Grid.Column="3" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10 0 0 0" Foreground="DeepSkyBlue" FontWeight="Bold" />
+
+                <ToggleButton x:Name="tgbtnThuongMaiDienTu" Grid.Column="3" Grid.Row="3" Style="{StaticResource MaterialDesignSwitchDarkToggleButton}" ToolTip="MaterialDesignSwitchDarkToggleButton"
+             IsChecked="False" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0 5 15 0" />
+                <TextBlock Text="Thương Mại Điện Tử" FontSize="13" Grid.Column="3" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10 0 0 0" Foreground="DeepSkyBlue" FontWeight="Bold" />
+
+                <ToggleButton x:Name="tgbtnDoAn1" Grid.Column="4" Grid.Row="0" Style="{StaticResource MaterialDesignSwitchDarkToggleButton}" ToolTip="MaterialDesignSwitchDarkToggleButton"
+             IsChecked="False" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0 5 80 0" />
+                <TextBlock Text="Đồ Án 1" FontSize="13" Grid.Column="4" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10 0 0 0" Foreground="DeepSkyBlue" FontWeight="Bold" />
+
+                <ToggleButton x:Name="tgbtnDoAn2" Grid.Column="4" Grid.Row="1" Style="{StaticResource MaterialDesignSwitchDarkToggleButton}" ToolTip="MaterialDesignSwitchDarkToggleButton"
+             IsChecked="False" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0 5 80 0" />
+                <TextBlock Text="Đồ Án 2" FontSize="13" Grid.Column="4" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10 0 0 0" Foreground="DeepSkyBlue" FontWeight="Bold" />
+
+                <ToggleButton x:Name="tgbtnDoAn3" Grid.Column="4" Grid.Row="2" Style="{StaticResource MaterialDesignSwitchDarkToggleButton}" ToolTip="MaterialDesignSwitchDarkToggleButton"
+             IsChecked="False" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0 0 80 0" />
+                <TextBlock Text="Đồ Án 3" FontSize="13" Grid.Column="4" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10 0 0 0" Foreground="DeepSkyBlue" FontWeight="Bold" />
+
+                <ToggleButton x:Name="tgbtnHocPhanTuChon" Grid.Column="4" Grid.Row="3" Style="{StaticResource MaterialDesignSwitchDarkToggleButton}" ToolTip="MaterialDesignSwitchDarkToggleButton"
+             IsChecked="False" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0 0 40 0" />
+                <TextBlock Text="Thiếu TC Tự Chọn" FontSize="13" Grid.Column="4" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10 0 0 0" Foreground="DeepSkyBlue" FontWeight="Bold" />
+
+                <ToggleButton x:Name="tgbtnChungChiNgoaiNgu" Grid.Column="5" Grid.Row="0" Style="{StaticResource MaterialDesignSwitchDarkToggleButton}" ToolTip="MaterialDesignSwitchDarkToggleButton"
+             IsChecked="False" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0 5 20 0" />
+                <TextBlock Text="Chứng Chỉ Anh Văn" FontSize="13" Grid.Column="5" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10 0 0 0" Foreground="DeepSkyBlue" FontWeight="Bold" />
+
+                <!--#region Button THÊM -->
+                <Button Grid.Column="5" Grid.Row="1" Padding="0" FontSize="17" Width="110" Height="25" Margin="0 0 50 0" VerticalAlignment="Center" HorizontalAlignment="Center" materialDesign:ButtonProgressAssist.IsIndicatorVisible="True" materialDesign:ButtonProgressAssist.IsIndeterminate="True"
+                    Content="Thêm" x:Name="btnThemMonHoc" Click="BtnThemMonHoc_Click" />
+                <Button x:Name="btnExcel" Click="BtnExcel_Click" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0 0 15 0" Width="32" Height="32" Grid.Column="5" Grid.Row="1" Style="{StaticResource MaterialDesignFloatingActionDarkButton}" ToolTip="MaterialDesignFloatingActionDarkButton">
+                    <materialDesign:PackIcon Kind="MicrosoftExcel" Height="30" Width="30" />
+                </Button>
+
+                <!--#endregion-->
+
+                <!--#region CẬP NHẬT-->
+                <Button Grid.Column="5" Grid.Row="2" Padding="0" FontSize="17" Width="110" Height="25" VerticalAlignment="Center" HorizontalAlignment="Left" materialDesign:ButtonProgressAssist.IsIndicatorVisible="True" materialDesign:ButtonProgressAssist.IsIndeterminate="True"
+                    Content="Cập Nhật" x:Name="btnCapNhatMonHoc" Click="BtnCapNhatMonHoc_Click" Margin="20 0 0 0" />
+                <Button x:Name="btnExportExcel" Click="BtnExportExcel_Click" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0 0 15 0" Width="32" Height="32" Grid.Column="5" Grid.Row="2" Style="{StaticResource MaterialDesignFloatingActionDarkButton}" ToolTip="MaterialDesignFloatingActionDarkButton">
+                    <materialDesign:PackIcon Background="Green" Kind="MicrosoftExcel" Height="30" Width="30" />
+                </Button>
+                <!--#endregion -->
+
+                <!--#region XÓA -->
+                <Button Grid.Column="5" Grid.Row="3" Margin="20 0 0 0" Padding="0" FontSize="17" Width="110" Height="25" VerticalAlignment="Center" HorizontalAlignment="Left" materialDesign:ButtonProgressAssist.IsIndicatorVisible="True" materialDesign:ButtonProgressAssist.IsIndeterminate="True"
+                    Content="Xóa" x:Name="btnXoaMoHoc" Click="BtnXoaMoHoc_Click" />
+                <!--#endregion-->
 
             </Grid>
         </StackPanel>
         <!--#endregion-->
-
 
     </Grid>
 </Window>
