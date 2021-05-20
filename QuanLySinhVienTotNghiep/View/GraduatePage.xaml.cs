@@ -263,6 +263,10 @@ namespace QuanLySinhVienTotNghiep.View
                                 catch (Exception ex)
                                 { MessageBox.Show(ex.ToString()); }
                             }
+                            else
+                            {
+                                _NgayVaoTruong = Convert.ToDateTime("01/01/0001");
+                            }
 
                             // tạo biến tạm bằng giá trị trong ô ngày sinh 
                             var NgayTotNghiepTemp = _sheetCurrent.Cells[row, col++].Value;
@@ -278,6 +282,10 @@ namespace QuanLySinhVienTotNghiep.View
                                 catch (Exception ex)
                                 { MessageBox.Show(ex.ToString()); }
                             }
+                            else
+                            {
+                                _NgayTotNghiep = Convert.ToDateTime("01/01/0001");
+                            }
 
                             // tạo biến tạm bằng giá trị trong ô ngày sinh 
                             var NgayCapBangTemp = _sheetCurrent.Cells[row, col++].Value;
@@ -292,6 +300,10 @@ namespace QuanLySinhVienTotNghiep.View
                                 }
                                 catch (Exception ex)
                                 { MessageBox.Show(ex.ToString()); }
+                            }
+                            else
+                            {
+                                _NgayCapBang = Convert.ToDateTime("01/01/0001");
                             }
 
                             decimal _Diem4 = decimal.Parse(_sheetCurrent.Cells[row, col++].Value.ToString());

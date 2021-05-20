@@ -1,8 +1,0 @@
-﻿3 file excel
-* Thông Tin Cá Nhân sinh viên (giữ nguyên không đụng tới)
-* Thông Tin Tốt Nghiệp (IDThongTinTotNghiep, ngày tốt nghiệp, điểm, ....) 
-- thêm cột trạng thái, 'Đã Tốt Nghiệp'  hoặc 'Chưa Tốt Nghiệp'
-- thêm cột nợ môn, '0' nếu không nợ môn, '1' nếu nợ từ 1 môn trở lên
-* Môn Nợ
-- IDMonNo, IDSinhVien,Toán rời rạc, xác suất, đồ án,.....
-
